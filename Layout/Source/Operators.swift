@@ -24,6 +24,19 @@
 
 import UIKit
 
+precedencegroup LayoutAssignment {
+    associativity: left
+    lowerThan: ComparisonPrecedence
+}
+
+infix operator ~ : LayoutAssignment
+
+public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: UILayoutPriority) -> LayoutDescriptor<Kind> {
+    var result = lhs
+    result.priority = rhs
+    return result
+}
+
 public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) -> LayoutDescriptor<Kind> {
     return LayoutDescriptor<Kind>(lhs) { result in
         result.toItem = rhs.toItem
