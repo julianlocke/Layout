@@ -51,16 +51,10 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         self.priority = priority
     }
 
-    public init(_ other: LayoutDescriptor<Kind>, _ builder: (inout LayoutDescriptor<Kind>) -> ()) {
-        var o = other
-        builder(&o)
-        attributes = o.attributes
-        relatedBy = o.relatedBy
-        toItem = o.toItem
-        otherAttributes = o.otherAttributes
-        multiplier = o.multiplier
-        constant = o.constant
-        priority = o.priority
+    public func modify(_ builder: (inout LayoutDescriptor<Kind>) -> ()) -> LayoutDescriptor<Kind> {
+        var result = self
+        builder(&result)
+        return result
     }
 
     public func constraints(for layoutContainer: LayoutContainer) -> [NSLayoutConstraint] {

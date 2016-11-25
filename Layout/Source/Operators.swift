@@ -38,7 +38,7 @@ public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: UILayoutPriority) -> Layo
 }
 
 public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) -> LayoutDescriptor<Kind> {
-    return LayoutDescriptor<Kind>(lhs) { result in
+    return lhs.modify { result in
         result.toItem = rhs.toItem
         result.otherAttributes = rhs.attributes
         result.constant = rhs.constant
@@ -53,14 +53,14 @@ public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutContainer) -> Layo
 }
 
 public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
-    return LayoutDescriptor<Kind>(lhs) { result in
+    return lhs.modify { result in
         result.constant = rhs
         result.otherAttributes = [NSLayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
     }
 }
 
 public func >= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) -> LayoutDescriptor<Kind> {
-    return LayoutDescriptor<Kind>(lhs) { result in
+    return lhs.modify { result in
         result.toItem = rhs.toItem
         result.relatedBy = .greaterThanOrEqual
         result.otherAttributes = rhs.attributes
@@ -70,7 +70,7 @@ public func >= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) 
 }
 
 public func >= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
-    return LayoutDescriptor<Kind>(lhs) { result in
+    return lhs.modify { result in
         result.constant = rhs
         result.multiplier = 1
         result.relatedBy = .greaterThanOrEqual
@@ -79,7 +79,7 @@ public func >= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescri
 }
 
 public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) -> LayoutDescriptor<Kind> {
-    return LayoutDescriptor<Kind>(lhs) { result in
+    return lhs.modify { result in
         result.toItem = rhs.toItem
         result.relatedBy = .lessThanOrEqual
         result.otherAttributes = rhs.attributes
@@ -89,7 +89,7 @@ public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) 
 }
 
 public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
-    return LayoutDescriptor<Kind>(lhs) { result in
+    return lhs.modify { result in
         result.constant = rhs
         result.multiplier = 1
         result.relatedBy = .lessThanOrEqual
