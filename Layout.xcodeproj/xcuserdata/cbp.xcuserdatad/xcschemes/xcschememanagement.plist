@@ -4,7 +4,12 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Layout.xcscheme</key>
+		<key>Example.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>Layout.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -18,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>1E71EFD41DE70B8400A65558</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1E71EFF51DE7590400A65558</key>
 		<dict>
 			<key>primary</key>
 			<true/>

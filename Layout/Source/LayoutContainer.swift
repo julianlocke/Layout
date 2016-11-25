@@ -22,31 +22,41 @@
  SOFTWARE.
  */
 
-import XCTest
-@testable import Layout
+import UIKit
 
-class LayoutTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+public protocol LayoutConstraintGenerator {
+    func constraints(for layoutContainer: LayoutContainer) -> [NSLayoutConstraint]
+}
+
+public protocol LayoutContainer {
+    var superview: UIView? { get }
+}
+
+extension UIView: LayoutContainer {}
+
+extension UILayoutGuide: LayoutContainer {
+    public var superview: UIView? {
+        return owningView
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+}
+
+public extension LayoutContainer {
+    private func createLayout(constraints: [LayoutConstraintGenerator]) -> [NSLayoutConstraint] {
+        if let view = self as? UIView {
+            view.translatesAutoresizingMaskIntoConstraints = false
         }
+
+        return constraints.flatMap({ $0.constraints(for: self) })
     }
-    
+
+    func createLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
+        return createLayout(constraints: constraints)
+    }
+
+    @discardableResult
+    func applyLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
+        let constraints = createLayout(constraints: constraints)
+        NSLayoutConstraint.activate(constraints)
+        return constraints
+    }
 }

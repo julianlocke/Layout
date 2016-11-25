@@ -22,31 +22,27 @@
  SOFTWARE.
  */
 
-import XCTest
-@testable import Layout
+import UIKit
+import Layout
 
-class LayoutTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let container = UIView()
+        container.backgroundColor = .black
+        container.layoutMargins = UIEdgeInsets(top: 32, left: 16, bottom: 32, right: 16)
+        view.addSubview(container)
+        container.applyLayout(
+            Layout.flush
+        )
+
+        let green = UIView()
+        green.backgroundColor = .green
+        view.addSubview(green)
+        green.applyLayout(
+            Layout.flushToMargins == container
+        )
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }
+
