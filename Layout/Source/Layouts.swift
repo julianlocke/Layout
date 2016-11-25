@@ -42,6 +42,8 @@ public extension Layout {
         return LayoutDescriptor([.leftMargin], toItem: container)
     }
 
+    public static let leftToMargin = LayoutDescriptor<XLayout>([.left], otherAttributes: [.leftMargin])
+
     public static let leading = LayoutDescriptor<XLayout>([.leading])
 
     public static func leading(_ container: LayoutContainer) -> LayoutDescriptor<XLayout> {
@@ -53,6 +55,8 @@ public extension Layout {
     public static func leadingMargin(_ container: LayoutContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.leadingMargin], toItem: container)
     }
+
+    public static let leadingToMargin = LayoutDescriptor<XLayout>([.leading], otherAttributes: [.leadingMargin])
 }
 
 public extension Layout {
@@ -68,6 +72,8 @@ public extension Layout {
         return LayoutDescriptor([.rightMargin], toItem: container)
     }
 
+    public static let rightToMargin = LayoutDescriptor<XLayout>([.right], otherAttributes: [.rightMargin])
+
     public static let trailing = LayoutDescriptor<XLayout>([.trailing])
 
     public static func trailing(_ container: LayoutContainer) -> LayoutDescriptor<XLayout> {
@@ -79,6 +85,8 @@ public extension Layout {
     public static func trailingMargin(_ container: LayoutContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.trailingMargin], toItem: container)
     }
+
+    public static let trailingToMargin = LayoutDescriptor<XLayout>([.trailing], otherAttributes: [.trailingMargin])
 }
 
 public extension Layout {
@@ -93,6 +101,8 @@ public extension Layout {
     public static func topMargin(_ container: LayoutContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.topMargin], toItem: container)
     }
+
+    public static let topToMargin = LayoutDescriptor<YLayout>([.top], otherAttributes: [.topMargin])
 
     public static var firstBaseline = LayoutDescriptor<YLayout>([.firstBaseline])
 
@@ -113,6 +123,8 @@ public extension Layout {
     public static func bottomMargin(_ container: LayoutContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.bottomMargin], toItem: container)
     }
+
+    public static let bottomToMargin = LayoutDescriptor<YLayout>([.bottom], otherAttributes: [.bottomMargin])
 
     public static var lastBaseline = LayoutDescriptor<YLayout>([.lastBaseline])
 
@@ -195,4 +207,8 @@ public extension Layout {
     public static let flush = LayoutDescriptor<XYLayout>([.left, .right, .bottom, .top])
 
     public static let flushToMargins = LayoutDescriptor<XYLayout>([.left, .right, .bottom, .top], otherAttributes: [.leftMargin, .rightMargin, .bottomMargin, .topMargin])
+}
+
+public extension Layout {
+    public static let size = LayoutDescriptor<DimensionLayout>([.width, .height])
 }

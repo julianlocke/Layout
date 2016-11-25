@@ -29,20 +29,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let container = UIView()
-        container.backgroundColor = .black
-        container.layoutMargins = UIEdgeInsets(top: 32, left: 16, bottom: 32, right: 16)
-        view.addSubview(container)
-        container.applyLayout(
-            Layout.flush
-        )
-
         let green = UIView()
         green.backgroundColor = .green
         view.addSubview(green)
         green.applyLayout(
-            Layout.flushToMargins == container
+            Layout.flushToMargins
         )
+
+//        let container = UIView()
+//        container.backgroundColor = .black
+//        container.layoutMargins = UIEdgeInsets(top: 32, left: 16, bottom: 32, right: 16)
+//        view.addSubview(container)
+//        container.applyLayout(
+//            Layout.flush
+//        )
+//
+//        let green = UIView()
+//        green.backgroundColor = .green
+//        view.addSubview(green)
+//        green.applyLayout(
+//            Layout.flushToMargins == container,
+//            Layout.size == 100
+//        )
     }
 }
 
