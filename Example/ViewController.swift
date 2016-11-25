@@ -33,7 +33,7 @@ class ViewController: UIViewController {
         green.backgroundColor = .green
         view.addSubview(green)
         green.applyLayout(
-            Layout.flush + 20
+            Layout.flush(with: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20))
         )
 
 //        let container = UIView()

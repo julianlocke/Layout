@@ -30,7 +30,8 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     public var toItem: LayoutContainer?
     public var otherAttributes: [NSLayoutAttribute]?
     public var multiplier: CGFloat
-    public var constant: CGFloat
+    public var constant: CGFloat?
+    public var constants: [CGFloat]?
     public var priority: UILayoutPriority?
     public var reinterpretConstants: Bool
 
@@ -40,7 +41,8 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         toItem: LayoutContainer? = nil,
         otherAttributes: [NSLayoutAttribute]? = nil,
         multiplier: CGFloat = 1,
-        constant: CGFloat = 0,
+        constant: CGFloat? = nil,
+        constants: [CGFloat]? = nil,
         priority: UILayoutPriority? = nil,
         reinterpretConstants: Bool = false
         ) {
@@ -50,6 +52,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         self.otherAttributes = otherAttributes
         self.multiplier = multiplier
         self.constant = constant
+        self.constants = constants
         self.priority = priority
         self.reinterpretConstants = reinterpretConstants
     }
@@ -71,7 +74,19 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             fatalError("Wrong number of other attributes specified.")
         }
 
-        return zip(attributes, otherAttributes).map { attr, otherAttr in
+        let constants: [CGFloat]
+
+        if let c = constant {
+            constants = [CGFloat](repeatElement(c, count: attributes.count))
+        } else if let cs = self.constants {
+            constants = cs
+        } else {
+            constants = [CGFloat](repeatElement(0, count: attributes.count))
+        }
+
+        return zip3(attributes, otherAttributes, constants).map{ value in
+            let (attr, otherAttr, constant) = value
+
             let toItem = otherAttr == .notAnAttribute ? nil : (self.toItem ?? superview)
 
             let constraint = NSLayoutConstraint(

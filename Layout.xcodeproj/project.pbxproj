@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E4748361DE8CF5C007FD28D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Util.swift */; };
 		1E71EFD61DE70B8400A65558 /* Layout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E71EFCC1DE70B8400A65558 /* Layout.framework */; };
 		1E71EFDB1DE70B8400A65558 /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFDA1DE70B8400A65558 /* LayoutTests.swift */; };
 		1E71EFE81DE70BAB00A65558 /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
@@ -54,6 +55,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1E4748351DE8CF5C007FD28D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Source/Util.swift; sourceTree = "<group>"; };
 		1E71EFCC1DE70B8400A65558 /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E71EFD01DE70B8400A65558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E71EFD51DE70B8400A65558 /* LayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,6 +146,7 @@
 				1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */,
 				1E71EFEB1DE726A700A65558 /* Layouts.swift */,
 				1E71EFED1DE726D000A65558 /* Operators.swift */,
+				1E4748351DE8CF5C007FD28D /* Util.swift */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 			files = (
 				1E71EFEC1DE726A700A65558 /* Layouts.swift in Sources */,
 				1E71EFEE1DE726D000A65558 /* Operators.swift in Sources */,
+				1E4748361DE8CF5C007FD28D /* Util.swift in Sources */,
 				1E71EFE81DE70BAB00A65558 /* LayoutDescriptor.swift in Sources */,
 				1E71EFEA1DE710A900A65558 /* LayoutContainer.swift in Sources */,
 			);

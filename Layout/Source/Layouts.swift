@@ -22,6 +22,8 @@
  SOFTWARE.
  */
 
+import UIKit
+
 public protocol XLayout {}
 public protocol YLayout {}
 public protocol XYLayout {}
@@ -204,9 +206,17 @@ public extension Layout {
 }
 
 public extension Layout {
-    public static let flush = LayoutDescriptor<XYLayout>([.left, .right, .bottom, .top], reinterpretConstants: true)
+    public static let flush = LayoutDescriptor<XYLayout>([.left, .right, .top, .bottom], reinterpretConstants: true)
 
-    public static let flushToMargins = LayoutDescriptor<XYLayout>([.left, .right, .bottom, .top], otherAttributes: [.leftMargin, .rightMargin, .bottomMargin, .topMargin], reinterpretConstants: true)
+    public static func flush(with insets: UIEdgeInsets) -> LayoutDescriptor<XYLayout> {
+        return LayoutDescriptor([.left, .right, .top, .bottom], constants: [insets.left, -insets.right, insets.top, -insets.bottom])
+    }
+
+    public static let flushToMargins = LayoutDescriptor<XYLayout>([.left, .right, .top, .bottom], otherAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin], reinterpretConstants: true)
+
+    public static func flushToMargins(with insets: UIEdgeInsets) -> LayoutDescriptor<XYLayout> {
+        return LayoutDescriptor([.left, .right, .top, .bottom], otherAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin], constants: [insets.left, -insets.right, insets.top, -insets.bottom])
+    }
 }
 
 public extension Layout {
