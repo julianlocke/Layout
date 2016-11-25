@@ -32,6 +32,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     public var multiplier: CGFloat
     public var constant: CGFloat
     public var priority: UILayoutPriority?
+    public var reinterpretConstants: Bool
 
     public init(
         _ attributes: [NSLayoutAttribute],
@@ -40,7 +41,8 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         otherAttributes: [NSLayoutAttribute]? = nil,
         multiplier: CGFloat = 1,
         constant: CGFloat = 0,
-        priority: UILayoutPriority? = nil
+        priority: UILayoutPriority? = nil,
+        reinterpretConstants: Bool = false
         ) {
         self.attributes = attributes
         self.relatedBy = relatedBy
@@ -49,6 +51,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         self.multiplier = multiplier
         self.constant = constant
         self.priority = priority
+        self.reinterpretConstants = reinterpretConstants
     }
 
     public func modify(_ builder: (inout LayoutDescriptor<Kind>) -> ()) -> LayoutDescriptor<Kind> {
@@ -78,7 +81,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
                 toItem: toItem,
                 attribute: otherAttr,
                 multiplier: multiplier,
-                constant: constant
+                constant: reinterpret(constant: constant, for: attr)
             )
 
             if let priority = priority {
@@ -86,6 +89,19 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             }
 
             return constraint
+        }
+    }
+
+    private func reinterpret(constant: CGFloat, for attribute: NSLayoutAttribute) -> CGFloat {
+        if reinterpretConstants {
+            switch attribute {
+            case .right, .bottom, .trailing, .lastBaseline, .rightMargin, .bottomMargin, .trailingMargin:
+                return constant * -1
+            default:
+                return constant
+            }
+        } else {
+            return constant
         }
     }
 }

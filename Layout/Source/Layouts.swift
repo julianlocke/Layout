@@ -204,9 +204,9 @@ public extension Layout {
 }
 
 public extension Layout {
-    public static let flush = LayoutDescriptor<XYLayout>([.left, .right, .bottom, .top])
+    public static let flush = LayoutDescriptor<XYLayout>([.left, .right, .bottom, .top], reinterpretConstants: true)
 
-    public static let flushToMargins = LayoutDescriptor<XYLayout>([.left, .right, .bottom, .top], otherAttributes: [.leftMargin, .rightMargin, .bottomMargin, .topMargin])
+    public static let flushToMargins = LayoutDescriptor<XYLayout>([.left, .right, .bottom, .top], otherAttributes: [.leftMargin, .rightMargin, .bottomMargin, .topMargin], reinterpretConstants: true)
 }
 
 public extension Layout {
