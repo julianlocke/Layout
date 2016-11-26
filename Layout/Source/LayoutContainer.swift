@@ -56,7 +56,7 @@ public extension LayoutContainer {
     @discardableResult
     func applyLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
         let constraints = createLayout(constraints: constraints)
-        NSLayoutConstraint.activate(constraints)
+        constraints.activate()
         return constraints
     }
 }

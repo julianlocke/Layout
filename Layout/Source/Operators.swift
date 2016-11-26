@@ -32,9 +32,9 @@ precedencegroup LayoutAssignment {
 infix operator ~ : LayoutAssignment
 
 public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: UILayoutPriority) -> LayoutDescriptor<Kind> {
-    var result = lhs
-    result.priority = rhs
-    return result
+    return lhs.modify { result in
+        result.priority = rhs
+    }
 }
 
 public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) -> LayoutDescriptor<Kind> {
@@ -47,9 +47,9 @@ public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) 
 }
 
 public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutContainer) -> LayoutDescriptor<Kind> {
-    var result = lhs
-    result.toItem = rhs
-    return result
+    return lhs.modify { result in
+        result.toItem = rhs
+    }
 }
 
 public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
@@ -98,25 +98,25 @@ public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescri
 }
 
 public func + <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
-    var result = lhs
-    result.constant = rhs
-    return result
+    return lhs.modify { result in
+        result.constant = rhs
+    }
 }
 
 public func - <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
-    var result = lhs
-    result.constant = -rhs
-    return result
+    return lhs.modify { result in
+        result.constant = -rhs
+    }
 }
 
 public func * <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
-    var result = lhs
-    result.multiplier = rhs
-    return result
+    return lhs.modify { result in
+        result.multiplier = rhs
+    }
 }
 
 public func / <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
-    var result = lhs
-    result.multiplier = 1 / rhs
-    return result
+    return lhs.modify { result in
+        result.multiplier = 1 / rhs
+    }
 }

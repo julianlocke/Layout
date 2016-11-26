@@ -23,20 +23,25 @@
  */
 
 import UIKit
-import Layout
 
-class ViewController: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+public extension Sequence where Iterator.Element == NSLayoutConstraint {
+    func activate() {
+        NSLayoutConstraint.activate(Array(self))
+    }
 
-        let green = UIView()
-        green.backgroundColor = .green
-        view.addSubview(green)
-
-        let off = green.createLayout(Layout.flush)
-        let on = green.createLayout(Layout.flush(with: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)))
-
-        view.updateConstraints(deactivate: off, activate: on)
+    func deactivate() {
+        NSLayoutConstraint.deactivate(Array(self))
     }
 }
 
+public extension UIView {
+    func updateConstraints(deactivate: [NSLayoutConstraint], activate: [NSLayoutConstraint], immediately: Bool = true) {
+        deactivate.deactivate()
+        activate.activate()
+
+        if immediately {
+            setNeedsLayout()
+            layoutIfNeeded()
+        }
+    }
+}

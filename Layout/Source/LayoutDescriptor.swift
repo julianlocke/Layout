@@ -84,6 +84,10 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             constants = [CGFloat](repeatElement(0, count: attributes.count))
         }
 
+        guard constants.count == otherAttributes.count else {
+            fatalError("Wrong number of constants specified.")
+        }
+
         return zip3(attributes, otherAttributes, constants).map{ value in
             let (attr, otherAttr, constant) = value
 
@@ -108,15 +112,10 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     }
 
     private func reinterpret(constant: CGFloat, for attribute: NSLayoutAttribute) -> CGFloat {
-        if reinterpretConstants {
-            switch attribute {
-            case .right, .bottom, .trailing, .lastBaseline, .rightMargin, .bottomMargin, .trailingMargin:
-                return constant * -1
-            default:
-                return constant
-            }
-        } else {
+        guard reinterpretConstants, attribute.requiresReinterpretation else {
             return constant
         }
+        
+        return constant * -1
     }
 }
