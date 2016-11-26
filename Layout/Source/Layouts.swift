@@ -170,6 +170,10 @@ public extension Layout {
 
     public static let center = LayoutDescriptor<XYLayout>([.centerX, .centerY])
 
+    public static func center(of: LayoutContainer) -> LayoutDescriptor<XYLayout> {
+        return LayoutDescriptor([.centerX, .centerY])
+    }
+
     public static let centerWithinMargins = LayoutDescriptor<XYLayout>([.centerX, .centerY], otherAttributes: [.centerXWithinMargins, .centerYWithinMargins])
 }
 
