@@ -99,13 +99,25 @@ public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescri
 
 public func + <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
-        result.constant = rhs
+        if let constant = result.constant {
+            result.constant = constant + rhs
+        } else if let constants = result.constants {
+            result.constants = constants.map({ $0 + rhs })
+        } else {
+            result.constant = rhs
+        }
     }
 }
 
 public func - <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
-        result.constant = -rhs
+        if let constant = result.constant {
+            result.constant = constant - rhs
+        } else if let constants = result.constants {
+            result.constants = constants.map({ $0 - rhs })
+        } else {
+            result.constant = -rhs
+        }
     }
 }
 

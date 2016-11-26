@@ -34,7 +34,7 @@ class ViewController: UIViewController {
         view.addSubview(green)
 
         let off = green.createLayout(Layout.flush)
-        let on = green.createLayout(Layout.flush(with: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)))
+        let on = green.createLayout(Layout.flush(with: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)) + 20)
 
         view.updateConstraints(deactivate: off, activate: on)
     }

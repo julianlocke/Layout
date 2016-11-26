@@ -213,13 +213,13 @@ public extension Layout {
     public static let flush = LayoutDescriptor<XYLayout>([.left, .right, .top, .bottom], reinterpretConstants: true)
 
     public static func flush(with insets: UIEdgeInsets) -> LayoutDescriptor<XYLayout> {
-        return LayoutDescriptor([.left, .right, .top, .bottom], constants: [insets.left, -insets.right, insets.top, -insets.bottom])
+        return LayoutDescriptor([.left, .right, .top, .bottom], constants: [insets.left, insets.right, insets.top, insets.bottom], reinterpretConstants: true)
     }
 
     public static let flushToMargins = LayoutDescriptor<XYLayout>([.left, .right, .top, .bottom], otherAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin], reinterpretConstants: true)
 
     public static func flushToMargins(with insets: UIEdgeInsets) -> LayoutDescriptor<XYLayout> {
-        return LayoutDescriptor([.left, .right, .top, .bottom], otherAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin], constants: [insets.left, -insets.right, insets.top, -insets.bottom])
+        return LayoutDescriptor([.left, .right, .top, .bottom], otherAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin], constants: [insets.left, insets.right, insets.top, insets.bottom], reinterpretConstants: true)
     }
 }
 
