@@ -24,12 +24,12 @@
 
 import UIKit
 
-precedencegroup LayoutAssignment {
+precedencegroup LayoutPriorityAssignment {
     associativity: left
     lowerThan: ComparisonPrecedence
 }
 
-infix operator ~ : LayoutAssignment
+infix operator ~ : LayoutPriorityAssignment
 
 public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: UILayoutPriority) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
