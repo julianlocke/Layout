@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "1E71EFCB1DE70B8400A65558"
                BuildableName = "Layout.framework"
-               BlueprintName = "Layout"
+               BlueprintName = "Layout-iOS"
                ReferencedContainer = "container:Layout.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -44,7 +44,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1E71EFCB1DE70B8400A65558"
             BuildableName = "Layout.framework"
-            BlueprintName = "Layout"
+            BlueprintName = "Layout-iOS"
             ReferencedContainer = "container:Layout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -66,7 +66,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1E71EFCB1DE70B8400A65558"
             BuildableName = "Layout.framework"
-            BlueprintName = "Layout"
+            BlueprintName = "Layout-iOS"
             ReferencedContainer = "container:Layout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -84,7 +84,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "1E71EFCB1DE70B8400A65558"
             BuildableName = "Layout.framework"
-            BlueprintName = "Layout"
+            BlueprintName = "Layout-iOS"
             ReferencedContainer = "container:Layout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

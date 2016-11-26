@@ -88,7 +88,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             fatalError("Wrong number of constants specified.")
         }
 
-        return zip3(attributes, otherAttributes, constants).map{ value in
+        return zip3(attributes, otherAttributes, constants).map { value in
             let (attr, otherAttr, constant) = value
 
             let toItem = otherAttr == .notAnAttribute ? nil : (self.toItem ?? superview)
@@ -115,7 +115,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         guard reinterpretConstants, attribute.requiresReinterpretation else {
             return constant
         }
-        
+
         return constant * -1
     }
 }

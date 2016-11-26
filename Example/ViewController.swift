@@ -39,4 +39,3 @@ class ViewController: UIViewController {
         view.updateConstraints(deactivate: off, activate: on)
     }
 }
-
