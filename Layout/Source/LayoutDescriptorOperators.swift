@@ -46,7 +46,7 @@ public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) 
     }
 }
 
-public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutContainer) -> LayoutDescriptor<Kind> {
+public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: ConstraintContainer) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
         result.toItem = rhs
     }

@@ -24,39 +24,44 @@
 
 import UIKit
 
-public protocol LayoutConstraintGenerator {
-    func constraints(for layoutContainer: LayoutContainer) -> [NSLayoutConstraint]
-}
+public class LayoutManager<Key: Hashable> {
 
-public protocol LayoutContainer {
-    var superview: UIView? { get }
-}
+    public let rootView: UIView
 
-extension UIView: LayoutContainer {}
+    private var layouts: [Key: [NSLayoutConstraint]] = [:]
 
-extension UILayoutGuide: LayoutContainer {
-    public var superview: UIView? {
-        return owningView
+    public init(rootView: UIView) {
+        self.rootView = rootView
     }
-}
 
-public extension LayoutContainer {
-    private func createLayout(constraints: [LayoutConstraintGenerator]) -> [NSLayoutConstraint] {
-        if let view = self as? UIView {
-            view.translatesAutoresizingMaskIntoConstraints = false
+    public subscript(key: Key) -> [NSLayoutConstraint]? {
+        get {
+            return layouts[key]
         }
-
-        return constraints.flatMap({ $0.constraints(for: self) })
+        set {
+            layouts[key] = newValue
+        }
     }
 
-    func createLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
-        return createLayout(constraints: constraints)
-    }
+    public var active: Key? {
+        didSet {
+            var oldConstraints = [NSLayoutConstraint]()
 
-    @discardableResult
-    func applyLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
-        let constraints = createLayout(constraints: constraints)
-        constraints.activate()
-        return constraints
+            if let oldKey = oldValue {
+                if oldKey == active {
+                    return
+                } else {
+                    oldConstraints = self[oldKey] ?? []
+                }
+            }
+
+            if let newKey = active {
+                if let newConstraints = self[newKey] {
+                    rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints)
+                } else {
+                    fatalError("No constraints for key '\(newKey)'")
+                }
+            }
+        }
     }
 }

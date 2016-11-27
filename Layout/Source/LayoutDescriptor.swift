@@ -27,7 +27,7 @@ import UIKit
 public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     public var attributes: [NSLayoutAttribute]
     public var relatedBy: NSLayoutRelation
-    public var toItem: LayoutContainer?
+    public var toItem: ConstraintContainer?
     public var otherAttributes: [NSLayoutAttribute]?
     public var multiplier: CGFloat
     public var constant: CGFloat?
@@ -38,7 +38,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     public init(
         _ attributes: [NSLayoutAttribute],
         relatedBy: NSLayoutRelation = .equal,
-        toItem: LayoutContainer? = nil,
+        toItem: ConstraintContainer? = nil,
         otherAttributes: [NSLayoutAttribute]? = nil,
         multiplier: CGFloat = 1,
         constant: CGFloat? = nil,
@@ -63,8 +63,8 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         return result
     }
 
-    public func constraints(for layoutContainer: LayoutContainer) -> [NSLayoutConstraint] {
-        guard let superview = layoutContainer.superview else {
+    public func constraints(for ConstraintContainer: ConstraintContainer) -> [NSLayoutConstraint] {
+        guard let superview = ConstraintContainer.superview else {
             fatalError("You must assign a superview before applying a layout.")
         }
 
@@ -94,7 +94,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             let toItem = otherAttr == .notAnAttribute ? nil : (self.toItem ?? superview)
 
             let constraint = NSLayoutConstraint(
-                item: layoutContainer,
+                item: ConstraintContainer,
                 attribute: attr,
                 relatedBy: relatedBy,
                 toItem: toItem,

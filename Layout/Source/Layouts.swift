@@ -34,13 +34,13 @@ public enum Layout {}
 public extension Layout {
     public static let left = LayoutDescriptor<XLayout>([.left])
 
-    public static func left(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func left(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.left], toItem: container)
     }
 
     public static let leftMargin = LayoutDescriptor<XLayout>([.leftMargin])
 
-    public static func leftMargin(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func leftMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.leftMargin], toItem: container)
     }
 
@@ -48,13 +48,13 @@ public extension Layout {
 
     public static let leading = LayoutDescriptor<XLayout>([.leading])
 
-    public static func leading(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func leading(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.leading], toItem: container)
     }
 
     public static let leadingMargin = LayoutDescriptor<XLayout>([.leadingMargin])
 
-    public static func leadingMargin(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func leadingMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.leadingMargin], toItem: container)
     }
 
@@ -64,13 +64,13 @@ public extension Layout {
 public extension Layout {
     public static let right = LayoutDescriptor<XLayout>([.right])
 
-    public static func right(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func right(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.right], toItem: container)
     }
 
     public static let rightMargin = LayoutDescriptor<XLayout>([.rightMargin])
 
-    public static func rightMargin(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func rightMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.rightMargin], toItem: container)
     }
 
@@ -78,13 +78,13 @@ public extension Layout {
 
     public static let trailing = LayoutDescriptor<XLayout>([.trailing])
 
-    public static func trailing(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func trailing(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.trailing], toItem: container)
     }
 
     public static let trailingMargin = LayoutDescriptor<XLayout>([.trailingMargin])
 
-    public static func trailingMargin(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func trailingMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.trailingMargin], toItem: container)
     }
 
@@ -94,13 +94,13 @@ public extension Layout {
 public extension Layout {
     public static let top = LayoutDescriptor<YLayout>([.top])
 
-    public static func top(of container: LayoutContainer) -> LayoutDescriptor<YLayout> {
+    public static func top(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.top], toItem: container)
     }
 
     public static let topMargin = LayoutDescriptor<YLayout>([.topMargin])
 
-    public static func topMargin(of container: LayoutContainer) -> LayoutDescriptor<YLayout> {
+    public static func topMargin(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.topMargin], toItem: container)
     }
 
@@ -108,7 +108,7 @@ public extension Layout {
 
     public static var firstBaseline = LayoutDescriptor<YLayout>([.firstBaseline])
 
-    public static func firstBaseline(of container: LayoutContainer) -> LayoutDescriptor<YLayout> {
+    public static func firstBaseline(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.firstBaseline], toItem: container)
     }
 }
@@ -116,13 +116,13 @@ public extension Layout {
 public extension Layout {
     public static let bottom = LayoutDescriptor<YLayout>([.bottom])
 
-    public static func bottom(of container: LayoutContainer) -> LayoutDescriptor<YLayout> {
+    public static func bottom(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.bottom], toItem: container)
     }
 
     public static let bottomMargin = LayoutDescriptor<YLayout>([.bottomMargin])
 
-    public static func bottomMargin(of container: LayoutContainer) -> LayoutDescriptor<YLayout> {
+    public static func bottomMargin(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.bottomMargin], toItem: container)
     }
 
@@ -130,7 +130,7 @@ public extension Layout {
 
     public static var lastBaseline = LayoutDescriptor<YLayout>([.lastBaseline])
 
-    public static func lastBaseline(of container: LayoutContainer) -> LayoutDescriptor<YLayout> {
+    public static func lastBaseline(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.lastBaseline], toItem: container)
     }
 }
@@ -138,13 +138,13 @@ public extension Layout {
 public extension Layout {
     public static let centerX = LayoutDescriptor<XLayout>([.centerX])
 
-    public static func centerX(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func centerX(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.centerX], toItem: container)
     }
 
     public static let centerXWithinMargins = LayoutDescriptor<XLayout>([.centerXWithinMargins])
 
-    public static func centerXWithinMargins(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func centerXWithinMargins(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.centerXWithinMargins], toItem: container)
     }
 }
@@ -152,13 +152,13 @@ public extension Layout {
 public extension Layout {
     public static let centerY = LayoutDescriptor<YLayout>([.centerY])
 
-    public static func centerY(of container: LayoutContainer) -> LayoutDescriptor<YLayout> {
+    public static func centerY(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.centerY], toItem: container)
     }
 
     public static let centerYWithinMargins = LayoutDescriptor<XLayout>([.centerYWithinMargins])
 
-    public static func centerYWithinMargins(of container: LayoutContainer) -> LayoutDescriptor<XLayout> {
+    public static func centerYWithinMargins(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.centerYWithinMargins], toItem: container)
     }
 }
@@ -170,7 +170,7 @@ public extension Layout {
 
     public static let center = LayoutDescriptor<XYLayout>([.centerX, .centerY])
 
-    public static func center(of: LayoutContainer) -> LayoutDescriptor<XYLayout> {
+    public static func center(of: ConstraintContainer) -> LayoutDescriptor<XYLayout> {
         return LayoutDescriptor([.centerX, .centerY])
     }
 
@@ -180,13 +180,13 @@ public extension Layout {
 public extension Layout {
     public static let width = LayoutDescriptor<DimensionLayout>([.width])
 
-    public static func width(of container: LayoutContainer) -> LayoutDescriptor<DimensionLayout> {
+    public static func width(of container: ConstraintContainer) -> LayoutDescriptor<DimensionLayout> {
         return LayoutDescriptor([.width], toItem: container)
     }
 
     public static let height = LayoutDescriptor<DimensionLayout>([.height])
 
-    public static func height(of container: LayoutContainer) -> LayoutDescriptor<DimensionLayout> {
+    public static func height(of container: ConstraintContainer) -> LayoutDescriptor<DimensionLayout> {
         return LayoutDescriptor([.height], toItem: container)
     }
 }

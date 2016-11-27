@@ -26,16 +26,68 @@ import UIKit
 import Layout
 
 class ViewController: UIViewController {
+    var layouts: DynamicLayoutManager!
+    var staticLayouts: LayoutManager<String>!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        layouts = DynamicLayoutManager(rootView: self.view)
+        staticLayouts = LayoutManager(rootView: self.view)
 
         let green = UIView()
         green.backgroundColor = .green
         view.addSubview(green)
 
-        let off = green.createLayout(Layout.flush)
-        let on = green.createLayout(Layout.flush(with: UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)) + 20)
+        let red = UIView()
+        red.backgroundColor = .red
+        green.addSubview(red)
 
-        view.updateConstraints(deactivate: off, activate: on)
+        staticLayouts["big"] = red.createLayout(
+            Layout.flush
+        )
+
+        staticLayouts["small"] = red.createLayout(
+            Layout.size / 2,
+            Layout.center
+        )
+
+        staticLayouts.active = "big"
+
+        green.applyLayout(Layout.center)
+
+        layouts.add(constraintsMatching: .horizontally(.regular) && .idiom(.phone)) { ctx in
+            ctx.add(green.createLayout(Layout.size == 300))
+        }
+
+        layouts.add(constraintsMatching: .horizontally(.compact) && .idiom(.phone)) { ctx in
+            ctx.add(green.createLayout(
+                Layout.size == 200
+                ))
+        }
+
+        layouts.add(constraintsMatching: .horizontally(.regular) && .idiom(.pad)) { ctx in
+            ctx.add(green.createLayout(
+                Layout.size == 200
+            ))
+        }
+
+        layouts.add(constraintsMatching: .horizontally(.compact) && .idiom(.pad)) { ctx in
+            ctx.add(green.createLayout(
+                Layout.size == 100
+            ))
+        }
+    }
+
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        layouts?.updateTraitBasedConstraints()
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UIView.animate(withDuration: 5, animations: {
+            self.staticLayouts.active = "small"
+        })
     }
 }

@@ -36,12 +36,68 @@ public extension Sequence where Iterator.Element == NSLayoutConstraint {
 
 public extension UIView {
     func updateConstraints(deactivate: [NSLayoutConstraint], activate: [NSLayoutConstraint], immediately: Bool = true) {
-        deactivate.deactivate()
-        activate.activate()
+        var oldConstraints = Set(deactivate)
+        var newConstraints = Set(activate)
+
+        // Remove any constraints that are already active.
+        // There's no need to deactivate/reactivate.
+        for constraint in activate {
+            if constraint.isActive && oldConstraints.contains(constraint) {
+                oldConstraints.remove(constraint)
+                newConstraints.remove(constraint)
+            }
+        }
+
+        oldConstraints.deactivate()
+        newConstraints.activate()
 
         if immediately {
             setNeedsLayout()
             layoutIfNeeded()
         }
     }
+}
+
+public extension Sequence where Iterator.Element == UITraitCollection {
+    var combined: UITraitCollection {
+        return UITraitCollection(traitsFrom: Array(self))
+    }
+}
+
+public extension UITraitCollection {
+    static func idiom(_ idiom: UIUserInterfaceIdiom) -> UITraitCollection {
+        return UITraitCollection(userInterfaceIdiom: idiom)
+    }
+
+    static func layoutDirection(_ layoutDirection: UITraitEnvironmentLayoutDirection) -> UITraitCollection {
+        return UITraitCollection(layoutDirection: layoutDirection)
+    }
+
+    static func displayScale(_ displayScale: CGFloat) -> UITraitCollection {
+        return UITraitCollection(displayScale: displayScale)
+    }
+
+    static func horizontally(_ sizeClass: UIUserInterfaceSizeClass) -> UITraitCollection {
+        return UITraitCollection(horizontalSizeClass: sizeClass)
+    }
+
+    static func vertically(_ sizeClass: UIUserInterfaceSizeClass) -> UITraitCollection {
+        return UITraitCollection(verticalSizeClass: sizeClass)
+    }
+
+    static func forceTouchCapability(_ capability: UIForceTouchCapability) -> UITraitCollection {
+        return UITraitCollection(forceTouchCapability: capability)
+    }
+
+    static func preferredContentSizeCategory(_ category: UIContentSizeCategory) -> UITraitCollection {
+        return UITraitCollection(preferredContentSizeCategory: category)
+    }
+
+    static func displayGamut(_ value: UIDisplayGamut) -> UITraitCollection {
+        return UITraitCollection(displayGamut: value)
+    }
+}
+
+public func && (lhs: UITraitCollection, rhs: UITraitCollection) -> UITraitCollection {
+    return [lhs, rhs].combined
 }
