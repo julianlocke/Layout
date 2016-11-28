@@ -61,7 +61,7 @@ public extension DynamicLayoutManager {
 }
 
 public extension DynamicLayoutManager {
-    func add(constraintsMatching traits: UITraitCollection, _ block: (DynamicLayoutConstraintContext) -> ()) {
+    func add(constraintsFor traits: UITraitCollection, _ block: (DynamicLayoutConstraintContext) -> ()) {
         let ctx = ConstraintContext()
         block(ctx)
 
@@ -77,11 +77,20 @@ public extension DynamicLayoutManager {
         }
     }
 
+    func add(constraintsFor traits: UITraitCollection, _ constraints: [NSLayoutConstraint]) {
+        add(constraintsFor: traits, { ctx in
+            ctx.add(constraints)
+        })
+    }
+
     func add(_ traitBasedBlock: @escaping (UITraitCollection, CGSize) -> ()) {
         traitBasedBlocks.append(traitBasedBlock)
     }
 
     func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, size: CGSize? = nil) {
+        // Updating constraints can cause traits to change,
+        // so make sure this function is not executed again
+        // while we are still running.
         guard !updatingTraits else {
             return
         }
@@ -109,10 +118,10 @@ public extension DynamicLayoutManager {
         updatingTraits = false
     }
 
-    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection, coordinator: UIViewControllerTransitionCoordinator) {
+    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection, size: CGSize? = nil, coordinator: UIViewControllerTransitionCoordinator) {
         coordinator.animate(
             alongsideTransition: { _ in
-                self.updateTraitBasedConstraints(withTraits: newTraits)
+                self.updateTraitBasedConstraints(withTraits: newTraits, size: size)
         }, completion: nil)
     }
 }

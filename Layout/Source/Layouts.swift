@@ -106,7 +106,7 @@ public extension Layout {
 
     public static let topToMargin = LayoutDescriptor<YLayout>([.top], otherAttributes: [.topMargin])
 
-    public static var firstBaseline = LayoutDescriptor<YLayout>([.firstBaseline])
+    public static let firstBaseline = LayoutDescriptor<YLayout>([.firstBaseline])
 
     public static func firstBaseline(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.firstBaseline], toItem: container)
@@ -128,7 +128,7 @@ public extension Layout {
 
     public static let bottomToMargin = LayoutDescriptor<YLayout>([.bottom], otherAttributes: [.bottomMargin])
 
-    public static var lastBaseline = LayoutDescriptor<YLayout>([.lastBaseline])
+    public static let lastBaseline = LayoutDescriptor<YLayout>([.lastBaseline])
 
     public static func lastBaseline(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.lastBaseline], toItem: container)
@@ -170,8 +170,8 @@ public extension Layout {
 
     public static let center = LayoutDescriptor<XYLayout>([.centerX, .centerY])
 
-    public static func center(of: ConstraintContainer) -> LayoutDescriptor<XYLayout> {
-        return LayoutDescriptor([.centerX, .centerY])
+    public static func center(of container: ConstraintContainer) -> LayoutDescriptor<XYLayout> {
+        return LayoutDescriptor([.centerX, .centerY], toItem: container)
     }
 
     public static let centerWithinMargins = LayoutDescriptor<XYLayout>([.centerX, .centerY], otherAttributes: [.centerXWithinMargins, .centerYWithinMargins])
@@ -225,4 +225,8 @@ public extension Layout {
 
 public extension Layout {
     public static let size = LayoutDescriptor<DimensionLayout>([.width, .height])
+
+    public static func size(of container: ConstraintContainer) -> LayoutDescriptor<DimensionLayout> {
+        return LayoutDescriptor([.width, .height], toItem: container)
+    }
 }

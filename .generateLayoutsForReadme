@@ -1,0 +1,15 @@
+#!/bin/sh
+
+function parseLayouts
+{
+    grep static Layout/Source/Layouts.swift | while read -r line; do
+        if [[ $line == *"let"* ]]; then
+            echo $line | awk '{printf "`%s`, ", $4}'
+        else
+            echo $line | awk '{printf "`%s:)`, ", $4}'
+        fi
+    done
+    echo
+}
+
+parseLayouts
