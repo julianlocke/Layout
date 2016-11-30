@@ -34,6 +34,16 @@
 		1E8EE2C91DEB444900232CB0 /* LayoutConstraintGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C81DEB444900232CB0 /* LayoutConstraintGenerator.swift */; };
 		1E8EE2CB1DEB4AA500232CB0 /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
 		1EA2A29E1DE9EB8000CE3F93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA2A29D1DE9EB8000CE3F93 /* ViewController.swift */; };
+		1EA611E61DEF66860043233D /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6792F81DEF5FAA003771CD /* Platform.swift */; };
+		1EA611E71DEF66860043233D /* LayoutConstraintGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C81DEB444900232CB0 /* LayoutConstraintGenerator.swift */; };
+		1EA611E81DEF66860043233D /* ConstraintContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */; };
+		1EA611E91DEF66860043233D /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
+		1EA611EA1DEF66860043233D /* LayoutDescriptorOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */; };
+		1EA611EB1DEF66860043233D /* Layouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFEB1DE726A700A65558 /* Layouts.swift */; };
+		1EA611EC1DEF66860043233D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Util.swift */; };
+		1EA611ED1DEF66860043233D /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */; };
+		1EA611EE1DEF66860043233D /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
+		1EA611EF1DEF66860043233D /* PublicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7D2F1DE949A800895227 /* PublicUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +75,8 @@
 		1E6792E71DEF5F1A003771CD /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6792EA1DEF5F1A003771CD /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-macOS.plist"; path = "Supporting/Info-macOS.plist"; sourceTree = "<group>"; };
 		1E6792F81DEF5FAA003771CD /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = Source/Platform.swift; sourceTree = "<group>"; };
+		1E6793001DEF65E1003771CD /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E6793031DEF65E1003771CD /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "Supporting/Info-tvOS.plist"; sourceTree = "<group>"; };
 		1E71EFCC1DE70B8400A65558 /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E71EFD01DE70B8400A65558 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "Supporting/Info-iOS.plist"; sourceTree = "<group>"; };
 		1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutDescriptor.swift; path = Source/LayoutDescriptor.swift; sourceTree = "<group>"; };
@@ -87,6 +99,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		1E6792E31DEF5F1A003771CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E6792FC1DEF65E1003771CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -126,6 +145,7 @@
 				1E71EFCC1DE70B8400A65558 /* Layout.framework */,
 				1E71EFF61DE7590400A65558 /* Example.app */,
 				1E6792E71DEF5F1A003771CD /* Layout.framework */,
+				1E6793001DEF65E1003771CD /* Layout.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,6 +181,7 @@
 			children = (
 				1E71EFD01DE70B8400A65558 /* Info-iOS.plist */,
 				1E6792EA1DEF5F1A003771CD /* Info-macOS.plist */,
+				1E6793031DEF65E1003771CD /* Info-tvOS.plist */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -183,6 +204,13 @@
 
 /* Begin PBXHeadersBuildPhase section */
 		1E6792E41DEF5F1A003771CD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E6792FD1DEF65E1003771CD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -215,6 +243,24 @@
 			name = "Layout-macOS";
 			productName = "Layout-macOS";
 			productReference = 1E6792E71DEF5F1A003771CD /* Layout.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		1E6792FF1DEF65E1003771CD /* Layout-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E6793051DEF65E1003771CD /* Build configuration list for PBXNativeTarget "Layout-tvOS" */;
+			buildPhases = (
+				1E6792FB1DEF65E1003771CD /* Sources */,
+				1E6792FC1DEF65E1003771CD /* Frameworks */,
+				1E6792FD1DEF65E1003771CD /* Headers */,
+				1E6792FE1DEF65E1003771CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Layout-tvOS";
+			productName = "Layout-tvOS";
+			productReference = 1E6793001DEF65E1003771CD /* Layout.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		1E71EFCB1DE70B8400A65558 /* Layout-iOS */ = {
@@ -269,6 +315,10 @@
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
 					};
+					1E6792FF1DEF65E1003771CD = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
 					1E71EFCB1DE70B8400A65558 = {
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 0810;
@@ -295,6 +345,7 @@
 			targets = (
 				1E71EFCB1DE70B8400A65558 /* Layout-iOS */,
 				1E6792E61DEF5F1A003771CD /* Layout-macOS */,
+				1E6792FF1DEF65E1003771CD /* Layout-tvOS */,
 				1E71EFF51DE7590400A65558 /* Example */,
 			);
 		};
@@ -302,6 +353,13 @@
 
 /* Begin PBXResourcesBuildPhase section */
 		1E6792E51DEF5F1A003771CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E6792FE1DEF65E1003771CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -359,6 +417,23 @@
 				1E6792F31DEF5F8D003771CD /* Layouts.swift in Sources */,
 				1E6792F21DEF5F8D003771CD /* LayoutDescriptorOperators.swift in Sources */,
 				1E6792F11DEF5F8D003771CD /* LayoutDescriptor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1E6792FB1DEF65E1003771CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EA611E81DEF66860043233D /* ConstraintContainer.swift in Sources */,
+				1EA611E71DEF66860043233D /* LayoutConstraintGenerator.swift in Sources */,
+				1EA611EF1DEF66860043233D /* PublicUtils.swift in Sources */,
+				1EA611E91DEF66860043233D /* LayoutDescriptor.swift in Sources */,
+				1EA611EE1DEF66860043233D /* DynamicLayoutManager.swift in Sources */,
+				1EA611EB1DEF66860043233D /* Layouts.swift in Sources */,
+				1EA611EC1DEF66860043233D /* Util.swift in Sources */,
+				1EA611EA1DEF66860043233D /* LayoutDescriptorOperators.swift in Sources */,
+				1EA611E61DEF66860043233D /* Platform.swift in Sources */,
+				1EA611ED1DEF66860043233D /* LayoutManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +534,48 @@
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		1E6793061DEF65E1003771CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Layout/Supporting/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smd.Layout-tvOS";
+				PRODUCT_NAME = Layout;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
+			};
+			name = Debug;
+		};
+		1E6793071DEF65E1003771CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Layout/Supporting/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smd.Layout-tvOS";
+				PRODUCT_NAME = Layout;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -640,6 +757,16 @@
 				1E6792ED1DEF5F1A003771CD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E6793051DEF65E1003771CD /* Build configuration list for PBXNativeTarget "Layout-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E6793061DEF65E1003771CD /* Debug */,
+				1E6793071DEF65E1003771CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1E71EFC61DE70B8400A65558 /* Build configuration list for PBXProject "Layout" */ = {
 			isa = XCConfigurationList;

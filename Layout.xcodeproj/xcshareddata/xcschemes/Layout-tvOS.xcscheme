@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E6792E61DEF5F1A003771CD"
+               BlueprintIdentifier = "1E6792FF1DEF65E1003771CD"
                BuildableName = "Layout.framework"
-               BlueprintName = "Layout-macOS"
+               BlueprintName = "Layout-tvOS"
                ReferencedContainer = "container:Layout.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E6792E61DEF5F1A003771CD"
+            BlueprintIdentifier = "1E6792FF1DEF65E1003771CD"
             BuildableName = "Layout.framework"
-            BlueprintName = "Layout-macOS"
+            BlueprintName = "Layout-tvOS"
             ReferencedContainer = "container:Layout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +63,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1E6792E61DEF5F1A003771CD"
+            BlueprintIdentifier = "1E6792FF1DEF65E1003771CD"
             BuildableName = "Layout.framework"
-            BlueprintName = "Layout-macOS"
+            BlueprintName = "Layout-tvOS"
             ReferencedContainer = "container:Layout.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
