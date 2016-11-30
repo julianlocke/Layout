@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1E4748361DE8CF5C007FD28D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Util.swift */; };
+		1E6792EF1DEF5F8D003771CD /* LayoutConstraintGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C81DEB444900232CB0 /* LayoutConstraintGenerator.swift */; };
+		1E6792F01DEF5F8D003771CD /* ConstraintContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */; };
+		1E6792F11DEF5F8D003771CD /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
+		1E6792F21DEF5F8D003771CD /* LayoutDescriptorOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */; };
+		1E6792F31DEF5F8D003771CD /* Layouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFEB1DE726A700A65558 /* Layouts.swift */; };
+		1E6792F41DEF5F8D003771CD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Util.swift */; };
+		1E6792F51DEF5F8D003771CD /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */; };
+		1E6792F61DEF5F8D003771CD /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
+		1E6792F71DEF5F8E003771CD /* PublicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7D2F1DE949A800895227 /* PublicUtils.swift */; };
+		1E6792F91DEF5FAA003771CD /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6792F81DEF5FAA003771CD /* Platform.swift */; };
+		1E6792FA1DEF5FAA003771CD /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6792F81DEF5FAA003771CD /* Platform.swift */; };
 		1E71EFE81DE70BAB00A65558 /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
 		1E71EFEA1DE710A900A65558 /* ConstraintContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */; };
 		1E71EFEC1DE726A700A65558 /* Layouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFEB1DE726A700A65558 /* Layouts.swift */; };
@@ -51,6 +62,9 @@
 
 /* Begin PBXFileReference section */
 		1E4748351DE8CF5C007FD28D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Source/Util.swift; sourceTree = "<group>"; };
+		1E6792E71DEF5F1A003771CD /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E6792EA1DEF5F1A003771CD /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-macOS.plist"; path = "Supporting/Info-macOS.plist"; sourceTree = "<group>"; };
+		1E6792F81DEF5FAA003771CD /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = Source/Platform.swift; sourceTree = "<group>"; };
 		1E71EFCC1DE70B8400A65558 /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E71EFD01DE70B8400A65558 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "Supporting/Info-iOS.plist"; sourceTree = "<group>"; };
 		1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutDescriptor.swift; path = Source/LayoutDescriptor.swift; sourceTree = "<group>"; };
@@ -72,6 +86,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1E6792E31DEF5F1A003771CD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E71EFC81DE70B8400A65558 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -104,6 +125,7 @@
 			children = (
 				1E71EFCC1DE70B8400A65558 /* Layout.framework */,
 				1E71EFF61DE7590400A65558 /* Example.app */,
+				1E6792E71DEF5F1A003771CD /* Layout.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -120,6 +142,7 @@
 		1E71EFE61DE70B8F00A65558 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				1E6792F81DEF5FAA003771CD /* Platform.swift */,
 				1E8EE2C81DEB444900232CB0 /* LayoutConstraintGenerator.swift */,
 				1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */,
 				1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */,
@@ -137,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				1E71EFD01DE70B8400A65558 /* Info-iOS.plist */,
+				1E6792EA1DEF5F1A003771CD /* Info-macOS.plist */,
 			);
 			name = Supporting;
 			sourceTree = "<group>";
@@ -158,6 +182,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		1E6792E41DEF5F1A003771CD /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E71EFC91DE70B8400A65558 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -168,6 +199,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1E6792E61DEF5F1A003771CD /* Layout-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E6792EE1DEF5F1A003771CD /* Build configuration list for PBXNativeTarget "Layout-macOS" */;
+			buildPhases = (
+				1E6792E21DEF5F1A003771CD /* Sources */,
+				1E6792E31DEF5F1A003771CD /* Frameworks */,
+				1E6792E41DEF5F1A003771CD /* Headers */,
+				1E6792E51DEF5F1A003771CD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Layout-macOS";
+			productName = "Layout-macOS";
+			productReference = 1E6792E71DEF5F1A003771CD /* Layout.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		1E71EFCB1DE70B8400A65558 /* Layout-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E71EFE01DE70B8400A65558 /* Build configuration list for PBXNativeTarget "Layout-iOS" */;
@@ -216,6 +265,10 @@
 				LastUpgradeCheck = 0810;
 				ORGANIZATIONNAME = SMD;
 				TargetAttributes = {
+					1E6792E61DEF5F1A003771CD = {
+						CreatedOnToolsVersion = 8.1;
+						ProvisioningStyle = Automatic;
+					};
 					1E71EFCB1DE70B8400A65558 = {
 						CreatedOnToolsVersion = 8.1;
 						LastSwiftMigration = 0810;
@@ -241,12 +294,20 @@
 			projectRoot = "";
 			targets = (
 				1E71EFCB1DE70B8400A65558 /* Layout-iOS */,
+				1E6792E61DEF5F1A003771CD /* Layout-macOS */,
 				1E71EFF51DE7590400A65558 /* Example */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1E6792E51DEF5F1A003771CD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E71EFCA1DE70B8400A65558 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,10 +345,28 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1E6792E21DEF5F1A003771CD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E6792FA1DEF5FAA003771CD /* Platform.swift in Sources */,
+				1E6792F01DEF5F8D003771CD /* ConstraintContainer.swift in Sources */,
+				1E6792F51DEF5F8D003771CD /* LayoutManager.swift in Sources */,
+				1E6792F41DEF5F8D003771CD /* Util.swift in Sources */,
+				1E6792F61DEF5F8D003771CD /* DynamicLayoutManager.swift in Sources */,
+				1E6792EF1DEF5F8D003771CD /* LayoutConstraintGenerator.swift in Sources */,
+				1E6792F71DEF5F8E003771CD /* PublicUtils.swift in Sources */,
+				1E6792F31DEF5F8D003771CD /* Layouts.swift in Sources */,
+				1E6792F21DEF5F8D003771CD /* LayoutDescriptorOperators.swift in Sources */,
+				1E6792F11DEF5F8D003771CD /* LayoutDescriptor.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E71EFC71DE70B8400A65558 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E6792F91DEF5FAA003771CD /* Platform.swift in Sources */,
 				1E8EE2C71DEB3D1300232CB0 /* LayoutManager.swift in Sources */,
 				1E71EFEC1DE726A700A65558 /* Layouts.swift in Sources */,
 				1E7A7D301DE949A800895227 /* PublicUtils.swift in Sources */,
@@ -339,6 +418,50 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		1E6792EC1DEF5F1A003771CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Layout/Supporting/Info-macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smd.Layout-macOS";
+				PRODUCT_NAME = Layout;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1E6792ED1DEF5F1A003771CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = "Layout/Supporting/Info-macOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smd.Layout-macOS";
+				PRODUCT_NAME = Layout;
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		1E71EFDE1DE70B8400A65558 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -510,6 +633,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1E6792EE1DEF5F1A003771CD /* Build configuration list for PBXNativeTarget "Layout-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E6792EC1DEF5F1A003771CD /* Debug */,
+				1E6792ED1DEF5F1A003771CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		1E71EFC61DE70B8400A65558 /* Build configuration list for PBXProject "Layout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

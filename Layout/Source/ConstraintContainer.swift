@@ -22,23 +22,27 @@
  SOFTWARE.
  */
 
-import UIKit
+#if os(macOS)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
 public protocol ConstraintContainer {
-    var superview: UIView? { get }
+    var superview: View? { get }
 }
 
-extension UIView: ConstraintContainer {}
+extension View: ConstraintContainer {}
 
-extension UILayoutGuide: ConstraintContainer {
-    public var superview: UIView? {
+extension LayoutGuide: ConstraintContainer {
+    public var superview: View? {
         return owningView
     }
 }
 
 public extension ConstraintContainer {
     private func createLayout(constraints: [LayoutConstraintGenerator]) -> [NSLayoutConstraint] {
-        if let view = self as? UIView {
+        if let view = self as? View {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 

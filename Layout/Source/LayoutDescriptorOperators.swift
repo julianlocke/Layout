@@ -22,7 +22,11 @@
  SOFTWARE.
  */
 
-import UIKit
+#if os(macOS)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
 precedencegroup LayoutPriorityAssignment {
     associativity: left
@@ -31,7 +35,7 @@ precedencegroup LayoutPriorityAssignment {
 
 infix operator ~ : LayoutPriorityAssignment
 
-public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: UILayoutPriority) -> LayoutDescriptor<Kind> {
+public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutPriority) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
         result.priority = rhs
     }

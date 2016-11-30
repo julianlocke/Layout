@@ -22,7 +22,11 @@
  SOFTWARE.
  */
 
-import UIKit
+#if os(macOS)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
 public protocol LayoutConstraintGenerator {
     func constraints(for ConstraintContainer: ConstraintContainer) -> [NSLayoutConstraint]

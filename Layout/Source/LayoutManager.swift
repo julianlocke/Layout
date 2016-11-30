@@ -22,15 +22,19 @@
  SOFTWARE.
  */
 
-import UIKit
+#if os(macOS)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
 public class LayoutManager<Key: Hashable> {
 
-    public let rootView: UIView
+    public let rootView: View
 
     private var layouts: [Key: [NSLayoutConstraint]] = [:]
 
-    public init(rootView: UIView) {
+    public init(rootView: View) {
         self.rootView = rootView
     }
 

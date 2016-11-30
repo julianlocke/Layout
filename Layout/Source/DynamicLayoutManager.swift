@@ -22,7 +22,11 @@
  SOFTWARE.
  */
 
-import UIKit
+#if os(macOS)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
 public protocol DynamicLayoutConstraintContext {
     func add(_ constraints: [NSLayoutConstraint])
@@ -30,20 +34,22 @@ public protocol DynamicLayoutConstraintContext {
 
 public class DynamicLayoutManager {
 
-    public let rootView: UIView
+    public let rootView: View
 
-    public init(rootView rv: UIView) {
+    public init(rootView rv: View) {
         rootView = rv
     }
 
     fileprivate var dynamicConstraintBlocks: [() -> ([NSLayoutConstraint])] = []
     fileprivate var currentDynamicConstraints: [NSLayoutConstraint] = []
 
+    #if os(iOS) || os(tvOS)
     fileprivate var updatingTraits = false
     fileprivate var traitBasedConstraints: [(UITraitCollection, [NSLayoutConstraint])] = []
     fileprivate var currentTraitBasedConstraints: [NSLayoutConstraint] = []
 
     fileprivate var traitBasedBlocks: [(UITraitCollection, CGSize) -> ()] = []
+    #endif
 }
 
 public extension DynamicLayoutManager {
@@ -60,6 +66,7 @@ public extension DynamicLayoutManager {
     }
 }
 
+#if os(iOS) || os(tvOS)
 public extension DynamicLayoutManager {
     func add(constraintsFor traits: UITraitCollection, _ block: (DynamicLayoutConstraintContext) -> ()) {
         let ctx = ConstraintContext()
@@ -125,35 +132,12 @@ public extension DynamicLayoutManager {
         }, completion: nil)
     }
 }
+#endif
 
 fileprivate class ConstraintContext: DynamicLayoutConstraintContext {
     fileprivate var constraints: [NSLayoutConstraint] = []
 
     fileprivate func add(_ constraints: [NSLayoutConstraint]) {
         self.constraints += constraints
-    }
-}
-
-private func interfaceOrientation() -> UIInterfaceOrientation {
-    return UIApplication.shared.statusBarOrientation
-}
-
-private extension UIInterfaceOrientation {
-    var portrait: Bool {
-        switch self {
-        case .portrait, .portraitUpsideDown:
-            return true
-        default:
-            return false
-        }
-    }
-
-    var landscape: Bool {
-        switch self {
-        case .landscapeLeft, .landscapeRight:
-            return true
-        default:
-            return false
-        }
     }
 }

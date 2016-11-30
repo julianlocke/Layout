@@ -24,38 +24,13 @@
 
 #if os(macOS)
     import Cocoa
+    public typealias View = NSView
+    public typealias LayoutGuide = NSLayoutGuide
+    public typealias LayoutPriority = NSLayoutPriority
 #else
     import UIKit
+    public typealias View = UIView
+    public typealias LayoutGuide = UILayoutGuide
+    public typealias LayoutPriority = UILayoutPriority
+    public typealias EdgeInsets = UIEdgeInsets
 #endif
-
-func zip3<V1, V2, V3>(_ s1: [V1], _ s2: [V2], _ s3: [V3]) -> [(V1, V2, V3)] {
-    var value: [(V1, V2, V3)] = []
-
-    for (idx, value1) in s1.enumerated() {
-        let value2 = s2[idx]
-        let value3 = s3[idx]
-        value.append((value1, value2, value3))
-    }
-
-    return value
-}
-
-extension NSLayoutAttribute {
-    var requiresReinterpretation: Bool {
-        #if os(macOS)
-            switch self {
-            case .right, .trailing, .bottom, .lastBaseline:
-                return true
-            default:
-                return false
-            }
-        #else
-            switch self {
-            case .right, .rightMargin, .trailing, .trailingMargin, .bottom, .bottomMargin, .lastBaseline:
-                return true
-            default:
-                return false
-            }
-        #endif
-    }
-}

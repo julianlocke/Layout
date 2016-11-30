@@ -22,7 +22,11 @@
  SOFTWARE.
  */
 
-import UIKit
+#if os(macOS)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
 public protocol XLayout {}
 public protocol YLayout {}
@@ -38,6 +42,7 @@ public extension Layout {
         return LayoutDescriptor([.left], toItem: container)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let leftMargin = LayoutDescriptor<XLayout>([.leftMargin])
 
     public static func leftMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
@@ -45,6 +50,7 @@ public extension Layout {
     }
 
     public static let leftToMargin = LayoutDescriptor<XLayout>([.left], otherAttributes: [.leftMargin])
+    #endif
 
     public static let leading = LayoutDescriptor<XLayout>([.leading])
 
@@ -52,6 +58,7 @@ public extension Layout {
         return LayoutDescriptor([.leading], toItem: container)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let leadingMargin = LayoutDescriptor<XLayout>([.leadingMargin])
 
     public static func leadingMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
@@ -59,6 +66,7 @@ public extension Layout {
     }
 
     public static let leadingToMargin = LayoutDescriptor<XLayout>([.leading], otherAttributes: [.leadingMargin])
+    #endif
 }
 
 public extension Layout {
@@ -68,6 +76,7 @@ public extension Layout {
         return LayoutDescriptor([.right], toItem: container)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let rightMargin = LayoutDescriptor<XLayout>([.rightMargin])
 
     public static func rightMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
@@ -75,6 +84,7 @@ public extension Layout {
     }
 
     public static let rightToMargin = LayoutDescriptor<XLayout>([.right], otherAttributes: [.rightMargin])
+    #endif
 
     public static let trailing = LayoutDescriptor<XLayout>([.trailing])
 
@@ -82,6 +92,7 @@ public extension Layout {
         return LayoutDescriptor([.trailing], toItem: container)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let trailingMargin = LayoutDescriptor<XLayout>([.trailingMargin])
 
     public static func trailingMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
@@ -89,6 +100,7 @@ public extension Layout {
     }
 
     public static let trailingToMargin = LayoutDescriptor<XLayout>([.trailing], otherAttributes: [.trailingMargin])
+    #endif
 }
 
 public extension Layout {
@@ -98,6 +110,7 @@ public extension Layout {
         return LayoutDescriptor([.top], toItem: container)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let topMargin = LayoutDescriptor<YLayout>([.topMargin])
 
     public static func topMargin(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
@@ -105,6 +118,7 @@ public extension Layout {
     }
 
     public static let topToMargin = LayoutDescriptor<YLayout>([.top], otherAttributes: [.topMargin])
+    #endif
 
     public static let firstBaseline = LayoutDescriptor<YLayout>([.firstBaseline])
 
@@ -120,6 +134,7 @@ public extension Layout {
         return LayoutDescriptor([.bottom], toItem: container)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let bottomMargin = LayoutDescriptor<YLayout>([.bottomMargin])
 
     public static func bottomMargin(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
@@ -127,6 +142,7 @@ public extension Layout {
     }
 
     public static let bottomToMargin = LayoutDescriptor<YLayout>([.bottom], otherAttributes: [.bottomMargin])
+    #endif
 
     public static let lastBaseline = LayoutDescriptor<YLayout>([.lastBaseline])
 
@@ -142,11 +158,13 @@ public extension Layout {
         return LayoutDescriptor([.centerX], toItem: container)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let centerXWithinMargins = LayoutDescriptor<XLayout>([.centerXWithinMargins])
 
     public static func centerXWithinMargins(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.centerXWithinMargins], toItem: container)
     }
+    #endif
 }
 
 public extension Layout {
@@ -156,17 +174,21 @@ public extension Layout {
         return LayoutDescriptor([.centerY], toItem: container)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let centerYWithinMargins = LayoutDescriptor<XLayout>([.centerYWithinMargins])
 
     public static func centerYWithinMargins(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.centerYWithinMargins], toItem: container)
     }
+    #endif
 }
 
 public extension Layout {
+    #if os(iOS) || os(tvOS)
     public static let centerToXWithinMargins = LayoutDescriptor<XLayout>([.centerX], otherAttributes: [.centerXWithinMargins])
 
     public static let centerToYWithinMargins = LayoutDescriptor<YLayout>([.centerY], otherAttributes: [.centerYWithinMargins])
+    #endif
 
     public static let center = LayoutDescriptor<XYLayout>([.centerX, .centerY])
 
@@ -174,7 +196,9 @@ public extension Layout {
         return LayoutDescriptor([.centerX, .centerY], toItem: container)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let centerWithinMargins = LayoutDescriptor<XYLayout>([.centerX, .centerY], otherAttributes: [.centerXWithinMargins, .centerYWithinMargins])
+    #endif
 }
 
 public extension Layout {
@@ -194,17 +218,23 @@ public extension Layout {
 public extension Layout {
     public static let horizontal = LayoutDescriptor<XLayout>([.left, .right])
 
+    #if os(iOS) || os(tvOS)
     public static let horizontalToMargins = LayoutDescriptor<XLayout>([.left, .right], otherAttributes: [.leftMargin, .rightMargin])
+    #endif
 
     public static let horizontalToLeadingTrailing = LayoutDescriptor<XLayout>([.leading, .trailing])
 
+    #if os(iOS) || os(tvOS)
     public static let horizontalToLeadingTrailingMargins = LayoutDescriptor<XLayout>([.leading, .trailing], otherAttributes: [.leadingMargin, .trailingMargin])
+    #endif
 }
 
 public extension Layout {
     public static let vertical = LayoutDescriptor<YLayout>([.top, .bottom])
 
+    #if os(iOS) || os(tvOS)
     public static let verticalToMargins = LayoutDescriptor<YLayout>([.top, .bottom], otherAttributes: [.topMargin, .bottomMargin])
+    #endif
 
     public static let horizontalToBaselines = LayoutDescriptor<YLayout>([.firstBaseline, .lastBaseline])
 }
@@ -212,15 +242,17 @@ public extension Layout {
 public extension Layout {
     public static let flush = LayoutDescriptor<XYLayout>([.left, .right, .top, .bottom], reinterpretConstants: true)
 
-    public static func flush(with insets: UIEdgeInsets) -> LayoutDescriptor<XYLayout> {
+    public static func flush(with insets: EdgeInsets) -> LayoutDescriptor<XYLayout> {
         return LayoutDescriptor([.left, .right, .top, .bottom], constants: [insets.left, insets.right, insets.top, insets.bottom], reinterpretConstants: true)
     }
 
+    #if os(iOS) || os(tvOS)
     public static let flushToMargins = LayoutDescriptor<XYLayout>([.left, .right, .top, .bottom], otherAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin], reinterpretConstants: true)
 
-    public static func flushToMargins(with insets: UIEdgeInsets) -> LayoutDescriptor<XYLayout> {
+    public static func flushToMargins(with insets: EdgeInsets) -> LayoutDescriptor<XYLayout> {
         return LayoutDescriptor([.left, .right, .top, .bottom], otherAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin], constants: [insets.left, insets.right, insets.top, insets.bottom], reinterpretConstants: true)
     }
+    #endif
 }
 
 public extension Layout {

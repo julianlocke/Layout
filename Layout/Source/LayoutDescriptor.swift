@@ -22,7 +22,11 @@
  SOFTWARE.
  */
 
-import UIKit
+#if os(macOS)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
 public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     public var attributes: [NSLayoutAttribute]
@@ -32,7 +36,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     public var multiplier: CGFloat
     public var constant: CGFloat?
     public var constants: [CGFloat]?
-    public var priority: UILayoutPriority?
+    public var priority: LayoutPriority?
     public var reinterpretConstants: Bool
 
     public init(
@@ -43,7 +47,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         multiplier: CGFloat = 1,
         constant: CGFloat? = nil,
         constants: [CGFloat]? = nil,
-        priority: UILayoutPriority? = nil,
+        priority: LayoutPriority? = nil,
         reinterpretConstants: Bool = false
         ) {
         self.attributes = attributes

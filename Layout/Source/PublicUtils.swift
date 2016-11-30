@@ -22,7 +22,11 @@
  SOFTWARE.
  */
 
-import UIKit
+#if os(macOS)
+    import Cocoa
+#else
+    import UIKit
+#endif
 
 public extension Sequence where Iterator.Element == NSLayoutConstraint {
     func activate() {
@@ -34,7 +38,7 @@ public extension Sequence where Iterator.Element == NSLayoutConstraint {
     }
 }
 
-public extension UIView {
+public extension View {
     func updateConstraints(deactivate: [NSLayoutConstraint], activate: [NSLayoutConstraint], immediately: Bool = true) {
         var oldConstraints = Set(deactivate)
         var newConstraints = Set(activate)
@@ -51,13 +55,16 @@ public extension UIView {
         oldConstraints.deactivate()
         newConstraints.activate()
 
+        #if os(iOS) || os(tvOS)
         if immediately {
             setNeedsLayout()
             layoutIfNeeded()
         }
+        #endif
     }
 }
 
+#if os(iOS) || os(tvOS)
 public extension Sequence where Iterator.Element == UITraitCollection {
     var combined: UITraitCollection {
         return UITraitCollection(traitsFrom: Array(self))
@@ -101,3 +108,4 @@ public extension UITraitCollection {
 public func && (lhs: UITraitCollection, rhs: UITraitCollection) -> UITraitCollection {
     return [lhs, rhs].combined
 }
+#endif
