@@ -103,7 +103,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
                 relatedBy: relatedBy,
                 toItem: toItem,
                 attribute: otherAttr,
-                multiplier: multiplier,
+                multiplier: otherAttr == .notAnAttribute ? 0 : multiplier,
                 constant: reinterpret(constant: constant, for: attr)
             )
 
