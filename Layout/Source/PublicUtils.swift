@@ -62,6 +62,20 @@ public extension View {
         }
         #endif
     }
+
+    func constraint(affecting attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
+        return constraint(for: self, affecting: attribute)
+    }
+
+    private func constraint(for view: UIView, affecting attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
+        for constraint in constraints {
+            if constraint.firstItem === view, constraint.firstAttribute == attribute {
+                return constraint
+            }
+        }
+
+        return superview?.constraint(for: view, affecting: attribute)
+    }
 }
 
 #if os(iOS) || os(tvOS)
