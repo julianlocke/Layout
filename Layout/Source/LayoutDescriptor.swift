@@ -38,6 +38,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     public var constants: [CGFloat]?
     public var priority: LayoutPriority?
     public var reinterpretConstants: Bool
+    public var identifier: String?
 
     public init(
         _ attributes: [NSLayoutAttribute],
@@ -106,6 +107,8 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
                 multiplier: otherAttr == .notAnAttribute ? 0 : multiplier,
                 constant: reinterpret(constant: constant, for: attr)
             )
+
+            constraint.identifier = identifier
 
             if let priority = priority {
                 constraint.priority = priority

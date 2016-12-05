@@ -31,6 +31,7 @@
 precedencegroup LayoutPriorityAssignment {
     associativity: left
     lowerThan: ComparisonPrecedence
+    higherThan: LayoutIdentifierAssignment
 }
 
 infix operator ~ : LayoutPriorityAssignment
@@ -38,6 +39,18 @@ infix operator ~ : LayoutPriorityAssignment
 public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutPriority) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
         result.priority = rhs
+    }
+}
+
+precedencegroup LayoutIdentifierAssignment {
+    associativity: left
+}
+
+infix operator <- : LayoutIdentifierAssignment
+
+public func <- <Kind>(lhs: LayoutDescriptor<Kind>, rhs: String) -> LayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.identifier = rhs
     }
 }
 
