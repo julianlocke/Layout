@@ -29,6 +29,7 @@
 #endif
 
 public protocol XLayout {}
+public protocol NaturalXLayout {}
 public protocol YLayout {}
 public protocol XYLayout {}
 public protocol DimensionLayout {}
@@ -52,20 +53,20 @@ public extension Layout {
     public static let leftToMargin = LayoutDescriptor<XLayout>([.left], otherAttributes: [.leftMargin])
     #endif
 
-    public static let leading = LayoutDescriptor<XLayout>([.leading])
+    public static let leading = LayoutDescriptor<NaturalXLayout>([.leading])
 
-    public static func leading(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
+    public static func leading(of container: ConstraintContainer) -> LayoutDescriptor<NaturalXLayout> {
         return LayoutDescriptor([.leading], toItem: container)
     }
 
     #if os(iOS) || os(tvOS)
-    public static let leadingMargin = LayoutDescriptor<XLayout>([.leadingMargin])
+    public static let leadingMargin = LayoutDescriptor<NaturalXLayout>([.leadingMargin])
 
-    public static func leadingMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
+    public static func leadingMargin(of container: ConstraintContainer) -> LayoutDescriptor<NaturalXLayout> {
         return LayoutDescriptor([.leadingMargin], toItem: container)
     }
 
-    public static let leadingToMargin = LayoutDescriptor<XLayout>([.leading], otherAttributes: [.leadingMargin])
+    public static let leadingToMargin = LayoutDescriptor<NaturalXLayout>([.leading], otherAttributes: [.leadingMargin])
     #endif
 }
 
@@ -86,20 +87,20 @@ public extension Layout {
     public static let rightToMargin = LayoutDescriptor<XLayout>([.right], otherAttributes: [.rightMargin])
     #endif
 
-    public static let trailing = LayoutDescriptor<XLayout>([.trailing])
+    public static let trailing = LayoutDescriptor<NaturalXLayout>([.trailing])
 
-    public static func trailing(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
+    public static func trailing(of container: ConstraintContainer) -> LayoutDescriptor<NaturalXLayout> {
         return LayoutDescriptor([.trailing], toItem: container)
     }
 
     #if os(iOS) || os(tvOS)
-    public static let trailingMargin = LayoutDescriptor<XLayout>([.trailingMargin])
+    public static let trailingMargin = LayoutDescriptor<NaturalXLayout>([.trailingMargin])
 
-    public static func trailingMargin(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
+    public static func trailingMargin(of container: ConstraintContainer) -> LayoutDescriptor<NaturalXLayout> {
         return LayoutDescriptor([.trailingMargin], toItem: container)
     }
 
-    public static let trailingToMargin = LayoutDescriptor<XLayout>([.trailing], otherAttributes: [.trailingMargin])
+    public static let trailingToMargin = LayoutDescriptor<NaturalXLayout>([.trailing], otherAttributes: [.trailingMargin])
     #endif
 }
 
@@ -222,10 +223,10 @@ public extension Layout {
     public static let horizontalToMargins = LayoutDescriptor<XLayout>([.left, .right], otherAttributes: [.leftMargin, .rightMargin])
     #endif
 
-    public static let horizontalToLeadingTrailing = LayoutDescriptor<XLayout>([.leading, .trailing])
+    public static let horizontalToLeadingTrailing = LayoutDescriptor<NaturalXLayout>([.leading, .trailing])
 
     #if os(iOS) || os(tvOS)
-    public static let horizontalToLeadingTrailingMargins = LayoutDescriptor<XLayout>([.leading, .trailing], otherAttributes: [.leadingMargin, .trailingMargin])
+    public static let horizontalToLeadingTrailingMargins = LayoutDescriptor<NaturalXLayout>([.leading, .trailing], otherAttributes: [.leadingMargin, .trailingMargin])
     #endif
 }
 
