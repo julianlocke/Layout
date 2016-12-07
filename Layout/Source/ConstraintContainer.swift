@@ -41,7 +41,7 @@ extension LayoutGuide: ConstraintContainer {
 }
 
 public extension ConstraintContainer {
-    private func createLayout(constraints: [LayoutConstraintGenerator]) -> [NSLayoutConstraint] {
+    fileprivate func createLayout(constraints: [LayoutConstraintGenerator]) -> [NSLayoutConstraint] {
         if let view = self as? View {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -56,6 +56,19 @@ public extension ConstraintContainer {
     @discardableResult
     func applyLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
         let constraints = createLayout(constraints: constraints)
+        constraints.activate()
+        return constraints
+    }
+}
+
+public extension Sequence where Iterator.Element == ConstraintContainer {
+    func createLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
+        return flatMap { $0.createLayout(constraints: constraints) }
+    }
+
+    @discardableResult
+    func applyLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
+        let constraints = flatMap { $0.createLayout(constraints: constraints) }
         constraints.activate()
         return constraints
     }
