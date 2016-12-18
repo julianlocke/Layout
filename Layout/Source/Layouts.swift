@@ -176,9 +176,9 @@ public extension Layout {
     }
 
     #if os(iOS) || os(tvOS)
-    public static let centerYWithinMargins = LayoutDescriptor<XLayout>([.centerYWithinMargins])
+    public static let centerYWithinMargins = LayoutDescriptor<YLayout>([.centerYWithinMargins])
 
-    public static func centerYWithinMargins(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
+    public static func centerYWithinMargins(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.centerYWithinMargins], toItem: container)
     }
     #endif
