@@ -62,7 +62,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         self.reinterpretConstants = reinterpretConstants
     }
 
-    public func modify(_ builder: (inout LayoutDescriptor<Kind>) -> ()) -> LayoutDescriptor<Kind> {
+    public func modify(_ builder: (inout LayoutDescriptor<Kind>) -> Void) -> LayoutDescriptor<Kind> {
         var result = self
         builder(&result)
         return result

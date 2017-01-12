@@ -48,7 +48,7 @@ public class DynamicLayoutManager {
     fileprivate var traitBasedConstraints: [(UITraitCollection, [NSLayoutConstraint])] = []
     fileprivate var currentTraitBasedConstraints: [NSLayoutConstraint] = []
 
-    fileprivate var traitBasedBlocks: [(UITraitCollection, CGSize) -> ()] = []
+    fileprivate var traitBasedBlocks: [(UITraitCollection, CGSize) -> Void] = []
     #endif
 }
 
@@ -68,7 +68,7 @@ public extension DynamicLayoutManager {
 
 #if os(iOS) || os(tvOS)
 public extension DynamicLayoutManager {
-    func add(constraintsFor traits: UITraitCollection, _ block: (DynamicLayoutConstraintContext) -> ()) {
+    func add(constraintsFor traits: UITraitCollection, _ block: (DynamicLayoutConstraintContext) -> Void) {
         let ctx = ConstraintContext()
         block(ctx)
 
@@ -90,11 +90,23 @@ public extension DynamicLayoutManager {
         })
     }
 
-    func add(_ traitBasedBlock: @escaping (UITraitCollection, CGSize) -> ()) {
+    func add(_ traitBasedBlock: @escaping (UITraitCollection, CGSize) -> Void) {
         traitBasedBlocks.append(traitBasedBlock)
     }
 
-    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, size: CGSize? = nil) {
+    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, size: CGSize? = nil, coordinator: UIViewControllerTransitionCoordinator? = nil) {
+        if let coordinator = coordinator {
+            coordinator.animate(
+                alongsideTransition: { _ in
+                    self._updateTraitBasedConstraints(withTraits: newTraits, size: size)
+            }, completion: nil)
+        } else {
+            _updateTraitBasedConstraints(withTraits: newTraits, size: size)
+        }
+
+    }
+
+    private func _updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, size: CGSize? = nil) {
         // Updating constraints can cause traits to change,
         // so make sure this function is not executed again
         // while we are still running.
@@ -123,13 +135,6 @@ public extension DynamicLayoutManager {
         currentTraitBasedConstraints = newConstraints
         rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints)
         updatingTraits = false
-    }
-
-    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection, size: CGSize? = nil, coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animate(
-            alongsideTransition: { _ in
-                self.updateTraitBasedConstraints(withTraits: newTraits, size: size)
-        }, completion: nil)
     }
 }
 #endif
