@@ -134,7 +134,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        layouts = DynamicLayoutManager(rootView: self.view)
+        layouts = DynamicLayoutManager(rootView: view)
 
         let green = UIView()
         green.backgroundColor = .green
@@ -174,9 +174,9 @@ class ViewController: UIViewController {
         }
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        layouts?.updateTraitBasedConstraints() // Notify the layout manager that traits have changed.
-                                               // This method takes an optional `UITraitCollection` and `CGSize`.
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        layouts.updateTraitBasedConstraints(coordinator: coordinator) // Animates the layouts changes alongside the coordinator.
     }
 }
 ```

@@ -31,7 +31,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        layouts = DynamicLayoutManager(rootView: self.view)
+        layouts = DynamicLayoutManager(rootView: view)
 
         let green = UIView()
         green.backgroundColor = .green
@@ -39,31 +39,40 @@ class ViewController: UIViewController {
 
         let red = UIView()
         red.backgroundColor = .red
-        view.addSubview(red)
+        green.addSubview(red)
 
+        // Set up some constant constraints.
         green.applyLayout(Layout.center)
         red.applyLayout(Layout.center)
 
+        // Set up some trait based constraints.
+        // Use `createLayout` instead of `applyLayout` to not apply constraints immediately.
+
+        // For horizontally regular phones:
         layouts.add(constraintsFor: .horizontally(.regular) && .idiom(.phone)) { ctx in
             ctx.add(green.createLayout(Layout.size == 300))
             ctx.add(red.createLayout(Layout.size(of: green) / 3))
         }
 
+        // For horizontally compact phones:
         layouts.add(constraintsFor: .horizontally(.compact) && .idiom(.phone)) { ctx in
             ctx.add(green.createLayout(Layout.size == 200))
             ctx.add(red.createLayout(Layout.size(of: green) / 4))
         }
 
+        // For horizontally regular ipads:
         layouts.add(constraintsFor: .horizontally(.regular) && .idiom(.pad)) { ctx in
             ctx.add(green.createLayout(Layout.size == 200))
         }
 
+        // For horizontally compact ipads:
         layouts.add(constraintsFor: .horizontally(.compact) && .idiom(.pad)) { ctx in
             ctx.add(green.createLayout(Layout.size == 100))
         }
     }
 
-    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-        layouts?.updateTraitBasedConstraints()
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        layouts.updateTraitBasedConstraints(coordinator: coordinator) // Animates the layouts changes alongside the coordinator.
     }
 }
