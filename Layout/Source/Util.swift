@@ -28,6 +28,7 @@
     import UIKit
 #endif
 
+// swiftlint:disable large_tuple
 func zip3<V1, V2, V3>(_ s1: [V1], _ s2: [V2], _ s3: [V3]) -> [(V1, V2, V3)] {
     var value: [(V1, V2, V3)] = []
 
@@ -39,6 +40,7 @@ func zip3<V1, V2, V3>(_ s1: [V1], _ s2: [V2], _ s3: [V3]) -> [(V1, V2, V3)] {
 
     return value
 }
+// swiftlint:enable large_tuple
 
 extension NSLayoutAttribute {
     var requiresReinterpretation: Bool {
