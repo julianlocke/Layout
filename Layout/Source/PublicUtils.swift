@@ -95,14 +95,26 @@ public extension View {
 
     public extension UITraitCollection {
 
+        /// Returns a new `UITraitCollection` containing the given interface idiom.
+        ///
+        /// - Parameter idiom: The interface idiom.
+        /// - Returns: A new `UITraitCollection` containing the given interface idiom.
         static func idiom(_ idiom: UIUserInterfaceIdiom) -> UITraitCollection {
             return UITraitCollection(userInterfaceIdiom: idiom)
         }
 
+        /// Returns a new `UITraitCollection` containing the given horizontal size class.
+        ///
+        /// - Parameter idiom: The horizontal size class.
+        /// - Returns: A new `UITraitCollection` containing the given horizontal size class.
         static func horizontally(_ sizeClass: UIUserInterfaceSizeClass) -> UITraitCollection {
             return UITraitCollection(horizontalSizeClass: sizeClass)
         }
 
+        /// Returns a new `UITraitCollection` containing the given vertical size class.
+        ///
+        /// - Parameter idiom: The horizontal size class.
+        /// - Returns: A new `UITraitCollection` containing the given vertical size class.
         static func vertically(_ sizeClass: UIUserInterfaceSizeClass) -> UITraitCollection {
             return UITraitCollection(verticalSizeClass: sizeClass)
         }
