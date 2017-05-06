@@ -28,16 +28,22 @@
     import UIKit
 #endif
 
+/// A protocol representing a container that can have constraints applied to it.
 public protocol ConstraintContainer {
 
-    var superview: View? { get }
+    var parentView: View? { get }
 }
 
-extension View: ConstraintContainer {}
+extension View: ConstraintContainer {
+
+    public var parentView: View? {
+        return superview
+    }
+}
 
 extension LayoutGuide: ConstraintContainer {
 
-    public var superview: View? {
+    public var parentView: View? {
         return owningView
     }
 }

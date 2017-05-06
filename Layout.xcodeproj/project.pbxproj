@@ -110,14 +110,14 @@
 			isa = PBXGroup;
 			children = (
 				1E6792F81DEF5FAA003771CD /* Platform.swift */,
+				1E7A7D2F1DE949A800895227 /* PublicUtils.swift */,
+				1E4748351DE8CF5C007FD28D /* Util.swift */,
 				1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */,
 				1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */,
 				1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */,
 				1E71EFEB1DE726A700A65558 /* Layouts.swift */,
-				1E4748351DE8CF5C007FD28D /* Util.swift */,
 				1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */,
 				1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */,
-				1E7A7D2F1DE949A800895227 /* PublicUtils.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";

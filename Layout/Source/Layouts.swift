@@ -36,6 +36,8 @@ public protocol DimensionLayout {}
 
 public enum Layout {}
 
+// MARK: - Left/leading layouts
+
 public extension Layout {
 
     public static let left = LayoutDescriptor<XLayout>([.left])
@@ -70,6 +72,8 @@ public extension Layout {
     public static let leadingToMargin = LayoutDescriptor<NaturalXLayout>([.leading], otherAttributes: [.leadingMargin])
     #endif
 }
+
+// MARK: - Right/trailing layouts
 
 public extension Layout {
 
@@ -106,6 +110,8 @@ public extension Layout {
     #endif
 }
 
+// MARK: - Top/baseline layouts
+
 public extension Layout {
 
     public static let top = LayoutDescriptor<YLayout>([.top])
@@ -130,6 +136,8 @@ public extension Layout {
         return LayoutDescriptor([.firstBaseline], toItem: container)
     }
 }
+
+// MARK: - Bottom/baseline layouts
 
 public extension Layout {
 
@@ -156,6 +164,8 @@ public extension Layout {
     }
 }
 
+// MARK: - Center x layouts
+
 public extension Layout {
 
     public static let centerX = LayoutDescriptor<XLayout>([.centerX])
@@ -170,8 +180,12 @@ public extension Layout {
     public static func centerXWithinMargins(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
         return LayoutDescriptor([.centerXWithinMargins], toItem: container)
     }
+
+    public static let centerToXWithinMargins = LayoutDescriptor<XLayout>([.centerX], otherAttributes: [.centerXWithinMargins])
     #endif
 }
+
+// MARK: - Center y layouts
 
 public extension Layout {
 
@@ -187,16 +201,14 @@ public extension Layout {
     public static func centerYWithinMargins(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
         return LayoutDescriptor([.centerYWithinMargins], toItem: container)
     }
-    #endif
-}
-
-public extension Layout {
-
-    #if os(iOS) || os(tvOS)
-    public static let centerToXWithinMargins = LayoutDescriptor<XLayout>([.centerX], otherAttributes: [.centerXWithinMargins])
 
     public static let centerToYWithinMargins = LayoutDescriptor<YLayout>([.centerY], otherAttributes: [.centerYWithinMargins])
     #endif
+}
+
+// MARK: - Center x/y layouts
+
+public extension Layout {
 
     public static let center = LayoutDescriptor<XYLayout>([.centerX, .centerY])
 
@@ -208,6 +220,8 @@ public extension Layout {
     public static let centerWithinMargins = LayoutDescriptor<XYLayout>([.centerX, .centerY], otherAttributes: [.centerXWithinMargins, .centerYWithinMargins])
     #endif
 }
+
+// MARK: - Width/height/size layouts
 
 public extension Layout {
 
@@ -222,7 +236,15 @@ public extension Layout {
     public static func height(of container: ConstraintContainer) -> LayoutDescriptor<DimensionLayout> {
         return LayoutDescriptor([.height], toItem: container)
     }
+
+    public static let size = LayoutDescriptor<DimensionLayout>([.width, .height])
+
+    public static func size(of container: ConstraintContainer) -> LayoutDescriptor<DimensionLayout> {
+        return LayoutDescriptor([.width, .height], toItem: container)
+    }
 }
+
+// MARK: - Horizontal layouts
 
 public extension Layout {
 
@@ -239,6 +261,8 @@ public extension Layout {
     #endif
 }
 
+// MARK: - Vertical layouts
+
 public extension Layout {
 
     public static let vertical = LayoutDescriptor<YLayout>([.top, .bottom])
@@ -249,6 +273,8 @@ public extension Layout {
 
     public static let horizontalToBaselines = LayoutDescriptor<YLayout>([.firstBaseline, .lastBaseline])
 }
+
+// MARK: - Flush layouts
 
 public extension Layout {
 
@@ -265,13 +291,4 @@ public extension Layout {
         return LayoutDescriptor([.left, .right, .top, .bottom], otherAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin], constants: [insets.left, insets.right, insets.top, insets.bottom], reinterpretConstants: true)
     }
     #endif
-}
-
-public extension Layout {
-
-    public static let size = LayoutDescriptor<DimensionLayout>([.width, .height])
-
-    public static func size(of container: ConstraintContainer) -> LayoutDescriptor<DimensionLayout> {
-        return LayoutDescriptor([.width, .height], toItem: container)
-    }
 }

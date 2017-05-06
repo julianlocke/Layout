@@ -78,7 +78,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     }
 
     public func constraints(for container: ConstraintContainer) -> [NSLayoutConstraint] {
-        guard let superview = container.superview else {
+        guard let superview = container.parentView else {
             fatalError("You must assign a superview before applying a layout.")
         }
 

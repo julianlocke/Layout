@@ -30,10 +30,12 @@
 
 public extension Sequence where Iterator.Element == NSLayoutConstraint {
 
+    /// Activate a sequence of `NSLayoutConstraint`s.
     func activate() {
         NSLayoutConstraint.activate(Array(self))
     }
 
+    /// Deactivate a sequence of `NSLayoutConstraint`s.
     func deactivate() {
         NSLayoutConstraint.deactivate(Array(self))
     }
@@ -41,74 +43,72 @@ public extension Sequence where Iterator.Element == NSLayoutConstraint {
 
 public extension View {
 
-    func updateConstraints(deactivate: [NSLayoutConstraint], activate: [NSLayoutConstraint], immediately: Bool = true) {
-        var oldConstraints = Set(deactivate)
-        var newConstraints = Set(activate)
-
-        // Remove any constraints that are already active.
-        // There's no need to deactivate/reactivate.
-        for constraint in activate where constraint.isActive {
-            oldConstraints.remove(constraint)
-            newConstraints.remove(constraint)
-        }
-
-        oldConstraints.deactivate()
-        newConstraints.activate()
+    /// Activate and deactivate a set of constraints all at once.
+    ///
+    /// - Parameters:
+    ///   - deactivate: The sequence of constraints to deactivate.
+    ///   - activate: The sequence of constraints to activate.
+    ///   - immediately: Whether or not the view should be updated immediately.
+    ///
+    /// - Note:
+    /// The `immediately` parameter has the effect of calling:
+    /// ```
+    /// setNeedsLayout()
+    /// layoutIfNeeded()
+    /// ```
+    /// It is useful to call from within animation blocks.
+    /// This parameter only has an effect on iOS-esque platforms (so, not `macOS`).
+    func updateConstraints(deactivate toDeactivate: [NSLayoutConstraint], activate toActivate: [NSLayoutConstraint], immediately: Bool = true) {
+        toDeactivate.deactivate()
+        toActivate.activate()
 
         #if os(iOS) || os(tvOS)
-        if immediately {
-            setNeedsLayout()
-            layoutIfNeeded()
-        }
+            if immediately {
+                setNeedsLayout()
+                layoutIfNeeded()
+            }
         #endif
     }
 }
 
 #if os(iOS) || os(tvOS)
 
-public extension Sequence where Iterator.Element == UITraitCollection {
+    public extension Sequence where Iterator.Element == UITraitCollection {
 
-    func combined() -> UITraitCollection {
-        return UITraitCollection(traitsFrom: Array(self))
-    }
-}
-
-public extension UITraitCollection {
-
-    static func idiom(_ idiom: UIUserInterfaceIdiom) -> UITraitCollection {
-        return UITraitCollection(userInterfaceIdiom: idiom)
+        /// Merge a sequence of `UITraitCollection`s into a single `UITraitCollection`.
+        ///
+        /// - Returns: A `UITraitCollection` that is the result of merging all of the `Sequence`'s elements.
+        func merge() -> UITraitCollection {
+            return UITraitCollection(traitsFrom: Array(self))
+        }
     }
 
-    static func layoutDirection(_ layoutDirection: UITraitEnvironmentLayoutDirection) -> UITraitCollection {
-        return UITraitCollection(layoutDirection: layoutDirection)
+    /// Combine two `UITraitCollection`s into a single `UITraitCollection`.
+    ///
+    /// - Parameters:
+    ///   - lhs: The left trait collection
+    ///   - rhs: The right trait collection
+    /// - Returns: A single `UITraitCollection` that is the result of merging two `UITraitCollection`s.
+    public func && (lhs: UITraitCollection, rhs: UITraitCollection) -> UITraitCollection {
+        return [lhs, rhs].merge()
     }
 
-    static func displayScale(_ displayScale: CGFloat) -> UITraitCollection {
-        return UITraitCollection(displayScale: displayScale)
-    }
+    public extension UITraitCollection {
 
-    static func horizontally(_ sizeClass: UIUserInterfaceSizeClass) -> UITraitCollection {
-        return UITraitCollection(horizontalSizeClass: sizeClass)
-    }
+        static func idiom(_ idiom: UIUserInterfaceIdiom) -> UITraitCollection {
+            return UITraitCollection(userInterfaceIdiom: idiom)
+        }
 
-    static func vertically(_ sizeClass: UIUserInterfaceSizeClass) -> UITraitCollection {
-        return UITraitCollection(verticalSizeClass: sizeClass)
-    }
+        static func layoutDirection(_ layoutDirection: UITraitEnvironmentLayoutDirection) -> UITraitCollection {
+            return UITraitCollection(layoutDirection: layoutDirection)
+        }
 
-    static func forceTouchCapability(_ capability: UIForceTouchCapability) -> UITraitCollection {
-        return UITraitCollection(forceTouchCapability: capability)
-    }
+        static func horizontally(_ sizeClass: UIUserInterfaceSizeClass) -> UITraitCollection {
+            return UITraitCollection(horizontalSizeClass: sizeClass)
+        }
 
-    static func preferredContentSizeCategory(_ category: UIContentSizeCategory) -> UITraitCollection {
-        return UITraitCollection(preferredContentSizeCategory: category)
+        static func vertically(_ sizeClass: UIUserInterfaceSizeClass) -> UITraitCollection {
+            return UITraitCollection(verticalSizeClass: sizeClass)
+        }
     }
-
-    static func displayGamut(_ value: UIDisplayGamut) -> UITraitCollection {
-        return UITraitCollection(displayGamut: value)
-    }
-}
-
-public func && (lhs: UITraitCollection, rhs: UITraitCollection) -> UITraitCollection {
-    return [lhs, rhs].combined()
-}
 #endif
