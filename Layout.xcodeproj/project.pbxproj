@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1E4748361DE8CF5C007FD28D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Util.swift */; };
-		1E6792EF1DEF5F8D003771CD /* LayoutConstraintGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C81DEB444900232CB0 /* LayoutConstraintGenerator.swift */; };
 		1E6792F01DEF5F8D003771CD /* ConstraintContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */; };
 		1E6792F11DEF5F8D003771CD /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
 		1E6792F21DEF5F8D003771CD /* LayoutDescriptorOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */; };
@@ -31,11 +30,9 @@
 		1E71F0091DE7592100A65558 /* Layout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1E71EFCC1DE70B8400A65558 /* Layout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1E7A7D301DE949A800895227 /* PublicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7D2F1DE949A800895227 /* PublicUtils.swift */; };
 		1E8EE2C71DEB3D1300232CB0 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */; };
-		1E8EE2C91DEB444900232CB0 /* LayoutConstraintGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C81DEB444900232CB0 /* LayoutConstraintGenerator.swift */; };
 		1E8EE2CB1DEB4AA500232CB0 /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
 		1EA2A29E1DE9EB8000CE3F93 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA2A29D1DE9EB8000CE3F93 /* ViewController.swift */; };
 		1EA611E61DEF66860043233D /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6792F81DEF5FAA003771CD /* Platform.swift */; };
-		1EA611E71DEF66860043233D /* LayoutConstraintGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C81DEB444900232CB0 /* LayoutConstraintGenerator.swift */; };
 		1EA611E81DEF66860043233D /* ConstraintContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */; };
 		1EA611E91DEF66860043233D /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
 		1EA611EA1DEF66860043233D /* LayoutDescriptorOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */; };
@@ -92,7 +89,6 @@
 		1E71F0041DE7590400A65558 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E7A7D2F1DE949A800895227 /* PublicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublicUtils.swift; path = Source/PublicUtils.swift; sourceTree = "<group>"; };
 		1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutManager.swift; path = Source/LayoutManager.swift; sourceTree = "<group>"; };
-		1E8EE2C81DEB444900232CB0 /* LayoutConstraintGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutConstraintGenerator.swift; path = Source/LayoutConstraintGenerator.swift; sourceTree = "<group>"; };
 		1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicLayoutManager.swift; path = Source/DynamicLayoutManager.swift; sourceTree = "<group>"; };
 		1EA2A29D1DE9EB8000CE3F93 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -163,7 +159,6 @@
 			isa = PBXGroup;
 			children = (
 				1E6792F81DEF5FAA003771CD /* Platform.swift */,
-				1E8EE2C81DEB444900232CB0 /* LayoutConstraintGenerator.swift */,
 				1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */,
 				1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */,
 				1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */,
@@ -412,7 +407,6 @@
 				1E6792F51DEF5F8D003771CD /* LayoutManager.swift in Sources */,
 				1E6792F41DEF5F8D003771CD /* Util.swift in Sources */,
 				1E6792F61DEF5F8D003771CD /* DynamicLayoutManager.swift in Sources */,
-				1E6792EF1DEF5F8D003771CD /* LayoutConstraintGenerator.swift in Sources */,
 				1E6792F71DEF5F8E003771CD /* PublicUtils.swift in Sources */,
 				1E6792F31DEF5F8D003771CD /* Layouts.swift in Sources */,
 				1E6792F21DEF5F8D003771CD /* LayoutDescriptorOperators.swift in Sources */,
@@ -425,7 +419,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EA611E81DEF66860043233D /* ConstraintContainer.swift in Sources */,
-				1EA611E71DEF66860043233D /* LayoutConstraintGenerator.swift in Sources */,
 				1EA611EF1DEF66860043233D /* PublicUtils.swift in Sources */,
 				1EA611E91DEF66860043233D /* LayoutDescriptor.swift in Sources */,
 				1EA611EE1DEF66860043233D /* DynamicLayoutManager.swift in Sources */,
@@ -447,7 +440,6 @@
 				1E7A7D301DE949A800895227 /* PublicUtils.swift in Sources */,
 				1E8EE2CB1DEB4AA500232CB0 /* DynamicLayoutManager.swift in Sources */,
 				1E71EFEE1DE726D000A65558 /* LayoutDescriptorOperators.swift in Sources */,
-				1E8EE2C91DEB444900232CB0 /* LayoutConstraintGenerator.swift in Sources */,
 				1E4748361DE8CF5C007FD28D /* Util.swift in Sources */,
 				1E71EFE81DE70BAB00A65558 /* LayoutDescriptor.swift in Sources */,
 				1E71EFEA1DE710A900A65558 /* ConstraintContainer.swift in Sources */,

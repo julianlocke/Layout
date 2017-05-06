@@ -73,6 +73,6 @@ class ViewController: UIViewController {
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        layouts.updateTraitBasedConstraints(coordinator: coordinator) // Animates the layouts changes alongside the coordinator.
+        layouts.updateTraitBasedConstraints(alongside: coordinator)
     }
 }

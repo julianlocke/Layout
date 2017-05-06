@@ -28,19 +28,16 @@
     import UIKit
 #endif
 
-// swiftlint:disable large_tuple
+// swiftlint:disable:next large_tuple
 func zip3<V1, V2, V3>(_ s1: [V1], _ s2: [V2], _ s3: [V3]) -> [(V1, V2, V3)] {
-    var value: [(V1, V2, V3)] = []
-
-    for (idx, value1) in s1.enumerated() {
-        let value2 = s2[idx]
-        let value3 = s3[idx]
-        value.append((value1, value2, value3))
+    guard s1.count == s2.count && s2.count == s3.count else {
+        fatalError("All arrays must be the same length.")
     }
 
-    return value
+    return s1.indices.map {
+        (s1[$0], s2[$0], s3[$0])
+    }
 }
-// swiftlint:enable large_tuple
 
 extension NSLayoutAttribute {
     var requiresReinterpretation: Bool {

@@ -35,12 +35,14 @@ public protocol ConstraintContainer {
 extension View: ConstraintContainer {}
 
 extension LayoutGuide: ConstraintContainer {
+
     public var superview: View? {
         return owningView
     }
 }
 
 public extension ConstraintContainer {
+
     fileprivate func createLayout(constraints: [LayoutConstraintGenerator]) -> [NSLayoutConstraint] {
         if let view = self as? View {
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -62,6 +64,7 @@ public extension ConstraintContainer {
 }
 
 public extension Sequence where Iterator.Element == ConstraintContainer {
+
     func createLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
         return flatMap { $0.createLayout(constraints: constraints) }
     }

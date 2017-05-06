@@ -28,16 +28,31 @@
     import UIKit
 #endif
 
+public protocol LayoutConstraintGenerator {
+
+    func constraints(for ConstraintContainer: ConstraintContainer) -> [NSLayoutConstraint]
+}
+
 public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
+
     public var attributes: [NSLayoutAttribute]
+
     public var relatedBy: NSLayoutRelation
+
     public var toItem: ConstraintContainer?
+
     public var otherAttributes: [NSLayoutAttribute]?
+
     public var multiplier: CGFloat
+
     public var constant: CGFloat?
+
     public var constants: [CGFloat]?
+
     public var priority: LayoutPriority?
+
     public var reinterpretConstants: Bool
+
     public var identifier: String?
 
     public init(
@@ -60,12 +75,6 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         self.constants = constants
         self.priority = priority
         self.reinterpretConstants = reinterpretConstants
-    }
-
-    public func modify(_ builder: (inout LayoutDescriptor<Kind>) -> Void) -> LayoutDescriptor<Kind> {
-        var result = self
-        builder(&result)
-        return result
     }
 
     public func constraints(for container: ConstraintContainer) -> [NSLayoutConstraint] {
@@ -117,8 +126,20 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             return constraint
         }
     }
+}
 
-    private func reinterpret(constant: CGFloat, for attribute: NSLayoutAttribute) -> CGFloat {
+extension LayoutDescriptor {
+
+    func modify(_ builder: (inout LayoutDescriptor<Kind>) -> Void) -> LayoutDescriptor<Kind> {
+        var result = self
+        builder(&result)
+        return result
+    }
+}
+
+fileprivate extension LayoutDescriptor {
+
+    func reinterpret(constant: CGFloat, for attribute: NSLayoutAttribute) -> CGFloat {
         guard reinterpretConstants, attribute.requiresReinterpretation else {
             return constant
         }

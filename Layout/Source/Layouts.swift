@@ -37,6 +37,7 @@ public protocol DimensionLayout {}
 public enum Layout {}
 
 public extension Layout {
+
     public static let left = LayoutDescriptor<XLayout>([.left])
 
     public static func left(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
@@ -71,6 +72,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let right = LayoutDescriptor<XLayout>([.right])
 
     public static func right(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
@@ -105,6 +107,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let top = LayoutDescriptor<YLayout>([.top])
 
     public static func top(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
@@ -129,6 +132,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let bottom = LayoutDescriptor<YLayout>([.bottom])
 
     public static func bottom(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
@@ -153,6 +157,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let centerX = LayoutDescriptor<XLayout>([.centerX])
 
     public static func centerX(of container: ConstraintContainer) -> LayoutDescriptor<XLayout> {
@@ -169,6 +174,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let centerY = LayoutDescriptor<YLayout>([.centerY])
 
     public static func centerY(of container: ConstraintContainer) -> LayoutDescriptor<YLayout> {
@@ -185,6 +191,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     #if os(iOS) || os(tvOS)
     public static let centerToXWithinMargins = LayoutDescriptor<XLayout>([.centerX], otherAttributes: [.centerXWithinMargins])
 
@@ -203,6 +210,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let width = LayoutDescriptor<DimensionLayout>([.width])
 
     public static func width(of container: ConstraintContainer) -> LayoutDescriptor<DimensionLayout> {
@@ -217,6 +225,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let horizontal = LayoutDescriptor<XLayout>([.left, .right])
 
     #if os(iOS) || os(tvOS)
@@ -231,6 +240,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let vertical = LayoutDescriptor<YLayout>([.top, .bottom])
 
     #if os(iOS) || os(tvOS)
@@ -241,6 +251,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let flush = LayoutDescriptor<XYLayout>([.left, .right, .top, .bottom], reinterpretConstants: true)
 
     public static func flush(with insets: EdgeInsets) -> LayoutDescriptor<XYLayout> {
@@ -257,6 +268,7 @@ public extension Layout {
 }
 
 public extension Layout {
+
     public static let size = LayoutDescriptor<DimensionLayout>([.width, .height])
 
     public static func size(of container: ConstraintContainer) -> LayoutDescriptor<DimensionLayout> {

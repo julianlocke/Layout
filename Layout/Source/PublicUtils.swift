@@ -29,6 +29,7 @@
 #endif
 
 public extension Sequence where Iterator.Element == NSLayoutConstraint {
+
     func activate() {
         NSLayoutConstraint.activate(Array(self))
     }
@@ -39,17 +40,16 @@ public extension Sequence where Iterator.Element == NSLayoutConstraint {
 }
 
 public extension View {
+
     func updateConstraints(deactivate: [NSLayoutConstraint], activate: [NSLayoutConstraint], immediately: Bool = true) {
         var oldConstraints = Set(deactivate)
         var newConstraints = Set(activate)
 
         // Remove any constraints that are already active.
         // There's no need to deactivate/reactivate.
-        for constraint in activate {
-            if constraint.isActive && oldConstraints.contains(constraint) {
-                oldConstraints.remove(constraint)
-                newConstraints.remove(constraint)
-            }
+        for constraint in activate where constraint.isActive {
+            oldConstraints.remove(constraint)
+            newConstraints.remove(constraint)
         }
 
         oldConstraints.deactivate()
@@ -62,30 +62,19 @@ public extension View {
         }
         #endif
     }
-
-    func constraint(affecting attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
-        return constraint(for: self, affecting: attribute)
-    }
-
-    private func constraint(for view: View, affecting attribute: NSLayoutAttribute) -> NSLayoutConstraint? {
-        for constraint in constraints {
-            if constraint.firstItem === view, constraint.firstAttribute == attribute {
-                return constraint
-            }
-        }
-
-        return superview?.constraint(for: view, affecting: attribute)
-    }
 }
 
 #if os(iOS) || os(tvOS)
+
 public extension Sequence where Iterator.Element == UITraitCollection {
-    var combined: UITraitCollection {
+
+    func combined() -> UITraitCollection {
         return UITraitCollection(traitsFrom: Array(self))
     }
 }
 
 public extension UITraitCollection {
+
     static func idiom(_ idiom: UIUserInterfaceIdiom) -> UITraitCollection {
         return UITraitCollection(userInterfaceIdiom: idiom)
     }
@@ -120,6 +109,6 @@ public extension UITraitCollection {
 }
 
 public func && (lhs: UITraitCollection, rhs: UITraitCollection) -> UITraitCollection {
-    return [lhs, rhs].combined
+    return [lhs, rhs].combined()
 }
 #endif

@@ -53,6 +53,7 @@ public class DynamicLayoutManager {
 }
 
 public extension DynamicLayoutManager {
+
     func add(dynamicConstraints: @escaping () -> ([NSLayoutConstraint])) {
         dynamicConstraintBlocks.append(dynamicConstraints)
     }
@@ -67,7 +68,9 @@ public extension DynamicLayoutManager {
 }
 
 #if os(iOS) || os(tvOS)
+
 public extension DynamicLayoutManager {
+
     func add(constraintsFor traits: UITraitCollection, _ block: (DynamicLayoutConstraintContext) -> Void) {
         let ctx = ConstraintContext()
         block(ctx)
@@ -94,7 +97,7 @@ public extension DynamicLayoutManager {
         traitBasedBlocks.append(traitBasedBlock)
     }
 
-    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, size: CGSize? = nil, coordinator: UIViewControllerTransitionCoordinator? = nil) {
+    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, size: CGSize? = nil, alongside coordinator: UIViewControllerTransitionCoordinator? = nil) {
         if let coordinator = coordinator {
             coordinator.animate(
                 alongsideTransition: { _ in
@@ -140,6 +143,7 @@ public extension DynamicLayoutManager {
 #endif
 
 fileprivate class ConstraintContext: DynamicLayoutConstraintContext {
+
     fileprivate var constraints: [NSLayoutConstraint] = []
 
     fileprivate func add(_ constraints: [NSLayoutConstraint]) {
