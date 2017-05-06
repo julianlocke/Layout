@@ -24,6 +24,7 @@
 
 import UIKit
 
+// For the moment, only ever one context will exist on the stack at a time.
 class ConstraintContextStack {
 
     private(set) static var shared = ConstraintContextStack()

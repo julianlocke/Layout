@@ -68,6 +68,10 @@ public extension DynamicLayoutManager {
 public extension DynamicLayoutManager {
 
     func add(constraintsFor traits: UITraitCollection, _ block: () -> Void) {
+        guard ConstraintContextStack.shared.current == nil else {
+            fatalError("This method does not yet support nesting.")
+        }
+
         let ctx = ConstraintContext()
         ConstraintContextStack.shared.push(ctx)
         block()
