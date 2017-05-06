@@ -99,10 +99,6 @@ public extension View {
             return UITraitCollection(userInterfaceIdiom: idiom)
         }
 
-        static func layoutDirection(_ layoutDirection: UITraitEnvironmentLayoutDirection) -> UITraitCollection {
-            return UITraitCollection(layoutDirection: layoutDirection)
-        }
-
         static func horizontally(_ sizeClass: UIUserInterfaceSizeClass) -> UITraitCollection {
             return UITraitCollection(horizontalSizeClass: sizeClass)
         }
