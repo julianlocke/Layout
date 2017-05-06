@@ -36,6 +36,7 @@ public protocol ConstraintContainer {
 
 extension View: ConstraintContainer {
 
+    /// Returns the receiver's `superview`.
     public var parentView: View? {
         return superview
     }
@@ -43,6 +44,7 @@ extension View: ConstraintContainer {
 
 extension LayoutGuide: ConstraintContainer {
 
+    /// Returns the receiver's `owningView`.
     public var parentView: View? {
         return owningView
     }
@@ -50,36 +52,43 @@ extension LayoutGuide: ConstraintContainer {
 
 public extension ConstraintContainer {
 
-    fileprivate func createLayout(constraints: [LayoutConstraintGenerator]) -> [NSLayoutConstraint] {
+    fileprivate func createLayout(constraints: [LayoutConstraintGenerator], activate: Bool) -> [NSLayoutConstraint] {
         if let view = self as? View {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        return constraints.flatMap({ $0.constraints(for: self) })
-    }
+        let constraints = constraints.flatMap({ $0.constraints(for: self) })
 
-    func createLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
-        return createLayout(constraints: constraints)
-    }
+        if let ctx = ConstraintContextStack.shared.current {
+            ctx.constraints += constraints
 
-    @discardableResult
-    func applyLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
-        let constraints = createLayout(constraints: constraints)
-        constraints.activate()
+            if activate {
+                fatalError("You must use createLayout, rather than applyLayout, in this context.")
+            }
+        }
+
+        if activate {
+            constraints.activate()
+        }
+
         return constraints
     }
-}
 
-public extension Sequence where Iterator.Element == ConstraintContainer {
-
+    /// Create layout constraints for the given generators. The constraints will not be activated.
+    ///
+    /// - Parameter constraints: The constraint generators.
+    /// - Returns: The layout constraints from the given generators.
+    @discardableResult
     func createLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
-        return flatMap { $0.createLayout(constraints: constraints) }
+        return createLayout(constraints: constraints, activate: false)
     }
 
+    /// Create and activate layout constraints for the given generators.
+    ///
+    /// - Parameter constraints: The constraint generators.
+    /// - Returns: The layout constraints from the given generators.
     @discardableResult
     func applyLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
-        let constraints = flatMap { $0.createLayout(constraints: constraints) }
-        constraints.activate()
-        return constraints
+        return createLayout(constraints: constraints, activate: true)
     }
 }

@@ -49,25 +49,25 @@ class ViewController: UIViewController {
         // Use `createLayout` instead of `applyLayout` to not apply constraints immediately.
 
         // For horizontally regular phones:
-        layouts.add(constraintsFor: .horizontally(.regular) && .idiom(.phone)) { ctx in
-            ctx.add(green.createLayout(Layout.size == 300))
-            ctx.add(red.createLayout(Layout.size(of: green) / 3))
+        layouts.add(constraintsFor: .horizontally(.regular) && .idiom(.phone)) {
+            green.createLayout(Layout.size == 300)
+            red.createLayout(Layout.size(of: green) / 3)
         }
 
         // For horizontally compact phones:
-        layouts.add(constraintsFor: .horizontally(.compact) && .idiom(.phone)) { ctx in
-            ctx.add(green.createLayout(Layout.size == 200))
-            ctx.add(red.createLayout(Layout.size(of: green) / 4))
+        layouts.add(constraintsFor: .horizontally(.compact) && .idiom(.phone)) {
+            green.createLayout(Layout.size == 200)
+            red.createLayout(Layout.size(of: green) / 4)
         }
 
         // For horizontally regular ipads:
-        layouts.add(constraintsFor: .horizontally(.regular) && .idiom(.pad)) { ctx in
-            ctx.add(green.createLayout(Layout.size == 200))
+        layouts.add(constraintsFor: .horizontally(.regular) && .idiom(.pad)) {
+            green.createLayout(Layout.size == 200)
         }
 
-        // For horizontally compact ipads:
-        layouts.add(constraintsFor: .horizontally(.compact) && .idiom(.pad)) { ctx in
-            ctx.add(green.createLayout(Layout.size == 100))
+        // For horizontally compact ipads (split screen):
+        layouts.add(constraintsFor: .horizontally(.compact) && .idiom(.pad)) {
+            green.createLayout(Layout.size == 100)
         }
     }
 

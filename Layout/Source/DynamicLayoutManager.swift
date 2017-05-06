@@ -28,10 +28,6 @@
     import UIKit
 #endif
 
-public protocol DynamicLayoutConstraintContext {
-    func add(_ constraints: [NSLayoutConstraint])
-}
-
 public class DynamicLayoutManager {
 
     public let rootView: View
@@ -71,9 +67,11 @@ public extension DynamicLayoutManager {
 
 public extension DynamicLayoutManager {
 
-    func add(constraintsFor traits: UITraitCollection, _ block: (DynamicLayoutConstraintContext) -> Void) {
+    func add(constraintsFor traits: UITraitCollection, _ block: () -> Void) {
         let ctx = ConstraintContext()
-        block(ctx)
+        ConstraintContextStack.shared.push(ctx)
+        block()
+        ConstraintContextStack.shared.pop()
 
         let constraints = ctx.constraints
 
@@ -85,12 +83,6 @@ public extension DynamicLayoutManager {
         } else {
             constraints.deactivate()
         }
-    }
-
-    func add(constraintsFor traits: UITraitCollection, _ constraints: [NSLayoutConstraint]) {
-        add(constraintsFor: traits, { ctx in
-            ctx.add(constraints)
-        })
     }
 
     func add(_ traitBasedBlock: @escaping (UITraitCollection, CGSize) -> Void) {
@@ -141,12 +133,3 @@ public extension DynamicLayoutManager {
     }
 }
 #endif
-
-fileprivate class ConstraintContext: DynamicLayoutConstraintContext {
-
-    fileprivate var constraints: [NSLayoutConstraint] = []
-
-    fileprivate func add(_ constraints: [NSLayoutConstraint]) {
-        self.constraints += constraints
-    }
-}
