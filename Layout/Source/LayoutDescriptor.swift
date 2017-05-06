@@ -68,8 +68,8 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         return result
     }
 
-    public func constraints(for ConstraintContainer: ConstraintContainer) -> [NSLayoutConstraint] {
-        guard let superview = ConstraintContainer.superview else {
+    public func constraints(for container: ConstraintContainer) -> [NSLayoutConstraint] {
+        guard let superview = container.superview else {
             fatalError("You must assign a superview before applying a layout.")
         }
 
@@ -99,7 +99,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             let toItem = otherAttr == .notAnAttribute ? nil : (self.toItem ?? superview)
 
             let constraint = NSLayoutConstraint(
-                item: ConstraintContainer,
+                item: container,
                 attribute: attr,
                 relatedBy: relatedBy,
                 toItem: toItem,
