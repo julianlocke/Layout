@@ -37,21 +37,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E4748351DE8CF5C007FD28D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Source/Util.swift; sourceTree = "<group>"; };
+		1E4748351DE8CF5C007FD28D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Util.swift; path = Util.swift; sourceTree = "<group>"; };
 		1E6792E71DEF5F1A003771CD /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E6792EA1DEF5F1A003771CD /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-macOS.plist"; path = "Supporting/Info-macOS.plist"; sourceTree = "<group>"; };
-		1E6792F81DEF5FAA003771CD /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = Source/Platform.swift; sourceTree = "<group>"; };
+		1E6792EA1DEF5F1A003771CD /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-macOS.plist"; path = "Info-macOS.plist"; sourceTree = "<group>"; };
+		1E6792F81DEF5FAA003771CD /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Platform.swift; path = Platform.swift; sourceTree = "<group>"; };
 		1E6793001DEF65E1003771CD /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E6793031DEF65E1003771CD /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "Supporting/Info-tvOS.plist"; sourceTree = "<group>"; };
+		1E6793031DEF65E1003771CD /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-tvOS.plist"; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
 		1E71EFCC1DE70B8400A65558 /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E71EFD01DE70B8400A65558 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "Supporting/Info-iOS.plist"; sourceTree = "<group>"; };
-		1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutDescriptor.swift; path = Source/LayoutDescriptor.swift; sourceTree = "<group>"; };
-		1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstraintContainer.swift; path = Source/ConstraintContainer.swift; sourceTree = "<group>"; };
-		1E71EFEB1DE726A700A65558 /* Layouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Layouts.swift; path = Source/Layouts.swift; sourceTree = "<group>"; };
-		1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutDescriptorOperators.swift; path = Source/LayoutDescriptorOperators.swift; sourceTree = "<group>"; };
-		1E7A7D2F1DE949A800895227 /* PublicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublicUtils.swift; path = Source/PublicUtils.swift; sourceTree = "<group>"; };
-		1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutManager.swift; path = Source/LayoutManager.swift; sourceTree = "<group>"; };
-		1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicLayoutManager.swift; path = Source/DynamicLayoutManager.swift; sourceTree = "<group>"; };
+		1E71EFD01DE70B8400A65558 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-iOS.plist"; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutDescriptor.swift; path = LayoutDescriptor.swift; sourceTree = "<group>"; };
+		1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConstraintContainer.swift; path = ConstraintContainer.swift; sourceTree = "<group>"; };
+		1E71EFEB1DE726A700A65558 /* Layouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Layouts.swift; path = Layouts.swift; sourceTree = "<group>"; };
+		1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutDescriptorOperators.swift; path = LayoutDescriptorOperators.swift; sourceTree = "<group>"; };
+		1E7A7D2F1DE949A800895227 /* PublicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PublicUtils.swift; path = PublicUtils.swift; sourceTree = "<group>"; };
+		1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LayoutManager.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
+		1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DynamicLayoutManager.swift; path = DynamicLayoutManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +120,7 @@
 				1E7A7D2F1DE949A800895227 /* PublicUtils.swift */,
 			);
 			name = Source;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		1E71EFEF1DE7579F00A65558 /* Supporting */ = {
@@ -130,6 +131,7 @@
 				1E6793031DEF65E1003771CD /* Info-tvOS.plist */,
 			);
 			name = Supporting;
+			path = Supporting;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

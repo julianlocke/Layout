@@ -2,5 +2,5 @@
 
 command -v synx >/dev/null 2>&1 || { echo >&2 "\"synx\" must be installed to run this script.\nTry:\ngem install synx"; exit 1; }
 cd ..
-synx --no-sort-by-name -e "ExtensionsTests/Frameworks" --prune Extensions.xcodeproj
+synx --no-sort-by-name --prune Layout.xcodeproj
 cd -
