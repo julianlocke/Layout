@@ -24,14 +24,13 @@
 
 import UIKit
 
-// For the moment, only ever one context will exist on the stack at a time.
-class ConstraintContextStack {
+class ConstraintTraintContextStack {
 
-    private(set) static var shared = ConstraintContextStack()
+    private(set) static var shared = ConstraintTraintContextStack()
 
-    private var stack: [ConstraintContext] = []
+    private var stack: [ConstraintTraintContext] = []
 
-    func push(_ context: ConstraintContext) {
+    func push(_ context: ConstraintTraintContext) {
         stack.append(context)
     }
 
@@ -39,16 +38,22 @@ class ConstraintContextStack {
         stack.removeLast()
     }
 
-    var current: ConstraintContext? {
+    var current: ConstraintTraintContext? {
         return stack.last
+    }
+
+    func parentTraits(with traits: UITraitCollection) -> UITraitCollection {
+        return (stack.map({ $0.traits }) + [traits]).merged()
     }
 }
 
-class ConstraintContext {
+class ConstraintTraintContext {
+
+    let traits: UITraitCollection
 
     var constraints: [NSLayoutConstraint] = []
 
-    init() {
-
+    init(_ traits: UITraitCollection) {
+        self.traits = traits
     }
 }

@@ -68,24 +68,26 @@ public extension DynamicLayoutManager {
 public extension DynamicLayoutManager {
 
     func add(constraintsFor traits: UITraitCollection, _ block: () -> Void) {
-        guard ConstraintContextStack.shared.current == nil else {
-            fatalError("This method does not yet support nesting.")
+        let allTraits = ConstraintTraintContextStack.shared.parentTraits(with: traits)
+
+        let idiom = allTraits.userInterfaceIdiom
+
+        if idiom != .unspecified && idiom != UIDevice.current.userInterfaceIdiom {
+            return
         }
 
-        let ctx = ConstraintContext()
-        ConstraintContextStack.shared.push(ctx)
+        let ctx = ConstraintTraintContext(allTraits)
+        ConstraintTraintContextStack.shared.push(ctx)
         block()
-        ConstraintContextStack.shared.pop()
+        ConstraintTraintContextStack.shared.pop()
 
         let constraints = ctx.constraints
 
-        traitBasedConstraints.append((traits, constraints))
+        traitBasedConstraints.append((allTraits, constraints))
 
-        if rootView.traitCollection.containsTraits(in: traits) {
+        if rootView.traitCollection.containsTraits(in: allTraits) {
             constraints.activate()
             currentTraitBasedConstraints += constraints
-        } else {
-            constraints.deactivate()
         }
     }
 

@@ -59,7 +59,7 @@ public extension ConstraintContainer {
 
         let constraints = constraints.flatMap({ $0.constraints(for: self) })
 
-        if let ctx = ConstraintContextStack.shared.current {
+        if let ctx = ConstraintTraintContextStack.shared.current {
             ctx.constraints += constraints
 
             if activate {

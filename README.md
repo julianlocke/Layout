@@ -146,31 +146,38 @@ class ViewController: UIViewController {
 
         // Set up some constant constraints.
         green.applyLayout(Layout.center)
-        red.applyLayout(Layout.center)
 
         // Set up some trait based constraints.
-        // Use `createLayout` instead of `applyLayout` to not apply constraints immediately.
 
-        // For horizontally regular phones:
-        layouts.add(constraintsFor: .horizontally(.regular) && .idiom(.phone)) {
+        layouts.add(constraintsFor: .idiom(.phone)) {
             green.createLayout(Layout.size == 300)
-            red.createLayout(Layout.size(of: green) / 3)
+
+            red.createLayout(Layout.center(of: green))
+
+            layouts.add(constraintsFor: .horizontally(.regular)) {
+                red.createLayout(Layout.size(of: green) / 2)
+            }
+
+            layouts.add(constraintsFor: .horizontally(.compact)) {
+                red.createLayout(Layout.size(of: green) / 4)
+            }
         }
 
-        // For horizontally compact phones:
-        layouts.add(constraintsFor: .horizontally(.compact) && .idiom(.phone)) {
+        layouts.add(constraintsFor: .idiom(.pad)) {
             green.createLayout(Layout.size == 200)
-            red.createLayout(Layout.size(of: green) / 4)
-        }
 
-        // For horizontally regular ipads:
-        layouts.add(constraintsFor: .horizontally(.regular) && .idiom(.pad)) {
-            green.createLayout(Layout.size == 200)
-        }
+            red.createLayout(
+                Layout.top(of: green),
+                Layout.left(of: green)
+            )
 
-        // For horizontally compact ipads (split screen):
-        layouts.add(constraintsFor: .horizontally(.compact) && .idiom(.pad)) {
-            green.createLayout(Layout.size == 100)
+            layouts.add(constraintsFor: .horizontally(.regular)) {
+                red.createLayout(Layout.size(of: green) / 3)
+            }
+
+            layouts.add(constraintsFor: .horizontally(.compact)) {
+                red.createLayout(Layout.size(of: green) / 5)
+            }
         }
     }
 
