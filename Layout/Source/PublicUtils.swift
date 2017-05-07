@@ -75,10 +75,10 @@ public extension View {
 
     public extension Sequence where Iterator.Element == UITraitCollection {
 
-        /// Merge a sequence of `UITraitCollection`s into a single `UITraitCollection`.
+        /// Merges a sequence of `UITraitCollection`s into a single `UITraitCollection`.
         ///
         /// - Returns: A `UITraitCollection` that is the result of merging all of the `Sequence`'s elements.
-        func merge() -> UITraitCollection {
+        func merged() -> UITraitCollection {
             return UITraitCollection(traitsFrom: Array(self))
         }
     }
@@ -90,7 +90,7 @@ public extension View {
     ///   - rhs: The right trait collection
     /// - Returns: A single `UITraitCollection` that is the result of merging two `UITraitCollection`s.
     public func && (lhs: UITraitCollection, rhs: UITraitCollection) -> UITraitCollection {
-        return [lhs, rhs].merge()
+        return [lhs, rhs].merged()
     }
 
     public extension UITraitCollection {
