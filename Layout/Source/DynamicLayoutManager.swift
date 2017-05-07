@@ -48,7 +48,7 @@ public class DynamicLayoutManager {
 
 public extension DynamicLayoutManager {
 
-    func add(dynamicConstraints: @escaping () -> ([NSLayoutConstraint])) {
+    func add(dynamicConstraints: @escaping () -> [NSLayoutConstraint]) {
         dynamicConstraintBlocks.append(dynamicConstraints)
     }
 
