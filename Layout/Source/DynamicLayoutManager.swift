@@ -36,14 +36,13 @@ public class DynamicLayoutManager {
         rootView = rv
     }
 
-    fileprivate var dynamicConstraintBlocks: [() -> ([NSLayoutConstraint])] = []
+    fileprivate var dynamicConstraintBlocks: [() -> [NSLayoutConstraint]] = []
     fileprivate var currentDynamicConstraints: [NSLayoutConstraint] = []
 
     #if os(iOS) || os(tvOS)
     fileprivate var updatingTraits = false
     fileprivate var traitBasedConstraints: [(UITraitCollection, [NSLayoutConstraint])] = []
     fileprivate var currentTraitBasedConstraints: [NSLayoutConstraint] = []
-
     fileprivate var traitBasedBlocks: [(UITraitCollection, CGSize) -> Void] = []
     #endif
 }
@@ -73,6 +72,8 @@ public extension DynamicLayoutManager {
         let idiom = allTraits.userInterfaceIdiom
 
         if idiom != .unspecified && idiom != UIDevice.current.userInterfaceIdiom {
+            // These constraints are for the wrong device so bail to save some cycles.
+            // This means nested constraints will not be set up either.
             return
         }
 
@@ -108,9 +109,7 @@ public extension DynamicLayoutManager {
     }
 
     private func _updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, size: CGSize? = nil) {
-        // Updating constraints can cause traits to change,
-        // so make sure this function is not executed again
-        // while we are still running.
+        // Ensure this method is not called re-entrantly.
         guard !updatingTraits else {
             return
         }

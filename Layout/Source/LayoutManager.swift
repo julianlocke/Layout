@@ -28,25 +28,37 @@
     import UIKit
 #endif
 
+/// A class that manages the storing and activation of sets of simple, fixed constraints.
 public class LayoutManager<Key: Hashable> {
 
+    /// The root view of the constraints.
     public let rootView: View
 
     private var layouts: [Key: [NSLayoutConstraint]] = [:]
 
+    /// Initializes a layout manager with the given root view.
+    ///
+    /// - Parameter rootView: The root view of the constraints you'd like to manage.
     public init(rootView: View) {
         self.rootView = rootView
     }
 
-    public subscript(key: Key) -> [NSLayoutConstraint]? {
-        get {
-            return layouts[key]
+    /// Set the given constraints for the given key.
+    ///
+    /// - Parameters:
+    ///   - constraints: The constraints.
+    ///   - key: The key.
+    /// - Note: Only one set of constraints may be set per key.
+    public func set(constraints: [NSLayoutConstraint], for key: Key) {
+        guard layouts[key] == nil else {
+            fatalError("There are already constraints set for \(key).")
         }
-        set {
-            layouts[key] = newValue
-        }
+
+        layouts[key] = constraints
     }
 
+    /// Set the active set of constraints.
+    /// - Note: You must already have set the constraints for the active key.
     public var active: Key? {
         didSet {
             var oldConstraints = [NSLayoutConstraint]()
@@ -55,12 +67,12 @@ public class LayoutManager<Key: Hashable> {
                 if oldKey == active {
                     return
                 } else {
-                    oldConstraints = self[oldKey] ?? []
+                    oldConstraints = layouts[oldKey] ?? []
                 }
             }
 
             if let newKey = active {
-                if let newConstraints = self[newKey] {
+                if let newConstraints = layouts[newKey] {
                     rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints)
                 } else {
                     fatalError("No constraints for key '\(newKey)'")
