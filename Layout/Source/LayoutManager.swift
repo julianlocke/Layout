@@ -34,6 +34,8 @@ public class LayoutManager<Key: Hashable> {
     /// The root view of the constraints.
     public let rootView: View
 
+    public private(set) var active: Key?
+
     private var layouts: [Key: [NSLayoutConstraint]] = [:]
 
     /// Initializes a layout manager with the given root view.
@@ -57,27 +59,21 @@ public class LayoutManager<Key: Hashable> {
         layouts[key] = constraints
     }
 
-    /// Set the active set of constraints.
-    /// - Note: You must already have set the constraints for the active key.
-    public var active: Key? {
-        didSet {
-            var oldConstraints = [NSLayoutConstraint]()
-
-            if let oldKey = oldValue {
-                if oldKey == active {
-                    return
-                } else {
-                    oldConstraints = layouts[oldKey] ?? []
-                }
-            }
-
-            if let newKey = active {
-                if let newConstraints = layouts[newKey] {
-                    rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints)
-                } else {
-                    fatalError("No constraints for key '\(newKey)'")
-                }
-            }
+    /// Activate constraints for the given key.
+    ///
+    /// - Parameter key: The key.
+    public func activateConstraints(for key: Key) {
+        guard key != active else {
+            return
         }
+
+        guard let newConstraints = layouts[key] else {
+            fatalError("No constraints for \(key)")
+        }
+
+        let oldConstraints = active.flatMap({ layouts[$0] }) ?? []
+
+        rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints)
+        active = key
     }
 }

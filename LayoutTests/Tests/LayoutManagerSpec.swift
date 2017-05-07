@@ -55,10 +55,23 @@ class LayoutManagerSpec: QuickSpec {
             it("can switch constraints") {
                 layoutManager.set(constraints: view.createLayout(Layout.center, Layout.size / 2), for: false)
                 layoutManager.set(constraints: view.createLayout(Layout.center, Layout.size), for: true)
-                layoutManager.active = false
+
+                layoutManager.activateConstraints(for: false)
+                expect(layoutManager.active).to(equal(false))
                 expect(view.frame).to(equal(CGRect(x: 25, y: 25, width: 50, height: 50)))
-                layoutManager.active = true
+
+                layoutManager.activateConstraints(for: true)
+                expect(layoutManager.active).to(equal(true))
                 expect(view.frame).to(equal(rootView.frame))
+
+                layoutManager.activateConstraints(for: true)
+                expect(layoutManager.active).to(equal(true))
+                expect(view.frame).to(equal(rootView.frame))
+            }
+
+            it("fails when activating constraints that don't exist") {
+                expect(layoutManager.activateConstraints(for: true)).to(throwAssertion())
+                expect(layoutManager.active).to(beNil())
             }
         }
     }
