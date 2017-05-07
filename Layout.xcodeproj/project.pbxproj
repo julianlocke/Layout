@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E33EC321EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E33EC311EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift */; };
+		1E33EC341EBF5FE600D48139 /* Layout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E71EFCC1DE70B8400A65558 /* Layout.framework */; };
+		1E33EC401EBF618000D48139 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E33EC3E1EBF618000D48139 /* Nimble.framework */; };
+		1E33EC411EBF618000D48139 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E33EC3F1EBF618000D48139 /* Quick.framework */; };
 		1E4748361DE8CF5C007FD28D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Util.swift */; };
 		1E6792F01DEF5F8D003771CD /* ConstraintContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */; };
 		1E6792F11DEF5F8D003771CD /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
@@ -37,9 +41,25 @@
 		1EA611ED1DEF66860043233D /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */; };
 		1EA611EE1DEF66860043233D /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
 		1EA611EF1DEF66860043233D /* PublicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7D2F1DE949A800895227 /* PublicUtils.swift */; };
+		1EBF6F991EBF6A99001EB663 /* LayoutManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		1E33EC351EBF5FE600D48139 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E71EFC31DE70B8400A65558 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1E71EFCB1DE70B8400A65558;
+			remoteInfo = "Layout-iOS";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		1E33EC2F1EBF5FE600D48139 /* Layout-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Layout-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E33EC311EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITraitCollectionExtensionSpec.swift; sourceTree = "<group>"; };
+		1E33EC331EBF5FE600D48139 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		1E33EC3E1EBF618000D48139 /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = ../../Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
+		1E33EC3F1EBF618000D48139 /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = ../../Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		1E4748351DE8CF5C007FD28D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		1E6792E71DEF5F1A003771CD /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6792EA1DEF5F1A003771CD /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
@@ -56,9 +76,20 @@
 		1E7A7D2F1DE949A800895227 /* PublicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicUtils.swift; sourceTree = "<group>"; };
 		1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManager.swift; sourceTree = "<group>"; };
+		1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutManagerSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		1E33EC2C1EBF5FE600D48139 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E33EC341EBF5FE600D48139 /* Layout.framework in Frameworks */,
+				1E33EC401EBF618000D48139 /* Nimble.framework in Frameworks */,
+				1E33EC411EBF618000D48139 /* Quick.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E6792E31DEF5F1A003771CD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -83,10 +114,55 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E33EC301EBF5FE600D48139 /* LayoutTests */ = {
+			isa = PBXGroup;
+			children = (
+				1E33EC3A1EBF601C00D48139 /* Tests */,
+				1E33EC3B1EBF601F00D48139 /* Helpers */,
+				1E33EC3C1EBF602400D48139 /* Supporting */,
+				1E33EC3D1EBF602800D48139 /* Frameworks */,
+			);
+			path = LayoutTests;
+			sourceTree = "<group>";
+		};
+		1E33EC3A1EBF601C00D48139 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				1E33EC311EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift */,
+				1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		1E33EC3B1EBF601F00D48139 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		1E33EC3C1EBF602400D48139 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				1E33EC331EBF5FE600D48139 /* Info-iOS.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		1E33EC3D1EBF602800D48139 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1E33EC3E1EBF618000D48139 /* Nimble.framework */,
+				1E33EC3F1EBF618000D48139 /* Quick.framework */,
+			);
+			path = Frameworks;
+			sourceTree = "<group>";
+		};
 		1E71EFC21DE70B8400A65558 = {
 			isa = PBXGroup;
 			children = (
 				1E71EFCE1DE70B8400A65558 /* Layout */,
+				1E33EC301EBF5FE600D48139 /* LayoutTests */,
 				1E71EFCD1DE70B8400A65558 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,6 +173,7 @@
 				1E71EFCC1DE70B8400A65558 /* Layout.framework */,
 				1E6792E71DEF5F1A003771CD /* Layout.framework */,
 				1E6793001DEF65E1003771CD /* Layout.framework */,
+				1E33EC2F1EBF5FE600D48139 /* Layout-iOS-Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -142,7 +219,7 @@
 				1E4748351DE8CF5C007FD28D /* Util.swift */,
 				1E780D3C1EBE81D6006AD1D6 /* ConstraintContextStack.swift */,
 			);
-			name = Internal;
+			path = Internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +249,25 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		1E33EC2E1EBF5FE600D48139 /* Layout-iOS-Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E33EC391EBF5FE600D48139 /* Build configuration list for PBXNativeTarget "Layout-iOS-Tests" */;
+			buildPhases = (
+				1E33EC2B1EBF5FE600D48139 /* Sources */,
+				1E33EC2C1EBF5FE600D48139 /* Frameworks */,
+				1E33EC2D1EBF5FE600D48139 /* Resources */,
+				1E33EC421EBF618800D48139 /* Punic */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1E33EC361EBF5FE600D48139 /* PBXTargetDependency */,
+			);
+			name = "Layout-iOS-Tests";
+			productName = "Layout-iOS-Tests";
+			productReference = 1E33EC2F1EBF5FE600D48139 /* Layout-iOS-Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		1E6792E61DEF5F1A003771CD /* Layout-macOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1E6792EE1DEF5F1A003771CD /* Build configuration list for PBXNativeTarget "Layout-macOS" */;
@@ -233,10 +329,14 @@
 		1E71EFC31DE70B8400A65558 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0810;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = SMD;
 				TargetAttributes = {
+					1E33EC2E1EBF5FE600D48139 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
 					1E6792E61DEF5F1A003771CD = {
 						CreatedOnToolsVersion = 8.1;
 						ProvisioningStyle = Automatic;
@@ -268,11 +368,19 @@
 				1E71EFCB1DE70B8400A65558 /* Layout-iOS */,
 				1E6792E61DEF5F1A003771CD /* Layout-macOS */,
 				1E6792FF1DEF65E1003771CD /* Layout-tvOS */,
+				1E33EC2E1EBF5FE600D48139 /* Layout-iOS-Tests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		1E33EC2D1EBF5FE600D48139 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E6792E51DEF5F1A003771CD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -311,9 +419,34 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		1E33EC421EBF618800D48139 /* Punic */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
+				"$(SRCROOT)//Carthage/Build/iOS/Nimble.framework",
+			);
+			name = Punic;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/punic copy-frameworks\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		1E33EC2B1EBF5FE600D48139 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1EBF6F991EBF6A99001EB663 /* LayoutManagerSpec.swift in Sources */,
+				1E33EC321EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		1E6792E21DEF5F1A003771CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -367,7 +500,54 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		1E33EC361EBF5FE600D48139 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1E71EFCB1DE70B8400A65558 /* Layout-iOS */;
+			targetProxy = 1E33EC351EBF5FE600D48139 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		1E33EC371EBF5FE600D48139 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "LayoutTests/Supporting/Info-iOS.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smd.Layout-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1E33EC381EBF5FE600D48139 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = NO;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "LayoutTests/Supporting/Info-iOS.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.smd.Layout-iOS-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		1E6792EC1DEF5F1A003771CD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -572,6 +752,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1E33EC391EBF5FE600D48139 /* Build configuration list for PBXNativeTarget "Layout-iOS-Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E33EC371EBF5FE600D48139 /* Debug */,
+				1E33EC381EBF5FE600D48139 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		1E6792EE1DEF5F1A003771CD /* Build configuration list for PBXNativeTarget "Layout-macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -26,15 +26,16 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES">
       <Testables>
          <TestableReference
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1E71EFD41DE70B8400A65558"
-               BuildableName = "LayoutTests.xctest"
-               BlueprintName = "LayoutTests"
+               BlueprintIdentifier = "1E33EC2E1EBF5FE600D48139"
+               BuildableName = "Layout-iOS-Tests.xctest"
+               BlueprintName = "Layout-iOS-Tests"
                ReferencedContainer = "container:Layout.xcodeproj">
             </BuildableReference>
          </TestableReference>

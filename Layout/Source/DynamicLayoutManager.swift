@@ -32,8 +32,8 @@ public class DynamicLayoutManager {
 
     public let rootView: View
 
-    public init(rootView rv: View) {
-        rootView = rv
+    public init(rootView: View) {
+        self.rootView = rootView
     }
 
     fileprivate var dynamicConstraintBlocks: [() -> [NSLayoutConstraint]] = []
@@ -112,8 +112,8 @@ public extension DynamicLayoutManager {
 
         let currentTraits = newTraits ?? rootView.traitCollection
         let oldConstraints = currentTraitBasedConstraints
-        let newConstraints = traitBasedConstraints.flatMap { t -> [NSLayoutConstraint] in
-            let (traits, constraints) = t
+        let newConstraints = traitBasedConstraints.flatMap { tuple -> [NSLayoutConstraint] in
+            let (traits, constraints) = tuple
 
             if currentTraits.containsTraits(in: traits) {
                 return constraints

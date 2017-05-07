@@ -30,7 +30,7 @@
 
 public protocol LayoutConstraintGenerator {
 
-    func constraints(for ConstraintContainer: ConstraintContainer) -> [NSLayoutConstraint]
+    func constraints(for container: ConstraintContainer) -> [NSLayoutConstraint]
 }
 
 public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {

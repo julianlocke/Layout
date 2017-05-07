@@ -29,13 +29,13 @@
 #endif
 
 // swiftlint:disable:next large_tuple
-func zip3<V1, V2, V3>(_ s1: [V1], _ s2: [V2], _ s3: [V3]) -> [(V1, V2, V3)] {
-    guard s1.count == s2.count && s2.count == s3.count else {
+func zip3<V1, V2, V3>(_ seq1: [V1], _ seq2: [V2], _ seq3: [V3]) -> [(V1, V2, V3)] {
+    guard seq1.count == seq2.count && seq2.count == seq3.count else {
         fatalError("All arrays must be the same length.")
     }
 
-    return s1.indices.map {
-        (s1[$0], s2[$0], s3[$0])
+    return seq1.indices.map {
+        (seq1[$0], seq2[$0], seq3[$0])
     }
 }
 

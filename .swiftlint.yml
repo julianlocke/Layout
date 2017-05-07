@@ -1,4 +1,21 @@
+opt_in_rules:
+  - closure_end_indentation
+  - closure_spacing
+  - conditional_returns_on_newline
+  - empty_count
+  - first_where
+  - force_unwrapping
+  - number_separator
+  - object_literal
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - switch_case_on_newline
+
 disabled_rules:
-  - line_length 
-  - variable_name
-  - for_where
+  - line_length
+  - large_tuple
+
+excluded:
+  - Carthage
