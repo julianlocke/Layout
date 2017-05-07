@@ -28,42 +28,86 @@ import Nimble
 
 class DynamicLayoutManagerSpec: QuickSpec {
 
+    // swiftlint:disable:next function_body_length
     override func spec() {
         describe("DynamicLayoutManagerSpec") {
-            var rootView: UIView!
-            var view: UIView!
-            var layoutManager: DynamicLayoutManager!
+            describe("non-trait tests") {
+                var rootView: UIView!
+                var view: UIView!
+                var layoutManager: DynamicLayoutManager!
 
-            beforeEach {
-                rootView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                view = UIView()
-                rootView.addSubview(view)
-                layoutManager = DynamicLayoutManager(rootView: rootView)
-            }
-
-            afterEach {
-                rootView = nil
-                view = nil
-                layoutManager = nil
-            }
-
-            it("handles dynamic constraints blocks") {
-                var makeThingsFull = true
-
-                layoutManager.add {
-                    if makeThingsFull {
-                        return view.createLayout(Layout.flush)
-                    } else {
-                        return view.createLayout(Layout.center, Layout.size / 2)
-                    }
+                beforeEach {
+                    rootView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    view = UIView()
+                    rootView.addSubview(view)
+                    layoutManager = DynamicLayoutManager(rootView: rootView)
                 }
 
-                layoutManager.updateDynamicConstraints()
-                expect(view.frame).to(equal(rootView.frame))
+                afterEach {
+                    rootView = nil
+                    view = nil
+                    layoutManager = nil
+                }
 
-                makeThingsFull = false
-                layoutManager.updateDynamicConstraints()
-                expect(view.frame).to(equal(CGRect(x: 25, y: 25, width: 50, height: 50)))
+                it("handles dynamic constraints blocks") {
+                    var makeThingsFull = true
+
+                    layoutManager.add {
+                        if makeThingsFull {
+                            return view.createLayout(Layout.flush)
+                        } else {
+                            return view.createLayout(Layout.center, Layout.size / 2)
+                        }
+                    }
+
+                    layoutManager.updateDynamicConstraints()
+                    expect(view.frame).to(equal(rootView.frame))
+
+                    makeThingsFull = false
+                    layoutManager.updateDynamicConstraints()
+                    expect(view.frame).to(equal(CGRect(x: 25, y: 25, width: 50, height: 50)))
+                }
+            }
+
+            describe("trait tests") {
+                var rootView: UIView!
+                var view: UIView!
+                var layoutManager: DynamicLayoutManager!
+
+                beforeEach {
+                    rootView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    view = UIView()
+                    rootView.addSubview(view)
+                    layoutManager = DynamicLayoutManager(rootView: rootView)
+                }
+
+                afterEach {
+                    rootView = nil
+                    view = nil
+                    layoutManager = nil
+                }
+
+                it("responds to trait changes") {
+                    layoutManager.add(constraintsFor: .horizontally(.regular)) {
+                        view.createLayout(Layout.center, Layout.size / 2)
+                    }
+
+                    layoutManager.add(constraintsFor: .horizontally(.compact)) {
+                        view.createLayout(Layout.flush)
+                    }
+
+                    layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.regular))
+                    expect(view.frame).to(equal(CGRect(x: 25, y: 25, width: 50, height: 50)))
+
+                    layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.compact))
+                    expect(view.frame).to(equal(rootView.frame))
+                }
+
+                it("throws errors when using applyLayout") {
+                    layoutManager.add(constraintsFor: .horizontally(.regular)) {
+                        expect({ view.applyLayout(Layout.center, Layout.size / 2) }() ).to(throwAssertion())
+                    }
+                }
             }
         }
     }

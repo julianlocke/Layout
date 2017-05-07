@@ -44,6 +44,8 @@
 		1EBF6F991EBF6A99001EB663 /* LayoutManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */; };
 		1EBF6F9B1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */; };
 		1EBF6F9D1EBFBE0B001EB663 /* InternalUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */; };
+		1EBF6F9F1EBFCAD6001EB663 /* ConstraintContainerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9E1EBFCAD6001EB663 /* ConstraintContainerSpec.swift */; };
+		1EBF6FA11EBFCDAF001EB663 /* LayoutsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6FA01EBFCDAF001EB663 /* LayoutsSpec.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +83,8 @@
 		1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutManagerSpec.swift; sourceTree = "<group>"; };
 		1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManagerSpec.swift; sourceTree = "<group>"; };
 		1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUtilSpec.swift; sourceTree = "<group>"; };
+		1EBF6F9E1EBFCAD6001EB663 /* ConstraintContainerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintContainerSpec.swift; sourceTree = "<group>"; };
+		1EBF6FA01EBFCDAF001EB663 /* LayoutsSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutsSpec.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,8 @@
 				1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */,
 				1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */,
 				1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */,
+				1EBF6F9E1EBFCAD6001EB663 /* ConstraintContainerSpec.swift */,
+				1EBF6FA01EBFCDAF001EB663 /* LayoutsSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -448,9 +454,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1EBF6FA11EBFCDAF001EB663 /* LayoutsSpec.swift in Sources */,
 				1EBF6F9B1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift in Sources */,
 				1EBF6F991EBF6A99001EB663 /* LayoutManagerSpec.swift in Sources */,
 				1E33EC321EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift in Sources */,
+				1EBF6F9F1EBFCAD6001EB663 /* ConstraintContainerSpec.swift in Sources */,
 				1EBF6F9D1EBFBE0B001EB663 /* InternalUtilSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
