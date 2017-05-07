@@ -91,18 +91,18 @@ public extension DynamicLayoutManager {
         }
     }
 
-    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, size: CGSize? = nil, alongside coordinator: UIViewControllerTransitionCoordinator? = nil) {
+    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, alongside coordinator: UIViewControllerTransitionCoordinator? = nil) {
         if let coordinator = coordinator {
             coordinator.animate(
                 alongsideTransition: { _ in
-                    self._updateTraitBasedConstraints(withTraits: newTraits, size: size)
+                    self._updateTraitBasedConstraints(withTraits: newTraits)
             }, completion: nil)
         } else {
-            _updateTraitBasedConstraints(withTraits: newTraits, size: size)
+            _updateTraitBasedConstraints(withTraits: newTraits)
         }
     }
 
-    private func _updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, size: CGSize? = nil) {
+    private func _updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil) {
         // Ensure this method is not called re-entrantly.
         guard !updatingTraits else {
             return
