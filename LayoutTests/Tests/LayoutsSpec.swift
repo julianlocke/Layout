@@ -31,14 +31,14 @@ class LayoutsSpec: QuickSpec {
     // swiftlint:disable:next function_body_length
     override func spec() {
         describe("LayoutsSpec") {
-            var parentView: UIView!
-            var view: UIView!
+            var parentView: View!
+            var view: View!
 
             beforeEach {
-                parentView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                parentView = View(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
                 parentView.layoutMargins = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
 
-                view = UIView()
+                view = View()
                 view.layoutMargins = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
 
                 parentView.addSubview(view)
@@ -50,114 +50,85 @@ class LayoutsSpec: QuickSpec {
             }
 
             it("creates positional constraints correctly") {
-                view.applyLayout(
+                view.immediatelyApplyLayout(
                     Layout.top,
                     Layout.left,
                     Layout.bottom,
                     Layout.right
                 )
 
-                parentView.setNeedsLayout()
-                parentView.layoutIfNeeded()
-
                 expect(view.frame).to(equal(parentView.frame))
             }
 
             it("creates positional(of:) constraints correctly") {
-                view.applyLayout(
+                view.immediatelyApplyLayout(
                     Layout.top(of: parentView),
                     Layout.left(of: parentView),
                     Layout.bottom(of: parentView),
                     Layout.right(of: parentView)
                 )
 
-                parentView.setNeedsLayout()
-                parentView.layoutIfNeeded()
-
                 expect(view.frame).to(equal(parentView.frame))
             }
 
             it("creates margin constraints correctly") {
-                view.applyLayout(
+                view.immediatelyApplyLayout(
                     Layout.topMargin,
                     Layout.leftMargin,
                     Layout.bottomMargin,
                     Layout.rightMargin
                 )
 
-                parentView.setNeedsLayout()
-                parentView.layoutIfNeeded()
-
                 expect(view.frame).to(equal(CGRect(x: 5, y: 5, width: 90, height: 90)))
             }
 
             it("creates margin(of:) constraints correctly") {
-                view.applyLayout(
+                view.immediatelyApplyLayout(
                     Layout.topMargin(of: parentView),
                     Layout.leftMargin(of: parentView),
                     Layout.bottomMargin(of: parentView),
                     Layout.rightMargin(of: parentView)
                 )
 
-                parentView.setNeedsLayout()
-                parentView.layoutIfNeeded()
-
                 expect(view.frame).to(equal(CGRect(x: 5, y: 5, width: 90, height: 90)))
             }
 
             it("creates marginTo constraints correctly") {
-                view.applyLayout(
+                view.immediatelyApplyLayout(
                     Layout.topToMargin,
                     Layout.leftToMargin,
                     Layout.bottomToMargin,
                     Layout.rightToMargin
                 )
 
-                parentView.setNeedsLayout()
-                parentView.layoutIfNeeded()
-
                 expect(view.frame).to(equal(CGRect(x: 10, y: 10, width: 80, height: 80)))
             }
 
             it("creates width and height constraints correctly") {
-                view.applyLayout(
+                view.immediatelyApplyLayout(
                     Layout.width,
                     Layout.height
                 )
-
-                parentView.setNeedsLayout()
-                parentView.layoutIfNeeded()
 
                 expect(view.frame.size).to(equal(parentView.frame.size))
             }
 
             it("creates width(of:) and height(of:) constraints correctly") {
-                view.applyLayout(
+                view.immediatelyApplyLayout(
                     Layout.width(of: parentView),
                     Layout.height(of: parentView)
                 )
-
-                parentView.setNeedsLayout()
-                parentView.layoutIfNeeded()
 
                 expect(view.frame.size).to(equal(parentView.frame.size))
             }
 
             it("creates size constraints correctly") {
-                view.applyLayout(Layout.size)
-
-                parentView.setNeedsLayout()
-                parentView.layoutIfNeeded()
-
+                view.immediatelyApplyLayout(Layout.size)
                 expect(view.frame.size).to(equal(parentView.frame.size))
             }
 
             it("creates size(of:) constraints correctly") {
-                view.applyLayout(Layout.size(of: parentView))
-
-                parentView.setNeedsLayout()
-                parentView.layoutIfNeeded()
-
+                view.immediatelyApplyLayout(Layout.size(of: parentView))
                 expect(view.frame.size).to(equal(parentView.frame.size))
             }
         }

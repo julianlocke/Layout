@@ -12,17 +12,27 @@
 		<key>Layout-iOS-Tests.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>1</integer>
 		</dict>
 		<key>Layout-iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>Layout-macOS-Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>Layout-macOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>4</integer>
+		</dict>
+		<key>Layout-tvOS-Tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
 		</dict>
 		<key>Layout-tvOS.xcscheme_^#shared#^_</key>
 		<dict>
@@ -58,6 +68,16 @@
 			<true/>
 		</dict>
 		<key>1E71EFF51DE7590400A65558</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1EFD870B1ECE0AA90061390D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1EFD871A1ECE0ACE0061390D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

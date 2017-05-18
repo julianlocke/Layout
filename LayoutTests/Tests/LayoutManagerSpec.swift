@@ -30,13 +30,13 @@ class LayoutManagerSpec: QuickSpec {
 
     override func spec() {
         describe("LayoutManagerSpec") {
-            var rootView: UIView!
-            var view: UIView!
+            var rootView: View!
+            var view: View!
             var layoutManager: LayoutManager<Bool>!
 
             beforeEach {
-                rootView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                view = UIView()
+                rootView = View(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                view = View()
                 rootView.addSubview(view)
                 layoutManager = LayoutManager(rootView: rootView)
             }

@@ -32,13 +32,13 @@ class DynamicLayoutManagerSpec: QuickSpec {
     override func spec() {
         describe("DynamicLayoutManagerSpec") {
             describe("non-trait tests") {
-                var rootView: UIView!
-                var view: UIView!
+                var rootView: View!
+                var view: View!
                 var layoutManager: DynamicLayoutManager!
 
                 beforeEach {
-                    rootView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                    view = UIView()
+                    rootView = View(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    view = View()
                     rootView.addSubview(view)
                     layoutManager = DynamicLayoutManager(rootView: rootView)
                 }
@@ -70,13 +70,13 @@ class DynamicLayoutManagerSpec: QuickSpec {
             }
 
             describe("trait tests") {
-                var rootView: UIView!
-                var view: UIView!
+                var rootView: View!
+                var view: View!
                 var layoutManager: DynamicLayoutManager!
 
                 beforeEach {
-                    rootView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                    view = UIView()
+                    rootView = View(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    view = View()
                     rootView.addSubview(view)
                     layoutManager = DynamicLayoutManager(rootView: rootView)
                 }

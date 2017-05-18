@@ -52,20 +52,22 @@ extension LayoutGuide: ConstraintContainer {
 
 public extension ConstraintContainer {
 
-    fileprivate func createLayout(constraints: [LayoutConstraintGenerator], activate: Bool) -> [NSLayoutConstraint] {
+    internal func createLayout(constraints: [LayoutConstraintGenerator], activate: Bool) -> [NSLayoutConstraint] {
         if let view = self as? View {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 
         let constraints = constraints.flatMap({ $0.constraints(for: self) })
 
-        if let ctx = ConstraintTraintContextStack.shared.current {
-            ctx.constraints += constraints
+        #if os(iOS) || os(tvOS)
+            if let ctx = ConstraintTraintContextStack.shared.current {
+                ctx.constraints += constraints
 
-            if activate {
-                fatalError("You must use createLayout, rather than applyLayout, in this context.")
+                if activate {
+                    fatalError("You must use createLayout, rather than applyLayout, in this context.")
+                }
             }
-        }
+        #endif
 
         if activate {
             constraints.activate()

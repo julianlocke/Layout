@@ -31,12 +31,12 @@ class LayoutOperatorsSpec: QuickSpec {
     // swiftlint:disable:next function_body_length
     override func spec() {
         describe("LayoutOperatorsSpec") {
-            var parentView: UIView!
-            var view: UIView!
+            var parentView: View!
+            var view: View!
 
             beforeEach {
-                parentView = UIView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-                view = UIView()
+                parentView = View(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                view = View()
 
                 parentView.addSubview(view)
             }
@@ -48,15 +48,12 @@ class LayoutOperatorsSpec: QuickSpec {
 
             context("plus") {
                 it("adds the correct constant") {
-                    view.applyLayout(
+                    view.immediatelyApplyLayout(
                         Layout.top + 10,
                         Layout.left + 10,
                         Layout.bottom,
                         Layout.right
                     )
-
-                    parentView.setNeedsLayout()
-                    parentView.layoutIfNeeded()
 
                     expect(view.frame).to(equal(CGRect(x: 10, y: 10, width: 90, height: 90)))
                 }
@@ -64,15 +61,12 @@ class LayoutOperatorsSpec: QuickSpec {
 
             context("minus") {
                 it("subtracts the correct constant") {
-                    view.applyLayout(
+                    view.immediatelyApplyLayout(
                         Layout.top - 10,
                         Layout.left - 10,
                         Layout.bottom,
                         Layout.right
                     )
-
-                    parentView.setNeedsLayout()
-                    parentView.layoutIfNeeded()
 
                     expect(view.frame).to(equal(CGRect(x: -10, y: -10, width: 110, height: 110)))
                 }
@@ -80,13 +74,10 @@ class LayoutOperatorsSpec: QuickSpec {
 
             context("multiply") {
                 it("adds the correct multiplier") {
-                    view.applyLayout(
+                    view.immediatelyApplyLayout(
                         Layout.center,
                         Layout.size * 2
                     )
-
-                    parentView.setNeedsLayout()
-                    parentView.layoutIfNeeded()
 
                     expect(view.frame).to(equal(CGRect(x: -50, y: -50, width: 200, height: 200)))
                 }
@@ -94,13 +85,10 @@ class LayoutOperatorsSpec: QuickSpec {
 
             context("divide") {
                 it("adds the correct multiplier") {
-                    view.applyLayout(
+                    view.immediatelyApplyLayout(
                         Layout.center,
                         Layout.size / 2
                     )
-
-                    parentView.setNeedsLayout()
-                    parentView.layoutIfNeeded()
 
                     expect(view.frame).to(equal(CGRect(x: 25, y: 25, width: 50, height: 50)))
                 }

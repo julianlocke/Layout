@@ -32,12 +32,12 @@ class ConstraintContainerSpec: QuickSpec {
         describe("ConstraintContainerSpec") {
 
             describe("basic layout specs") {
-                var parentView: UIView!
-                var layoutGuide: UILayoutGuide!
+                var parentView: View!
+                var layoutGuide: LayoutGuide!
 
                 beforeEach {
-                    parentView = UIView()
-                    layoutGuide = UILayoutGuide()
+                    parentView = View()
+                    layoutGuide = LayoutGuide()
                     parentView.addLayoutGuide(layoutGuide)
                 }
 
