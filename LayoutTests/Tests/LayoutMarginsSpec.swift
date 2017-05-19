@@ -26,17 +26,23 @@ import Quick
 import Nimble
 @testable import Layout
 
-class LayoutsSpec: QuickSpec {
+// iOS/tvOS only.
+
+class LayoutMarginsSpec: QuickSpec {
 
     // swiftlint:disable:next function_body_length
     override func spec() {
-        describe("LayoutsSpec") {
+        describe("LayoutMarginsSpec") {
             var parentView: View!
             var view: View!
 
             beforeEach {
                 parentView = View(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                parentView.layoutMargins = EdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+
                 view = View()
+                view.layoutMargins = EdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+
                 parentView.addSubview(view)
             }
 
@@ -45,54 +51,37 @@ class LayoutsSpec: QuickSpec {
                 view = nil
             }
 
-            it("creates positional constraints correctly") {
+            it("creates margin constraints correctly") {
                 view.immediatelyApplyLayout(
-                    Layout.top,
-                    Layout.left,
-                    Layout.bottom,
-                    Layout.right
+                    Layout.topMargin,
+                    Layout.leftMargin,
+                    Layout.bottomMargin,
+                    Layout.rightMargin
                 )
 
-                expect(view.frame).to(equal(parentView.frame))
+                expect(view.frame).to(equal(CGRect(x: 5, y: 5, width: 90, height: 90)))
             }
 
-            it("creates positional(of:) constraints correctly") {
+            it("creates margin(of:) constraints correctly") {
                 view.immediatelyApplyLayout(
-                    Layout.top(of: parentView),
-                    Layout.left(of: parentView),
-                    Layout.bottom(of: parentView),
-                    Layout.right(of: parentView)
+                    Layout.topMargin(of: parentView),
+                    Layout.leftMargin(of: parentView),
+                    Layout.bottomMargin(of: parentView),
+                    Layout.rightMargin(of: parentView)
                 )
 
-                expect(view.frame).to(equal(parentView.frame))
+                expect(view.frame).to(equal(CGRect(x: 5, y: 5, width: 90, height: 90)))
             }
 
-            it("creates width and height constraints correctly") {
+            it("creates marginTo constraints correctly") {
                 view.immediatelyApplyLayout(
-                    Layout.width,
-                    Layout.height
+                    Layout.topToMargin,
+                    Layout.leftToMargin,
+                    Layout.bottomToMargin,
+                    Layout.rightToMargin
                 )
 
-                expect(view.frame.size).to(equal(parentView.frame.size))
-            }
-
-            it("creates width(of:) and height(of:) constraints correctly") {
-                view.immediatelyApplyLayout(
-                    Layout.width(of: parentView),
-                    Layout.height(of: parentView)
-                )
-
-                expect(view.frame.size).to(equal(parentView.frame.size))
-            }
-
-            it("creates size constraints correctly") {
-                view.immediatelyApplyLayout(Layout.size)
-                expect(view.frame.size).to(equal(parentView.frame.size))
-            }
-
-            it("creates size(of:) constraints correctly") {
-                view.immediatelyApplyLayout(Layout.size(of: parentView))
-                expect(view.frame.size).to(equal(parentView.frame.size))
+                expect(view.frame).to(equal(CGRect(x: 10, y: 10, width: 80, height: 80)))
             }
         }
     }

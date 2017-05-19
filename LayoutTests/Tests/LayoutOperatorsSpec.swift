@@ -49,26 +49,24 @@ class LayoutOperatorsSpec: QuickSpec {
             context("plus") {
                 it("adds the correct constant") {
                     view.immediatelyApplyLayout(
-                        Layout.top + 10,
                         Layout.left + 10,
-                        Layout.bottom,
+                        Layout.vertical,
                         Layout.right
                     )
 
-                    expect(view.frame).to(equal(CGRect(x: 10, y: 10, width: 90, height: 90)))
+                    expect(view.frame).to(equal(CGRect(x: 10, y: 0, width: 90, height: 100)))
                 }
             }
 
             context("minus") {
                 it("subtracts the correct constant") {
                     view.immediatelyApplyLayout(
-                        Layout.top - 10,
                         Layout.left - 10,
-                        Layout.bottom,
+                        Layout.vertical,
                         Layout.right
                     )
 
-                    expect(view.frame).to(equal(CGRect(x: -10, y: -10, width: 110, height: 110)))
+                    expect(view.frame).to(equal(CGRect(x: -10, y: 0, width: 110, height: 100)))
                 }
             }
 
@@ -105,7 +103,7 @@ class LayoutOperatorsSpec: QuickSpec {
 
             context("priority") {
                 it("adds an identifier") {
-                    let priority = UILayoutPriorityDefaultLow
+                    let priority: Float = 250
                     let constraints = view.createLayout(Layout.left ~ priority)
                     expect(constraints.count).to(equal(1))
                     expect(constraints[0].priority).to(equal(priority))

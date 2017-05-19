@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Layout.xcodeproj">
+   </FileRef>
+   <Group
+      location = "container:"
+      name = "TestingDependencies">
+      <FileRef
+         location = "group:Carthage/Checkouts/quick/Quick.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:Carthage/Checkouts/nimble/Nimble.xcodeproj">
+      </FileRef>
+   </Group>
+</Workspace>

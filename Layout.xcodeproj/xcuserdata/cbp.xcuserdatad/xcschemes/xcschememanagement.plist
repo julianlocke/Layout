@@ -9,30 +9,15 @@
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>Layout-iOS-Tests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 		<key>Layout-iOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
-		<key>Layout-macOS-Tests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
-		</dict>
 		<key>Layout-macOS.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>4</integer>
-		</dict>
-		<key>Layout-tvOS-Tests.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
 		</dict>
 		<key>Layout-tvOS.xcscheme_^#shared#^_</key>
 		<dict>

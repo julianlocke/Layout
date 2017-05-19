@@ -26,6 +26,8 @@ import Quick
 import Nimble
 @testable import Layout
 
+// iOS/tvOS only.
+
 class UITraitCollectionExtensionSpec: QuickSpec {
 
     override func spec() {

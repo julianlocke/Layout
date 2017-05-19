@@ -87,6 +87,7 @@ class DynamicLayoutManagerSpec: QuickSpec {
                     layoutManager = nil
                 }
 
+                #if os(iOS) || os(tvOS)
                 it("responds to trait changes") {
                     layoutManager.add(constraintsFor: .horizontally(.regular)) {
                         view.createLayout(Layout.center, Layout.size / 2)
@@ -102,12 +103,15 @@ class DynamicLayoutManagerSpec: QuickSpec {
                     layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.compact))
                     expect(view.frame).to(equal(rootView.frame))
                 }
+                #endif
 
+                #if os(iOS)
                 it("throws errors when using applyLayout") {
                     layoutManager.add(constraintsFor: .horizontally(.regular)) {
                         expect({ view.applyLayout(Layout.center, Layout.size / 2) }() ).to(throwAssertion())
                     }
                 }
+                #endif
             }
         }
     }

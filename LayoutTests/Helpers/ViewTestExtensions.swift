@@ -37,7 +37,8 @@ extension View {
         let constraints = createLayout(constraints: constraints, activate: true)
 
         #if os(macOS)
-
+            superview?.needsLayout = true
+            superview?.layoutSubtreeIfNeeded()
         #else
             superview?.setNeedsLayout()
             superview?.layoutIfNeeded()

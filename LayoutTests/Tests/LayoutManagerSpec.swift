@@ -47,10 +47,12 @@ class LayoutManagerSpec: QuickSpec {
                 layoutManager = nil
             }
 
+            #if os(iOS) || os(macOS)
             it("errors when setting multiple constraints for the same key") {
                 layoutManager.set(constraints: [], for: true)
                 expect(layoutManager.set(constraints: [], for: true)).to(throwAssertion())
             }
+            #endif
 
             it("can switch constraints") {
                 layoutManager.set(constraints: view.createLayout(Layout.center, Layout.size / 2), for: false)
@@ -69,10 +71,12 @@ class LayoutManagerSpec: QuickSpec {
                 expect(view.frame).to(equal(rootView.frame))
             }
 
+            #if os(iOS) || os(macOS)
             it("fails when activating constraints that don't exist") {
                 expect(layoutManager.activateConstraints(for: true)).to(throwAssertion())
                 expect(layoutManager.active).to(beNil())
             }
+            #endif
         }
     }
 }
