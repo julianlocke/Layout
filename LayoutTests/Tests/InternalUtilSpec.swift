@@ -49,14 +49,12 @@ class InternalUtilSpec: QuickSpec {
                     }
                 }
 
-                #if os(iOS) || os(macOS)
                 it("crashes on mis-matched lengths") {
                     let seq1 = [1, 2, 3]
                     let seq2 = [1, 2, 3]
                     let seq3 = [1, 2]
                     expect({ _ = zip3(seq1, seq2, seq3) }()).to(throwAssertion())
                 }
-                #endif
             }
         }
     }

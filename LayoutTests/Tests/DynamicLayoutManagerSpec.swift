@@ -103,9 +103,7 @@ class DynamicLayoutManagerSpec: QuickSpec {
                     layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.compact))
                     expect(view.frame).to(equal(rootView.frame))
                 }
-                #endif
 
-                #if os(iOS)
                 it("throws errors when using applyLayout") {
                     layoutManager.add(constraintsFor: .horizontally(.regular)) {
                         expect({ view.applyLayout(Layout.center, Layout.size / 2) }() ).to(throwAssertion())
