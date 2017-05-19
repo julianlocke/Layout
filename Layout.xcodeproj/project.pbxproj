@@ -631,7 +631,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
+			shellScript = "/usr/local/bin/punic copy-frameworks";
 		};
 		1E16D1D91DE9503E002237A9 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
