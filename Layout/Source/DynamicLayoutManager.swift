@@ -70,7 +70,7 @@ public extension DynamicLayoutManager {
 
         let idiom = allTraits.userInterfaceIdiom
 
-        if idiom != .unspecified && idiom != UIDevice.current.userInterfaceIdiom {
+        if idiom != .unspecified && rootView.traitCollection.userInterfaceIdiom != .unspecified && idiom != rootView.traitCollection.userInterfaceIdiom {
             // These constraints are for the wrong device so bail to save some cycles.
             // This means nested constraints will not be set up either.
             return
