@@ -56,6 +56,11 @@ class LayoutOperatorsSpec: QuickSpec {
 
                     expect(view.frame).to(equal(CGRect(x: 10, y: 0, width: 90, height: 100)))
                 }
+
+                it("adds the correct constants") {
+                    view.immediatelyApplyLayout(Layout.size + 10)
+                    expect(view.frame.size).to(equal(CGSize(width: 110, height: 110)))
+                }
             }
 
             context("minus") {
@@ -67,6 +72,11 @@ class LayoutOperatorsSpec: QuickSpec {
                     )
 
                     expect(view.frame).to(equal(CGRect(x: -10, y: 0, width: 110, height: 100)))
+                }
+
+                it("subtracts the correct constants") {
+                    view.immediatelyApplyLayout(Layout.size - 10)
+                    expect(view.frame.size).to(equal(CGSize(width: 90, height: 90)))
                 }
             }
 
