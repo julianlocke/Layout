@@ -28,6 +28,8 @@
     import UIKit
 #endif
 
+// MARK: - Priority
+
 precedencegroup LayoutPriorityAssignment {
     associativity: left
     lowerThan: ComparisonPrecedence
@@ -42,8 +44,11 @@ public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutPriority) -> Layout
     }
 }
 
+// MARK: - Debug identifiers
+
 precedencegroup LayoutIdentifierAssignment {
     associativity: left
+    lowerThan: ComparisonPrecedence
 }
 
 infix operator <- : LayoutIdentifierAssignment
@@ -53,6 +58,8 @@ public func <- <Kind>(lhs: LayoutDescriptor<Kind>, rhs: String) -> LayoutDescrip
         result.identifier = rhs
     }
 }
+
+// MARK: -
 
 public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in

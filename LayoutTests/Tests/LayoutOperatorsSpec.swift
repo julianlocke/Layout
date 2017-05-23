@@ -109,6 +109,27 @@ class LayoutOperatorsSpec: QuickSpec {
                     expect(constraints.count).to(equal(1))
                     expect(constraints[0].identifier).to(equal(identifier))
                 }
+
+                it("has a lower priority than ==") {
+                    let identifier = "debug"
+                    let constraints = view.createLayout(Layout.left == Layout.right(of: parentView) <- identifier)
+                    expect(constraints.count).to(equal(1))
+                    expect(constraints[0].identifier).to(equal(identifier))
+                }
+
+                it("has a lower priority than >=") {
+                    let identifier = "debug"
+                    let constraints = view.createLayout(Layout.left >= Layout.right(of: parentView) <- identifier)
+                    expect(constraints.count).to(equal(1))
+                    expect(constraints[0].identifier).to(equal(identifier))
+                }
+
+                it("has a lower priority than <=") {
+                    let identifier = "debug"
+                    let constraints = view.createLayout(Layout.left >= Layout.right(of: parentView) <- identifier)
+                    expect(constraints.count).to(equal(1))
+                    expect(constraints[0].identifier).to(equal(identifier))
+                }
             }
 
             context("priority") {
