@@ -63,68 +63,69 @@ public extension DynamicLayoutManager {
 
 #if os(iOS) || os(tvOS)
 
-public extension DynamicLayoutManager {
+    public extension DynamicLayoutManager {
 
-    func add(constraintsFor traits: UITraitCollection, _ block: () -> Void) {
-        let allTraits = ConstraintTraintContextStack.shared.parentTraits(with: traits)
+        func add(constraintsFor traits: UITraitCollection, _ block: () -> Void) {
+            let allTraits = ConstraintTraintContextStack.shared.parentTraits(with: traits)
 
-        let idiom = allTraits.userInterfaceIdiom
+            let idiom = allTraits.userInterfaceIdiom
+            let rootViewIdiom = rootView.traitCollection.userInterfaceIdiom
 
-        if idiom != .unspecified && rootView.traitCollection.userInterfaceIdiom != .unspecified && idiom != rootView.traitCollection.userInterfaceIdiom {
-            // These constraints are for the wrong device so bail to save some cycles.
-            // This means nested constraints will not be set up either.
-            return
-        }
+            if idiom != .unspecified && rootViewIdiom != .unspecified && idiom != rootViewIdiom {
+                // These constraints are for the wrong device so bail to save some cycles.
+                // This means nested constraints will not be set up either.
+                return
+            }
 
-        let ctx = ConstraintTraintContext(allTraits)
-        ConstraintTraintContextStack.shared.push(ctx)
-        block()
-        ConstraintTraintContextStack.shared.pop()
+            let ctx = ConstraintTraintContext(allTraits)
+            ConstraintTraintContextStack.shared.push(ctx)
+            block()
+            ConstraintTraintContextStack.shared.pop()
 
-        let constraints = ctx.constraints
+            let constraints = ctx.constraints
 
-        traitBasedConstraints.append((allTraits, constraints))
+            traitBasedConstraints.append((allTraits, constraints))
 
-        if rootView.traitCollection.containsTraits(in: allTraits) {
-            constraints.activate()
-            currentTraitBasedConstraints += constraints
-        }
-    }
-
-    func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, alongside coordinator: UIViewControllerTransitionCoordinator? = nil) {
-        if let coordinator = coordinator {
-            coordinator.animate(
-                alongsideTransition: { _ in
-                    self._updateTraitBasedConstraints(withTraits: newTraits)
-            }, completion: nil)
-        } else {
-            _updateTraitBasedConstraints(withTraits: newTraits)
-        }
-    }
-
-    private func _updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil) {
-        // Ensure this method is not called re-entrantly.
-        guard !updatingTraits else {
-            return
-        }
-
-        updatingTraits = true
-        defer { updatingTraits = false }
-
-        let currentTraits = newTraits ?? rootView.traitCollection
-        let oldConstraints = currentTraitBasedConstraints
-        let newConstraints = traitBasedConstraints.flatMap { tuple -> [NSLayoutConstraint] in
-            let (traits, constraints) = tuple
-
-            if currentTraits.containsTraits(in: traits) {
-                return constraints
-            } else {
-                return []
+            if rootView.traitCollection.containsTraits(in: allTraits) {
+                constraints.activate()
+                currentTraitBasedConstraints += constraints
             }
         }
 
-        currentTraitBasedConstraints = newConstraints
-        rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints, immediately: true)
+        func updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil, alongside coordinator: UIViewControllerTransitionCoordinator? = nil) {
+            if let coordinator = coordinator {
+                coordinator.animate(
+                    alongsideTransition: { _ in
+                        self._updateTraitBasedConstraints(withTraits: newTraits)
+                }, completion: nil)
+            } else {
+                _updateTraitBasedConstraints(withTraits: newTraits)
+            }
+        }
+
+        private func _updateTraitBasedConstraints(withTraits newTraits: UITraitCollection? = nil) {
+            // Ensure this method is not called re-entrantly.
+            guard !updatingTraits else {
+                return
+            }
+
+            updatingTraits = true
+            defer { updatingTraits = false }
+
+            let currentTraits = newTraits ?? rootView.traitCollection
+            let oldConstraints = currentTraitBasedConstraints
+            let newConstraints = traitBasedConstraints.flatMap { tuple -> [NSLayoutConstraint] in
+                let (traits, constraints) = tuple
+
+                if currentTraits.containsTraits(in: traits) {
+                    return constraints
+                } else {
+                    return []
+                }
+            }
+
+            currentTraitBasedConstraints = newConstraints
+            rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints, immediately: true)
+        }
     }
-}
 #endif
