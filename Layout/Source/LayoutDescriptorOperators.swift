@@ -86,7 +86,15 @@ public func >= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) 
     }
 }
 
-public func >= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
+public func >= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: ConstraintContainer) -> LayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.toItem = rhs
+        result.relatedBy = .greaterThanOrEqual
+        result.otherAttributes = lhs.attributes
+    }
+}
+
+public func >= (lhs: LayoutDescriptor<DimensionLayout>, rhs: CGFloat) -> LayoutDescriptor<DimensionLayout> {
     return lhs.modify { result in
         result.constant = rhs
         result.multiplier = 1
@@ -102,6 +110,14 @@ public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) 
         result.otherAttributes = rhs.attributes
         result.constant = rhs.constant
         result.multiplier = rhs.multiplier
+    }
+}
+
+public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: ConstraintContainer) -> LayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.toItem = rhs
+        result.relatedBy = .lessThanOrEqual
+        result.otherAttributes = lhs.attributes
     }
 }
 

@@ -26,6 +26,8 @@ import Quick
 import Nimble
 @testable import Layout
 
+// iOS/tvOS only.
+
 class DynamicLayoutManagerTraitSpec: QuickSpec {
 
     // swiftlint:disable:next function_body_length
