@@ -40,14 +40,27 @@ extension View {
     }
 }
 
-        #if os(macOS)
-            superview?.needsLayout = true
-            superview?.layoutSubtreeIfNeeded()
-        #else
-            superview?.setNeedsLayout()
-            superview?.layoutIfNeeded()
-        #endif
+#if os(iOS) || os(tvOS)
+class TraitOverridingView: UIView {
 
-        return constraints
+    var overridenTraitCollection: UITraitCollection
+
+    override init(frame: CGRect) {
+        overridenTraitCollection = UITraitCollection()
+        super.init(frame: frame)
+    }
+
+    convenience init() {
+        self.init(frame: .zero)
+    }
+
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override var traitCollection: UITraitCollection {
+        return (superview as? TraitOverridingView)?.overridenTraitCollection ?? overridenTraitCollection
     }
 }
+#endif

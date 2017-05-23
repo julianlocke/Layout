@@ -35,6 +35,8 @@
 		1E7A7D301DE949A800895227 /* PublicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7D2F1DE949A800895227 /* PublicUtils.swift */; };
 		1E8EE2C71DEB3D1300232CB0 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */; };
 		1E8EE2CB1DEB4AA500232CB0 /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
+		1E9696F01ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */; };
+		1E9696F11ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */; };
 		1EA611E61DEF66860043233D /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6792F81DEF5FAA003771CD /* Platform.swift */; };
 		1EA611E81DEF66860043233D /* ConstraintContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */; };
 		1EA611E91DEF66860043233D /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
@@ -122,6 +124,7 @@
 		1E7A7D2F1DE949A800895227 /* PublicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicUtils.swift; sourceTree = "<group>"; };
 		1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManager.swift; sourceTree = "<group>"; };
+		1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManagerTraitSpec.swift; sourceTree = "<group>"; };
 		1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutManagerSpec.swift; sourceTree = "<group>"; };
 		1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManagerSpec.swift; sourceTree = "<group>"; };
 		1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUtilSpec.swift; sourceTree = "<group>"; };
@@ -237,6 +240,7 @@
 				1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */,
 				1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */,
 				1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */,
+				1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */,
 				1EBF6F9E1EBFCAD6001EB663 /* ConstraintContainerSpec.swift */,
 				1EBF6FA01EBFCDAF001EB663 /* LayoutsSpec.swift */,
 				1EBF6FA21EBFD584001EB663 /* LayoutOperatorsSpec.swift */,
@@ -687,6 +691,7 @@
 				1EBF6F991EBF6A99001EB663 /* LayoutManagerSpec.swift in Sources */,
 				1E33EC321EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift in Sources */,
 				1EBF6FA31EBFD584001EB663 /* LayoutOperatorsSpec.swift in Sources */,
+				1E9696F01ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift in Sources */,
 				1EFD87581ECE670A0061390D /* LayoutMarginsSpec.swift in Sources */,
 				1EBF6F9F1EBFCAD6001EB663 /* ConstraintContainerSpec.swift in Sources */,
 				1EFD87301ECE28FF0061390D /* ViewTestExtensions.swift in Sources */,
@@ -753,6 +758,7 @@
 				1EFD874C1ECE40A20061390D /* LayoutManagerSpec.swift in Sources */,
 				1EFD87591ECE670A0061390D /* LayoutMarginsSpec.swift in Sources */,
 				1EED8A8A1ECE734D00E56366 /* ViewTestExtensions.swift in Sources */,
+				1E9696F11ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift in Sources */,
 				1EFD874B1ECE40A00061390D /* UITraitCollectionExtensionSpec.swift in Sources */,
 				1EFD87511ECE40AE0061390D /* LayoutOperatorsSpec.swift in Sources */,
 				1EFD874F1ECE40A90061390D /* ConstraintContainerSpec.swift in Sources */,
