@@ -57,7 +57,7 @@ public extension DynamicLayoutManager {
         let newConstraints = dynamicConstraintBlocks.flatMap({ $0() })
 
         currentDynamicConstraints = newConstraints
-        rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints)
+        rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints, immediately: true)
     }
 }
 
@@ -109,6 +109,7 @@ public extension DynamicLayoutManager {
         }
 
         updatingTraits = true
+        defer { updatingTraits = false }
 
         let currentTraits = newTraits ?? rootView.traitCollection
         let oldConstraints = currentTraitBasedConstraints
@@ -123,8 +124,7 @@ public extension DynamicLayoutManager {
         }
 
         currentTraitBasedConstraints = newConstraints
-        rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints)
-        updatingTraits = false
+        rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints, immediately: true)
     }
 }
 #endif

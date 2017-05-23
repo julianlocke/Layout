@@ -51,7 +51,7 @@ public extension View {
     ///   - immediately: Whether or not the view should be updated immediately.
     ///
     /// - Note:
-    /// The `immediately` parameter on iOS/tvOS has the effect of calling:
+    /// Passing `true` to the `immediately` parameter on iOS/tvOS has the effect of calling:
     /// ```
     /// setNeedsLayout()
     /// layoutIfNeeded()
@@ -62,7 +62,7 @@ public extension View {
     /// layoutSubtreeIfNeeded()
     /// ```
     /// It is useful to call from within animation blocks.
-    func updateConstraints(deactivate toDeactivate: [NSLayoutConstraint], activate toActivate: [NSLayoutConstraint], immediately: Bool = true) {
+    func updateConstraints(deactivate toDeactivate: [NSLayoutConstraint], activate toActivate: [NSLayoutConstraint], immediately: Bool) {
         toDeactivate.deactivate()
         toActivate.activate()
 

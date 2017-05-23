@@ -34,7 +34,11 @@ extension View {
 
     @discardableResult
     func immediatelyApplyLayout(_ constraints: LayoutConstraintGenerator...) -> [NSLayoutConstraint] {
-        let constraints = createLayout(constraints: constraints, activate: true)
+        let constraints = createLayout(constraints: constraints, activate: false)
+        superview?.updateConstraints(deactivate: [], activate: constraints, immediately: true)
+        return constraints
+    }
+}
 
         #if os(macOS)
             superview?.needsLayout = true

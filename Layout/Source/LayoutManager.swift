@@ -73,7 +73,7 @@ public class LayoutManager<Key: Hashable> {
 
         let oldConstraints = active.flatMap({ layouts[$0] }) ?? []
 
-        rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints)
+        rootView.updateConstraints(deactivate: oldConstraints, activate: newConstraints, immediately: true)
         active = key
     }
 }
