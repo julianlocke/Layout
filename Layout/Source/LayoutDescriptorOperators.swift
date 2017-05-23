@@ -79,6 +79,7 @@ public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: ConstraintContainer) -> 
 public func == (lhs: LayoutDescriptor<DimensionLayout>, rhs: CGFloat) -> LayoutDescriptor<DimensionLayout> {
     return lhs.modify { result in
         result.constant = rhs
+        result.multiplier = 0
         result.otherAttributes = [NSLayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
     }
 }
