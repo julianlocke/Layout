@@ -121,7 +121,7 @@ public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: ConstraintContainer) -> 
     }
 }
 
-public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
+public func <= (lhs: LayoutDescriptor<DimensionLayout>, rhs: CGFloat) -> LayoutDescriptor<DimensionLayout> {
     return lhs.modify { result in
         result.constant = rhs
         result.multiplier = 1
