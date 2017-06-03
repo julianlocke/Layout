@@ -22,9 +22,9 @@
  SOFTWARE.
  */
 
-import Quick
-import Nimble
 @testable import Layout
+import Nimble
+import Quick
 
 class LayoutsSpec: QuickSpec {
 
@@ -53,7 +53,7 @@ class LayoutsSpec: QuickSpec {
                     Layout.right
                 )
 
-                expect(view.frame).to(equal(parentView.frame))
+                expect(view.frame) == parentView.frame
             }
 
             it("creates positional(of:) constraints correctly") {
@@ -64,7 +64,7 @@ class LayoutsSpec: QuickSpec {
                     Layout.right(of: parentView)
                 )
 
-                expect(view.frame).to(equal(parentView.frame))
+                expect(view.frame) == parentView.frame
             }
 
             it("creates width and height constraints correctly") {
@@ -73,7 +73,7 @@ class LayoutsSpec: QuickSpec {
                     Layout.height
                 )
 
-                expect(view.frame.size).to(equal(parentView.frame.size))
+                expect(view.frame.size) == parentView.frame.size
             }
 
             it("creates width(of:) and height(of:) constraints correctly") {
@@ -82,17 +82,17 @@ class LayoutsSpec: QuickSpec {
                     Layout.height(of: parentView)
                 )
 
-                expect(view.frame.size).to(equal(parentView.frame.size))
+                expect(view.frame.size) == parentView.frame.size
             }
 
             it("creates size constraints correctly") {
                 view.immediatelyApplyLayout(Layout.size)
-                expect(view.frame.size).to(equal(parentView.frame.size))
+                expect(view.frame.size) == parentView.frame.size
             }
 
             it("creates size(of:) constraints correctly") {
                 view.immediatelyApplyLayout(Layout.size(of: parentView))
-                expect(view.frame.size).to(equal(parentView.frame.size))
+                expect(view.frame.size) == parentView.frame.size
             }
         }
     }

@@ -22,9 +22,9 @@
  SOFTWARE.
  */
 
-import Quick
-import Nimble
 @testable import Layout
+import Nimble
+import Quick
 
 class LayoutOperatorsSpec: QuickSpec {
 
@@ -54,12 +54,12 @@ class LayoutOperatorsSpec: QuickSpec {
                         Layout.right
                     )
 
-                    expect(view.frame).to(equal(CGRect(x: 10, y: 0, width: 90, height: 100)))
+                    expect(view.frame) == CGRect(x: 10, y: 0, width: 90, height: 100)
                 }
 
                 it("adds the correct constants") {
                     view.immediatelyApplyLayout(Layout.size + 10)
-                    expect(view.frame.size).to(equal(CGSize(width: 110, height: 110)))
+                    expect(view.frame.size) == CGSize(width: 110, height: 110)
                 }
             }
 
@@ -71,12 +71,12 @@ class LayoutOperatorsSpec: QuickSpec {
                         Layout.right
                     )
 
-                    expect(view.frame).to(equal(CGRect(x: -10, y: 0, width: 110, height: 100)))
+                    expect(view.frame) == CGRect(x: -10, y: 0, width: 110, height: 100)
                 }
 
                 it("subtracts the correct constants") {
                     view.immediatelyApplyLayout(Layout.size - 10)
-                    expect(view.frame.size).to(equal(CGSize(width: 90, height: 90)))
+                    expect(view.frame.size) == CGSize(width: 90, height: 90)
                 }
             }
 
@@ -87,7 +87,7 @@ class LayoutOperatorsSpec: QuickSpec {
                         Layout.size * 2
                     )
 
-                    expect(view.frame).to(equal(CGRect(x: -50, y: -50, width: 200, height: 200)))
+                    expect(view.frame) == CGRect(x: -50, y: -50, width: 200, height: 200)
                 }
             }
 
@@ -98,7 +98,7 @@ class LayoutOperatorsSpec: QuickSpec {
                         Layout.size / 2
                     )
 
-                    expect(view.frame).to(equal(CGRect(x: 25, y: 25, width: 50, height: 50)))
+                    expect(view.frame) == CGRect(x: 25, y: 25, width: 50, height: 50)
                 }
             }
 
@@ -106,29 +106,29 @@ class LayoutOperatorsSpec: QuickSpec {
                 it("adds an identifier") {
                     let identifier = "debug"
                     let constraints = view.createLayout(Layout.left <- identifier)
-                    expect(constraints.count).to(equal(1))
-                    expect(constraints[0].identifier).to(equal(identifier))
+                    expect(constraints.count) == 1
+                    expect(constraints[0].identifier) == identifier
                 }
 
                 it("has a lower priority than ==") {
                     let identifier = "debug"
                     let constraints = view.createLayout(Layout.left == Layout.right(of: parentView) <- identifier)
-                    expect(constraints.count).to(equal(1))
-                    expect(constraints[0].identifier).to(equal(identifier))
+                    expect(constraints.count) == 1
+                    expect(constraints[0].identifier) == identifier
                 }
 
                 it("has a lower priority than >=") {
                     let identifier = "debug"
                     let constraints = view.createLayout(Layout.left >= Layout.right(of: parentView) <- identifier)
-                    expect(constraints.count).to(equal(1))
-                    expect(constraints[0].identifier).to(equal(identifier))
+                    expect(constraints.count) == 1
+                    expect(constraints[0].identifier) == identifier
                 }
 
                 it("has a lower priority than <=") {
                     let identifier = "debug"
                     let constraints = view.createLayout(Layout.left >= Layout.right(of: parentView) <- identifier)
-                    expect(constraints.count).to(equal(1))
-                    expect(constraints[0].identifier).to(equal(identifier))
+                    expect(constraints.count) == 1
+                    expect(constraints[0].identifier) == identifier
                 }
             }
 
@@ -136,74 +136,74 @@ class LayoutOperatorsSpec: QuickSpec {
                 it("adds an identifier") {
                     let priority: Float = 250
                     let constraints = view.createLayout(Layout.left ~ priority)
-                    expect(constraints.count).to(equal(1))
-                    expect(constraints[0].priority).to(equal(priority))
+                    expect(constraints.count) == 1
+                    expect(constraints[0].priority) == priority
                 }
             }
 
             context("equal") {
                 it("allows constants") {
                     view.immediatelyApplyLayout(Layout.width == parentView.frame.width)
-                    expect(view.frame.width).to(equal(parentView.frame.width))
+                    expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other views") {
                     view.immediatelyApplyLayout(Layout.width == parentView)
-                    expect(view.frame.width).to(equal(parentView.frame.width))
+                    expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other layouts") {
                     view.immediatelyApplyLayout(Layout.width == Layout.width(of: parentView))
-                    expect(view.frame.width).to(equal(parentView.frame.width))
+                    expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other layouts with multipliers") {
                     view.immediatelyApplyLayout(Layout.width == Layout.width(of: parentView) * 2)
-                    expect(view.frame.width).to(equal(parentView.frame.width * 2))
+                    expect(view.frame.width) == parentView.frame.width * 2
                 }
             }
 
             context("greater than or equal") {
                 it("allows constants") {
                     view.immediatelyApplyLayout(Layout.width >= parentView.frame.width)
-                    expect(view.frame.width).to(equal(parentView.frame.width))
+                    expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other views") {
                     view.immediatelyApplyLayout(Layout.width >= parentView)
-                    expect(view.frame.width).to(equal(parentView.frame.width))
+                    expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other layouts") {
                     view.immediatelyApplyLayout(Layout.width >= Layout.width(of: parentView))
-                    expect(view.frame.width).to(equal(parentView.frame.width))
+                    expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other layouts with multipliers") {
                     view.immediatelyApplyLayout(Layout.width >= Layout.width(of: parentView) * 2)
-                    expect(view.frame.width).to(equal(parentView.frame.width * 2))
+                    expect(view.frame.width) == parentView.frame.width * 2
                 }
             }
 
             context("less than or equal") {
                 it("allows constants") {
                     view.immediatelyApplyLayout(Layout.width <= parentView.frame.width, Layout.width == 1_000 ~ 500)
-                    expect(view.frame.width).to(equal(parentView.frame.width))
+                    expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other views") {
                     view.immediatelyApplyLayout(Layout.width <= parentView, Layout.width == 1_000 ~ 500)
-                    expect(view.frame.width).to(equal(parentView.frame.width))
+                    expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other layouts") {
                     view.immediatelyApplyLayout(Layout.width <= Layout.width(of: parentView), Layout.width == 1_000 ~ 500)
-                    expect(view.frame.width).to(equal(parentView.frame.width))
+                    expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other layouts with multipliers") {
                     view.immediatelyApplyLayout(Layout.width <= Layout.width(of: parentView) / 2, Layout.width == 1_000 ~ 500)
-                    expect(view.frame.width).to(equal(parentView.frame.width / 2))
+                    expect(view.frame.width) == parentView.frame.width / 2
                 }
             }
         }

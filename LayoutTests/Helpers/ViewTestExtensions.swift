@@ -24,11 +24,11 @@
 
 #if os(macOS)
     import Cocoa
+    @testable import Layout
 #else
+    @testable import Layout
     import UIKit
 #endif
-
-@testable import Layout
 
 extension View {
 

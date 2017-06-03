@@ -22,8 +22,8 @@
  SOFTWARE.
  */
 
-import UIKit
 import Layout
+import UIKit
 
 class ViewController: UIViewController {
     var layouts: DynamicLayoutManager!

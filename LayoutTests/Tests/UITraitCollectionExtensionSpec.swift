@@ -22,9 +22,9 @@
  SOFTWARE.
  */
 
-import Quick
-import Nimble
 @testable import Layout
+import Nimble
+import Quick
 
 // iOS/tvOS only.
 
@@ -33,9 +33,9 @@ class UITraitCollectionExtensionSpec: QuickSpec {
     override func spec() {
         describe("UITraitCollectionExtensionSpec") {
             it("creates shorthand collections correctly") {
-                expect(.horizontally(.regular)).to(equal(UITraitCollection(horizontalSizeClass: .regular)))
-                expect(.vertically(.regular)).to(equal(UITraitCollection(verticalSizeClass: .regular)))
-                expect(.idiom(.phone)).to(equal(UITraitCollection(userInterfaceIdiom: .phone)))
+                expect(.horizontally(.regular)) == UITraitCollection(horizontalSizeClass: .regular)
+                expect(.vertically(.regular)) == UITraitCollection(verticalSizeClass: .regular)
+                expect(.idiom(.phone)) == UITraitCollection(userInterfaceIdiom: .phone)
             }
 
             it("can merge multiple collections correctly") {
@@ -46,8 +46,8 @@ class UITraitCollectionExtensionSpec: QuickSpec {
                     ]
                 )
 
-                expect(.idiom(.phone) && .horizontally(.regular)).to(equal(target))
-                expect([.idiom(.phone), .horizontally(.regular)].merged()).to(equal(target))
+                expect(.idiom(.phone) && .horizontally(.regular)) == target
+                expect([.idiom(.phone), .horizontally(.regular)].merged()) == target
             }
         }
     }

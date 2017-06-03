@@ -22,9 +22,9 @@
  SOFTWARE.
  */
 
-import Quick
-import Nimble
 @testable import Layout
+import Nimble
+import Quick
 
 class DynamicLayoutManagerSpec: QuickSpec {
 
@@ -60,11 +60,11 @@ class DynamicLayoutManagerSpec: QuickSpec {
                     }
 
                     layoutManager.updateDynamicConstraints()
-                    expect(view.frame).to(equal(rootView.frame))
+                    expect(view.frame) == rootView.frame
 
                     makeThingsFull = false
                     layoutManager.updateDynamicConstraints()
-                    expect(view.frame).to(equal(CGRect(x: 25, y: 25, width: 50, height: 50)))
+                    expect(view.frame) == CGRect(x: 25, y: 25, width: 50, height: 50)
                 }
             }
         }

@@ -22,9 +22,9 @@
  SOFTWARE.
  */
 
-import Quick
-import Nimble
 @testable import Layout
+import Nimble
+import Quick
 
 // iOS/tvOS only.
 
@@ -61,10 +61,10 @@ class DynamicLayoutManagerTraitSpec: QuickSpec {
                     }
 
                     layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.regular))
-                    expect(view.frame).to(equal(CGRect(x: 25, y: 25, width: 50, height: 50)))
+                    expect(view.frame) == CGRect(x: 25, y: 25, width: 50, height: 50)
 
                     layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.compact))
-                    expect(view.frame).to(equal(rootView.frame))
+                    expect(view.frame) == rootView.frame
                 }
 
                 it("handles nested traits") {
@@ -83,12 +83,12 @@ class DynamicLayoutManagerTraitSpec: QuickSpec {
                     })
 
                     layoutManager.updateTraitBasedConstraints()
-                    expect(view.frame).to(equal(CGRect(x: 25, y: 25, width: 50, height: 50)))
+                    expect(view.frame) == CGRect(x: 25, y: 25, width: 50, height: 50)
 
                     rootView.overridenTraitCollection = .idiom(.phone) && .vertically(.compact) && .horizontally(.compact)
                     layoutManager.updateTraitBasedConstraints()
 
-                    expect(view.frame).to(equal(rootView.frame))
+                    expect(view.frame) == rootView.frame
                 }
 
                 it("does not call blocks for the wrong idiom") {

@@ -22,9 +22,9 @@
  SOFTWARE.
  */
 
-import Quick
-import Nimble
 @testable import Layout
+import Nimble
+import Quick
 
 // iOS/tvOS only.
 
@@ -59,7 +59,7 @@ class LayoutMarginsSpec: QuickSpec {
                     Layout.rightMargin
                 )
 
-                expect(view.frame).to(equal(CGRect(x: 5, y: 5, width: 90, height: 90)))
+                expect(view.frame) == CGRect(x: 5, y: 5, width: 90, height: 90)
             }
 
             it("creates margin(of:) constraints correctly") {
@@ -70,7 +70,7 @@ class LayoutMarginsSpec: QuickSpec {
                     Layout.rightMargin(of: parentView)
                 )
 
-                expect(view.frame).to(equal(CGRect(x: 5, y: 5, width: 90, height: 90)))
+                expect(view.frame) == CGRect(x: 5, y: 5, width: 90, height: 90)
             }
 
             it("creates marginTo constraints correctly") {
@@ -81,7 +81,7 @@ class LayoutMarginsSpec: QuickSpec {
                     Layout.rightToMargin
                 )
 
-                expect(view.frame).to(equal(CGRect(x: 10, y: 10, width: 80, height: 80)))
+                expect(view.frame) == CGRect(x: 10, y: 10, width: 80, height: 80)
             }
         }
     }

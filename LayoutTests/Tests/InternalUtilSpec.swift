@@ -22,9 +22,9 @@
  SOFTWARE.
  */
 
-import Quick
-import Nimble
 @testable import Layout
+import Nimble
+import Quick
 
 class InternalUtilSpec: QuickSpec {
 
@@ -42,10 +42,10 @@ class InternalUtilSpec: QuickSpec {
 
                     let expectedResult = [[1, 1, 1], [2, 2, 2], [3, 3, 3]]
 
-                    expect(result.count).to(equal(expectedResult.count))
+                    expect(result.count) == expectedResult.count
 
                     for (val1, val2) in zip(result, expectedResult) {
-                        expect(val1).to(equal(val2))
+                        expect(val1) == val2
                     }
                 }
 

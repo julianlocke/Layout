@@ -12,6 +12,8 @@ opt_in_rules:
   - prohibited_super_call
   - redundant_nil_coalescing
   - switch_case_on_newline
+  - sorted_imports
+  - nimble_operator
 
 disabled_rules:
   - line_length
