@@ -376,7 +376,7 @@
 				1E33EC2B1EBF5FE600D48139 /* Sources */,
 				1E33EC2C1EBF5FE600D48139 /* Frameworks */,
 				1E33EC2D1EBF5FE600D48139 /* Resources */,
-				1E0597D71ECE7CC000C5DF32 /* Punic */,
+				1E0597D71ECE7CC000C5DF32 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -452,7 +452,7 @@
 				1EFD87081ECE0AA90061390D /* Sources */,
 				1EFD87091ECE0AA90061390D /* Frameworks */,
 				1EFD870A1ECE0AA90061390D /* Resources */,
-				1E0597D81ECE7CFA00C5DF32 /* Punic */,
+				1E0597D81ECE7CFA00C5DF32 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -471,7 +471,7 @@
 				1EFD87171ECE0ACE0061390D /* Sources */,
 				1EFD87181ECE0ACE0061390D /* Frameworks */,
 				1EFD87191ECE0ACE0061390D /* Resources */,
-				1E0597D91ECE7D2C00C5DF32 /* Punic */,
+				1E0597D91ECE7D2C00C5DF32 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -589,7 +589,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1E0597D71ECE7CC000C5DF32 /* Punic */ = {
+		1E0597D71ECE7CC000C5DF32 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -598,14 +598,14 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
 			);
-			name = Punic;
+			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/punic copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		1E0597D81ECE7CFA00C5DF32 /* Punic */ = {
+		1E0597D81ECE7CFA00C5DF32 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -614,14 +614,14 @@
 				"$(SRCROOT)/Carthage/Build/tvOS/Quick.framework",
 				"$(SRCROOT)/Carthage/Build/tvOS/Nimble.framework",
 			);
-			name = Punic;
+			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/punic copy-frameworks";
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
 		};
-		1E0597D91ECE7D2C00C5DF32 /* Punic */ = {
+		1E0597D91ECE7D2C00C5DF32 /* Carthage */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -630,7 +630,7 @@
 				"$(SRCROOT)/Carthage/Build/Mac/Quick.framework",
 				"$(SRCROOT)/Carthage/Build/Mac/Nimble.framework",
 			);
-			name = Punic;
+			name = Carthage;
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;

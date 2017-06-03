@@ -1,6 +1,0 @@
-defaults:
-  configuration: Release
-skips:
-  - [ iOS, quick, Quick.xcworkspace, Nimble-iOS ]
-  - [ tvOS, quick, Quick.xcworkspace, Nimble-tvOS ]
-  - [ macOS, quick, Quick.xcworkspace, Nimble-macOS ]
