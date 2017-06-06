@@ -15,12 +15,12 @@
 		1E0597D61ECE7CA400C5DF32 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597CE1ECE7C7400C5DF32 /* Quick.framework */; };
 		1E33EC321EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E33EC311EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift */; };
 		1E33EC341EBF5FE600D48139 /* Layout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E71EFCC1DE70B8400A65558 /* Layout.framework */; };
-		1E4748361DE8CF5C007FD28D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Util.swift */; };
+		1E4748361DE8CF5C007FD28D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Utils.swift */; };
 		1E6792F01DEF5F8D003771CD /* ConstraintContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */; };
 		1E6792F11DEF5F8D003771CD /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
 		1E6792F21DEF5F8D003771CD /* LayoutDescriptorOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */; };
 		1E6792F31DEF5F8D003771CD /* Layouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFEB1DE726A700A65558 /* Layouts.swift */; };
-		1E6792F41DEF5F8D003771CD /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Util.swift */; };
+		1E6792F41DEF5F8D003771CD /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Utils.swift */; };
 		1E6792F51DEF5F8D003771CD /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */; };
 		1E6792F61DEF5F8D003771CD /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
 		1E6792F71DEF5F8E003771CD /* PublicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7D2F1DE949A800895227 /* PublicUtils.swift */; };
@@ -37,12 +37,18 @@
 		1E8EE2CB1DEB4AA500232CB0 /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
 		1E9696F01ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */; };
 		1E9696F11ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */; };
+		1EA5E18F1EE6345500A99D71 /* DynamicLayoutManagerUIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E18E1EE6345500A99D71 /* DynamicLayoutManagerUIKitExtensions.swift */; };
+		1EA5E1901EE6345500A99D71 /* DynamicLayoutManagerUIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E18E1EE6345500A99D71 /* DynamicLayoutManagerUIKitExtensions.swift */; };
+		1EA5E1921EE635A800A99D71 /* UITraitCollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E1911EE635A800A99D71 /* UITraitCollectionExtensions.swift */; };
+		1EA5E1931EE635A800A99D71 /* UITraitCollectionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E1911EE635A800A99D71 /* UITraitCollectionExtensions.swift */; };
+		1EA5E1961EE6365C00A99D71 /* LayoutsUIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E1951EE6365C00A99D71 /* LayoutsUIKitExtensions.swift */; };
+		1EA5E1971EE6365C00A99D71 /* LayoutsUIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA5E1951EE6365C00A99D71 /* LayoutsUIKitExtensions.swift */; };
 		1EA611E61DEF66860043233D /* Platform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6792F81DEF5FAA003771CD /* Platform.swift */; };
 		1EA611E81DEF66860043233D /* ConstraintContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */; };
 		1EA611E91DEF66860043233D /* LayoutDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */; };
 		1EA611EA1DEF66860043233D /* LayoutDescriptorOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */; };
 		1EA611EB1DEF66860043233D /* Layouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFEB1DE726A700A65558 /* Layouts.swift */; };
-		1EA611EC1DEF66860043233D /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Util.swift */; };
+		1EA611EC1DEF66860043233D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Utils.swift */; };
 		1EA611ED1DEF66860043233D /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */; };
 		1EA611EE1DEF66860043233D /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
 		1EA611EF1DEF66860043233D /* PublicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7D2F1DE949A800895227 /* PublicUtils.swift */; };
@@ -108,7 +114,7 @@
 		1E33EC2F1EBF5FE600D48139 /* Layout-iOS-Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Layout-iOS-Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E33EC311EBF5FE600D48139 /* UITraitCollectionExtensionSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITraitCollectionExtensionSpec.swift; sourceTree = "<group>"; };
 		1E33EC331EBF5FE600D48139 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
-		1E4748351DE8CF5C007FD28D /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		1E4748351DE8CF5C007FD28D /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		1E6792E71DEF5F1A003771CD /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E6792EA1DEF5F1A003771CD /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
 		1E6792F81DEF5FAA003771CD /* Platform.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Platform.swift; sourceTree = "<group>"; };
@@ -125,6 +131,9 @@
 		1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManager.swift; sourceTree = "<group>"; };
 		1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManagerTraitSpec.swift; sourceTree = "<group>"; };
+		1EA5E18E1EE6345500A99D71 /* DynamicLayoutManagerUIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManagerUIKitExtensions.swift; sourceTree = "<group>"; };
+		1EA5E1911EE635A800A99D71 /* UITraitCollectionExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITraitCollectionExtensions.swift; sourceTree = "<group>"; };
+		1EA5E1951EE6365C00A99D71 /* LayoutsUIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutsUIKitExtensions.swift; sourceTree = "<group>"; };
 		1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutManagerSpec.swift; sourceTree = "<group>"; };
 		1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManagerSpec.swift; sourceTree = "<group>"; };
 		1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InternalUtilSpec.swift; sourceTree = "<group>"; };
@@ -301,6 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				1E6792F81DEF5FAA003771CD /* Platform.swift */,
+				1E4748351DE8CF5C007FD28D /* Utils.swift */,
 				1E7A7D2F1DE949A800895227 /* PublicUtils.swift */,
 				1E71EFE91DE710A900A65558 /* ConstraintContainer.swift */,
 				1E71EFE71DE70BAB00A65558 /* LayoutDescriptor.swift */,
@@ -308,7 +318,7 @@
 				1E71EFEB1DE726A700A65558 /* Layouts.swift */,
 				1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */,
 				1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */,
-				1EA92C691EBE8B4400C8347C /* Internal */,
+				1EA5E1941EE6361400A99D71 /* UIKit */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -323,13 +333,15 @@
 			path = Supporting;
 			sourceTree = "<group>";
 		};
-		1EA92C691EBE8B4400C8347C /* Internal */ = {
+		1EA5E1941EE6361400A99D71 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				1E4748351DE8CF5C007FD28D /* Util.swift */,
 				1E780D3C1EBE81D6006AD1D6 /* ConstraintContextStack.swift */,
+				1EA5E18E1EE6345500A99D71 /* DynamicLayoutManagerUIKitExtensions.swift */,
+				1EA5E1911EE635A800A99D71 /* UITraitCollectionExtensions.swift */,
+				1EA5E1951EE6365C00A99D71 /* LayoutsUIKitExtensions.swift */,
 			);
-			path = Internal;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		1EED8A991ECE75FF00E56366 /* Frameworks */ = {
@@ -711,7 +723,7 @@
 				1E6792FA1DEF5FAA003771CD /* Platform.swift in Sources */,
 				1E6792F01DEF5F8D003771CD /* ConstraintContainer.swift in Sources */,
 				1E6792F51DEF5F8D003771CD /* LayoutManager.swift in Sources */,
-				1E6792F41DEF5F8D003771CD /* Util.swift in Sources */,
+				1E6792F41DEF5F8D003771CD /* Utils.swift in Sources */,
 				1E6792F61DEF5F8D003771CD /* DynamicLayoutManager.swift in Sources */,
 				1E6792F71DEF5F8E003771CD /* PublicUtils.swift in Sources */,
 				1E6792F31DEF5F8D003771CD /* Layouts.swift in Sources */,
@@ -725,15 +737,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E780D3F1EBE81D6006AD1D6 /* ConstraintContextStack.swift in Sources */,
+				1EA5E1971EE6365C00A99D71 /* LayoutsUIKitExtensions.swift in Sources */,
 				1EA611E81DEF66860043233D /* ConstraintContainer.swift in Sources */,
+				1EA5E1931EE635A800A99D71 /* UITraitCollectionExtensions.swift in Sources */,
 				1EA611EF1DEF66860043233D /* PublicUtils.swift in Sources */,
 				1EA611E91DEF66860043233D /* LayoutDescriptor.swift in Sources */,
 				1EA611EE1DEF66860043233D /* DynamicLayoutManager.swift in Sources */,
 				1EA611EB1DEF66860043233D /* Layouts.swift in Sources */,
-				1EA611EC1DEF66860043233D /* Util.swift in Sources */,
+				1EA611EC1DEF66860043233D /* Utils.swift in Sources */,
 				1EA611EA1DEF66860043233D /* LayoutDescriptorOperators.swift in Sources */,
 				1EA611E61DEF66860043233D /* Platform.swift in Sources */,
 				1EA611ED1DEF66860043233D /* LayoutManager.swift in Sources */,
+				1EA5E1901EE6345500A99D71 /* DynamicLayoutManagerUIKitExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -742,15 +757,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E780D3D1EBE81D6006AD1D6 /* ConstraintContextStack.swift in Sources */,
+				1EA5E1961EE6365C00A99D71 /* LayoutsUIKitExtensions.swift in Sources */,
 				1E6792F91DEF5FAA003771CD /* Platform.swift in Sources */,
+				1EA5E1921EE635A800A99D71 /* UITraitCollectionExtensions.swift in Sources */,
 				1E8EE2C71DEB3D1300232CB0 /* LayoutManager.swift in Sources */,
 				1E71EFEC1DE726A700A65558 /* Layouts.swift in Sources */,
 				1E7A7D301DE949A800895227 /* PublicUtils.swift in Sources */,
 				1E8EE2CB1DEB4AA500232CB0 /* DynamicLayoutManager.swift in Sources */,
 				1E71EFEE1DE726D000A65558 /* LayoutDescriptorOperators.swift in Sources */,
-				1E4748361DE8CF5C007FD28D /* Util.swift in Sources */,
+				1E4748361DE8CF5C007FD28D /* Utils.swift in Sources */,
 				1E71EFE81DE70BAB00A65558 /* LayoutDescriptor.swift in Sources */,
 				1E71EFEA1DE710A900A65558 /* ConstraintContainer.swift in Sources */,
+				1EA5E18F1EE6345500A99D71 /* DynamicLayoutManagerUIKitExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
