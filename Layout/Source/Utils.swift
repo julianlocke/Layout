@@ -39,7 +39,7 @@ func zip3<V1, V2, V3>(_ seq1: [V1], _ seq2: [V2], _ seq3: [V3]) -> [(V1, V2, V3)
     }
 }
 
-extension NSLayoutAttribute {
+extension LayoutAttribute {
     var requiresReinterpretation: Bool {
         #if os(macOS)
             switch self {

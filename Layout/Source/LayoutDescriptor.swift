@@ -35,13 +35,13 @@ public protocol LayoutConstraintGenerator {
 
 public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
 
-    public var attributes: [NSLayoutAttribute]
+    public var attributes: [LayoutAttribute]
 
-    public var relatedBy: NSLayoutRelation
+    public var relatedBy: LayoutRelation
 
     public var toItem: ConstraintContainer?
 
-    public var otherAttributes: [NSLayoutAttribute]?
+    public var otherAttributes: [LayoutAttribute]?
 
     public var multiplier: CGFloat
 
@@ -56,10 +56,10 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
     public var identifier: String?
 
     public init(
-        _ attributes: [NSLayoutAttribute],
-        relatedBy: NSLayoutRelation = .equal,
+        _ attributes: [LayoutAttribute],
+        relatedBy: LayoutRelation = .equal,
         toItem: ConstraintContainer? = nil,
-        otherAttributes: [NSLayoutAttribute]? = nil,
+        otherAttributes: [LayoutAttribute]? = nil,
         multiplier: CGFloat = 1,
         constant: CGFloat? = nil,
         constants: [CGFloat]? = nil,
@@ -139,7 +139,7 @@ extension LayoutDescriptor {
 
 fileprivate extension LayoutDescriptor {
 
-    func reinterpret(constant: CGFloat, for attribute: NSLayoutAttribute) -> CGFloat {
+    func reinterpret(constant: CGFloat, for attribute: LayoutAttribute) -> CGFloat {
         guard reinterpretConstants, attribute.requiresReinterpretation else {
             return constant
         }

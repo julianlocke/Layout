@@ -26,11 +26,16 @@
     import Cocoa
     public typealias View = NSView
     public typealias LayoutGuide = NSLayoutGuide
-    public typealias LayoutPriority = NSLayoutPriority
+    public typealias LayoutPriority = NSLayoutConstraint.Priority
+    public typealias EdgeInsets = NSEdgeInsets
+    public typealias LayoutAttribute = NSLayoutConstraint.Attribute
+    public typealias LayoutRelation = NSLayoutConstraint.Relation
 #else
     import UIKit
     public typealias View = UIView
     public typealias LayoutGuide = UILayoutGuide
     public typealias LayoutPriority = UILayoutPriority
     public typealias EdgeInsets = UIEdgeInsets
+    public typealias LayoutAttribute = NSLayoutAttribute
+    public typealias LayoutRelation = NSLayoutRelation
 #endif

@@ -80,7 +80,7 @@ public func == (lhs: LayoutDescriptor<DimensionLayout>, rhs: CGFloat) -> LayoutD
     return lhs.modify { result in
         result.constant = rhs
         result.multiplier = 0
-        result.otherAttributes = [NSLayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
+        result.otherAttributes = [LayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
     }
 }
 
@@ -107,7 +107,7 @@ public func >= (lhs: LayoutDescriptor<DimensionLayout>, rhs: CGFloat) -> LayoutD
         result.constant = rhs
         result.multiplier = 1
         result.relatedBy = .greaterThanOrEqual
-        result.otherAttributes = [NSLayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
+        result.otherAttributes = [LayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
     }
 }
 
@@ -134,7 +134,7 @@ public func <= (lhs: LayoutDescriptor<DimensionLayout>, rhs: CGFloat) -> LayoutD
         result.constant = rhs
         result.multiplier = 1
         result.relatedBy = .lessThanOrEqual
-        result.otherAttributes = [NSLayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
+        result.otherAttributes = [LayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
     }
 }
 
