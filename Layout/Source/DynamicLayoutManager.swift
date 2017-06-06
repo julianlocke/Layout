@@ -36,13 +36,13 @@ public class DynamicLayoutManager {
         self.rootView = rootView
     }
 
-    fileprivate var dynamicConstraintBlocks: [() -> [NSLayoutConstraint]] = []
-    fileprivate var currentDynamicConstraints: [NSLayoutConstraint] = []
+    private var dynamicConstraintBlocks: [() -> [NSLayoutConstraint]] = []
+    private var currentDynamicConstraints: [NSLayoutConstraint] = []
 
     #if os(iOS) || os(tvOS)
-    fileprivate var updatingTraits = false
-    fileprivate var traitBasedConstraints: [(UITraitCollection, [NSLayoutConstraint])] = []
-    fileprivate var currentTraitBasedConstraints: [NSLayoutConstraint] = []
+    private var updatingTraits = false
+    private var traitBasedConstraints: [(UITraitCollection, [NSLayoutConstraint])] = []
+    private var currentTraitBasedConstraints: [NSLayoutConstraint] = []
     #endif
 }
 
