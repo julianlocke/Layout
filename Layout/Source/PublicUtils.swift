@@ -28,16 +28,16 @@
     import UIKit
 #endif
 
-public extension Sequence where Iterator.Element == NSLayoutConstraint {
+public extension Array where Element == NSLayoutConstraint {
 
     /// Activate a sequence of `NSLayoutConstraint`s.
     func activate() {
-        NSLayoutConstraint.activate(Array(self))
+        NSLayoutConstraint.activate(self)
     }
 
     /// Deactivate a sequence of `NSLayoutConstraint`s.
     func deactivate() {
-        NSLayoutConstraint.deactivate(Array(self))
+        NSLayoutConstraint.deactivate(self)
     }
 }
 
