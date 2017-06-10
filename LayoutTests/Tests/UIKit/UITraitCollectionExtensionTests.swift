@@ -23,32 +23,47 @@
  */
 
 @testable import Layout
-import Nimble
-import Quick
+import XCTest
+//import Nimble
+//import Quick
 
 // iOS/tvOS only.
 
-class UITraitCollectionExtensionSpec: QuickSpec {
+class UITraitCollectionExtensionSpec: XCTestCase {
 
-    override func spec() {
-        describe("UITraitCollectionExtensionSpec") {
-            it("creates shorthand collections correctly") {
-                expect(.horizontally(.regular)) == UITraitCollection(horizontalSizeClass: .regular)
-                expect(.vertically(.regular)) == UITraitCollection(verticalSizeClass: .regular)
-                expect(.idiom(.phone)) == UITraitCollection(userInterfaceIdiom: .phone)
-            }
+    func testShorthand() {
+        XCTAssertEqual(
+            .horizontally(.regular),
+            UITraitCollection(horizontalSizeClass: .regular)
+        )
 
-            it("can merge multiple collections correctly") {
-                let target = UITraitCollection(
-                    traitsFrom: [
-                        UITraitCollection(userInterfaceIdiom: .phone),
-                        UITraitCollection(horizontalSizeClass: .regular)
-                    ]
-                )
+        XCTAssertEqual(
+            .vertically(.regular),
+            UITraitCollection(verticalSizeClass: .regular)
+        )
 
-                expect(.idiom(.phone) && .horizontally(.regular)) == target
-                expect([.idiom(.phone), .horizontally(.regular)].merged()) == target
-            }
-        }
+        XCTAssertEqual(
+            .idiom(.phone),
+            UITraitCollection(userInterfaceIdiom: .phone)
+        )
+    }
+
+    func testMerging() {
+        let target = UITraitCollection(
+            traitsFrom: [
+                UITraitCollection(userInterfaceIdiom: .phone),
+                UITraitCollection(horizontalSizeClass: .regular)
+            ]
+        )
+
+        XCTAssertEqual(
+            .idiom(.phone) && .horizontally(.regular),
+            target
+        )
+
+        XCTAssertEqual(
+            [.idiom(.phone), .horizontally(.regular)].merged(),
+            target
+        )
     }
 }
