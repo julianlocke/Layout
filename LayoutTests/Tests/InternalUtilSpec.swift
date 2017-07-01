@@ -36,7 +36,8 @@ class InternalUtilSpec: QuickSpec {
                     let seq2 = [1, 2, 3]
                     let seq3 = [1, 2, 3]
 
-                    let result = zip3(seq1, seq2, seq3).map { (val1, val2, val3) -> [Int] in
+                    let result = zip3(seq1, seq2, seq3).map { arg -> [Int] in
+                        let (val1, val2, val3) = arg
                         return [val1, val2, val3]
                     }
 

@@ -7,12 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E0597D31ECE7C9C00C5DF32 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597C91ECE7C6B00C5DF32 /* Nimble.framework */; };
-		1E0597D41ECE7C9C00C5DF32 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597CA1ECE7C6B00C5DF32 /* Quick.framework */; };
-		1E0597D51ECE7CA400C5DF32 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597CD1ECE7C7400C5DF32 /* Nimble.framework */; };
-		1E0597D61ECE7CA400C5DF32 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597CE1ECE7C7400C5DF32 /* Quick.framework */; };
 		1E33EC321EBF5FE600D48139 /* UITraitCollectionExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E33EC311EBF5FE600D48139 /* UITraitCollectionExtensionTests.swift */; };
 		1E33EC341EBF5FE600D48139 /* Layout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E71EFCC1DE70B8400A65558 /* Layout.framework */; };
+		1E3C29521F07BA3500887BC2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597CD1ECE7C7400C5DF32 /* Nimble.framework */; };
+		1E3C29531F07BA3500887BC2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597CE1ECE7C7400C5DF32 /* Quick.framework */; };
+		1E3C29541F07BA3B00887BC2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597C91ECE7C6B00C5DF32 /* Nimble.framework */; };
+		1E3C29551F07BA3B00887BC2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597CA1ECE7C6B00C5DF32 /* Quick.framework */; };
+		1E3C29561F07BA4300887BC2 /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597C51ECE7C6100C5DF32 /* Nimble.framework */; };
+		1E3C29571F07BA4300887BC2 /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E0597C61ECE7C6100C5DF32 /* Quick.framework */; };
+		1E3C29591F07BA7600887BC2 /* LayoutMarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFD87571ECE670A0061390D /* LayoutMarginsSpec.swift */; };
+		1E3C295A1F07BA7D00887BC2 /* LayoutMarginsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EFD87571ECE670A0061390D /* LayoutMarginsSpec.swift */; };
+		1E3C295B1F07BA8300887BC2 /* InternalUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */; };
+		1E3C295C1F07BA8400887BC2 /* InternalUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */; };
+		1E3C295D1F07BA8800887BC2 /* LayoutManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */; };
+		1E3C295E1F07BA8900887BC2 /* LayoutManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */; };
+		1E3C295F1F07BA8B00887BC2 /* DynamicLayoutManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */; };
+		1E3C29601F07BA8C00887BC2 /* DynamicLayoutManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */; };
+		1E3C29611F07BA8F00887BC2 /* ConstraintContainerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9E1EBFCAD6001EB663 /* ConstraintContainerSpec.swift */; };
+		1E3C29621F07BA8F00887BC2 /* ConstraintContainerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9E1EBFCAD6001EB663 /* ConstraintContainerSpec.swift */; };
+		1E3C29631F07BA9200887BC2 /* LayoutsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6FA01EBFCDAF001EB663 /* LayoutsSpec.swift */; };
+		1E3C29641F07BA9300887BC2 /* LayoutsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6FA01EBFCDAF001EB663 /* LayoutsSpec.swift */; };
+		1E3C29651F07BA9600887BC2 /* LayoutOperatorsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6FA21EBFD584001EB663 /* LayoutOperatorsSpec.swift */; };
+		1E3C29661F07BA9600887BC2 /* LayoutOperatorsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6FA21EBFD584001EB663 /* LayoutOperatorsSpec.swift */; };
 		1E3F088A1EE7526F0085FE63 /* DynamicLayoutManagerTraitSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */; };
 		1E3F088B1EE7526F0085FE63 /* DynamicLayoutManagerTraitSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */; };
 		1E4748361DE8CF5C007FD28D /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E4748351DE8CF5C007FD28D /* Utils.swift */; };
@@ -132,6 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E33EC341EBF5FE600D48139 /* Layout.framework in Frameworks */,
+				1E3C29561F07BA4300887BC2 /* Nimble.framework in Frameworks */,
+				1E3C29571F07BA4300887BC2 /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,8 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EFD87111ECE0AA90061390D /* Layout.framework in Frameworks */,
-				1E0597D31ECE7C9C00C5DF32 /* Nimble.framework in Frameworks */,
-				1E0597D41ECE7C9C00C5DF32 /* Quick.framework in Frameworks */,
+				1E3C29541F07BA3B00887BC2 /* Nimble.framework in Frameworks */,
+				1E3C29551F07BA3B00887BC2 /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,8 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1EFD87201ECE0ACE0061390D /* Layout.framework in Frameworks */,
-				1E0597D51ECE7CA400C5DF32 /* Nimble.framework in Frameworks */,
-				1E0597D61ECE7CA400C5DF32 /* Quick.framework in Frameworks */,
+				1E3C29521F07BA3500887BC2 /* Nimble.framework in Frameworks */,
+				1E3C29531F07BA3500887BC2 /* Quick.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +390,7 @@
 				1E33EC2B1EBF5FE600D48139 /* Sources */,
 				1E33EC2C1EBF5FE600D48139 /* Frameworks */,
 				1E33EC2D1EBF5FE600D48139 /* Resources */,
+				1E3C29581F07BA4F00887BC2 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -635,6 +654,22 @@
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
+		1E3C29581F07BA4F00887BC2 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Quick.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Nimble.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 		1EED8AA71ECE780600E56366 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -670,7 +705,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E3C29591F07BA7600887BC2 /* LayoutMarginsSpec.swift in Sources */,
 				1E33EC321EBF5FE600D48139 /* UITraitCollectionExtensionTests.swift in Sources */,
+				1E3C295D1F07BA8800887BC2 /* LayoutManagerSpec.swift in Sources */,
+				1E3C29611F07BA8F00887BC2 /* ConstraintContainerSpec.swift in Sources */,
+				1E3C29651F07BA9600887BC2 /* LayoutOperatorsSpec.swift in Sources */,
+				1E3C295F1F07BA8B00887BC2 /* DynamicLayoutManagerSpec.swift in Sources */,
+				1E3C295B1F07BA8300887BC2 /* InternalUtilSpec.swift in Sources */,
+				1E3C29631F07BA9200887BC2 /* LayoutsSpec.swift in Sources */,
 				1E3F088A1EE7526F0085FE63 /* DynamicLayoutManagerTraitSpec.swift in Sources */,
 				1EFD87301ECE28FF0061390D /* ViewTestExtensions.swift in Sources */,
 			);
@@ -736,7 +778,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E3C295A1F07BA7D00887BC2 /* LayoutMarginsSpec.swift in Sources */,
 				1EED8A8A1ECE734D00E56366 /* ViewTestExtensions.swift in Sources */,
+				1E3C295E1F07BA8900887BC2 /* LayoutManagerSpec.swift in Sources */,
+				1E3C29621F07BA8F00887BC2 /* ConstraintContainerSpec.swift in Sources */,
+				1E3C29661F07BA9600887BC2 /* LayoutOperatorsSpec.swift in Sources */,
+				1E3C29601F07BA8C00887BC2 /* DynamicLayoutManagerSpec.swift in Sources */,
+				1E3C295C1F07BA8400887BC2 /* InternalUtilSpec.swift in Sources */,
+				1E3C29641F07BA9300887BC2 /* LayoutsSpec.swift in Sources */,
 				1E3F088B1EE7526F0085FE63 /* DynamicLayoutManagerTraitSpec.swift in Sources */,
 				1EFD874B1ECE40A00061390D /* UITraitCollectionExtensionTests.swift in Sources */,
 			);
