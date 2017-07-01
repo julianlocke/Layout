@@ -44,6 +44,12 @@ public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutPriority) -> Layout
     }
 }
 
+public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: Float) -> LayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.priority = LayoutPriority(rawValue: Float(rhs))
+    }
+}
+
 // MARK: - Debug identifiers
 
 precedencegroup LayoutIdentifierAssignment {

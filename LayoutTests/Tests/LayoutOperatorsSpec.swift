@@ -187,22 +187,22 @@ class LayoutOperatorsSpec: QuickSpec {
 
             context("less than or equal") {
                 it("allows constants") {
-                    view.immediatelyApplyLayout(Layout.width <= parentView.frame.width, Layout.width == 1_000 ~ UILayoutPriority(rawValue: 500))
+                    view.immediatelyApplyLayout(Layout.width <= parentView.frame.width, Layout.width == 1_000 ~ 500.0)
                     expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other views") {
-                    view.immediatelyApplyLayout(Layout.width <= parentView, Layout.width == 1_000 ~ UILayoutPriority(rawValue: 500))
+                    view.immediatelyApplyLayout(Layout.width <= parentView, Layout.width == 1_000 ~ 500.0)
                     expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other layouts") {
-                    view.immediatelyApplyLayout(Layout.width <= Layout.width(of: parentView), Layout.width == 1_000 ~ UILayoutPriority(rawValue: 500))
+                    view.immediatelyApplyLayout(Layout.width <= Layout.width(of: parentView), Layout.width == 1_000 ~ 500.0)
                     expect(view.frame.width) == parentView.frame.width
                 }
 
                 it("allows other layouts with multipliers") {
-                    view.immediatelyApplyLayout(Layout.width <= Layout.width(of: parentView) / 2, Layout.width == 1_000 ~ UILayoutPriority(rawValue: 500))
+                    view.immediatelyApplyLayout(Layout.width <= Layout.width(of: parentView) / 2, Layout.width == 1_000 ~ 500.0)
                     expect(view.frame.width) == parentView.frame.width / 2
                 }
             }
