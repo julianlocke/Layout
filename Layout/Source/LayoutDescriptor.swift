@@ -126,6 +126,23 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             return constraint
         }
     }
+
+    public func constraint() -> NSLayoutConstraint {
+        var copy = self
+
+        guard let container = copy.toItem else {
+            fatalError("A ConstraintContainer must be specified.")
+        }
+
+        copy.toItem = nil
+        let constraints = copy.constraints(for: container)
+
+        guard constraints.count == 1 else {
+            fatalError("You must specify a layout that only produces a single constraint.")
+        }
+
+        return constraints[0]
+    }
 }
 
 extension LayoutDescriptor {

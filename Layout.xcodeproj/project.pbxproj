@@ -338,10 +338,10 @@
 		1EA5E1941EE6361400A99D71 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
-				1E780D3C1EBE81D6006AD1D6 /* ConstraintContextStack.swift */,
 				1EA5E18E1EE6345500A99D71 /* DynamicLayoutManagerUIKitExtensions.swift */,
-				1EA5E1911EE635A800A99D71 /* UITraitCollectionExtensions.swift */,
 				1EA5E1951EE6365C00A99D71 /* LayoutsUIKitExtensions.swift */,
+				1E780D3C1EBE81D6006AD1D6 /* ConstraintContextStack.swift */,
+				1EA5E1911EE635A800A99D71 /* UITraitCollectionExtensions.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
