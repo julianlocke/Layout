@@ -50,6 +50,13 @@
 		1E780D3F1EBE81D6006AD1D6 /* ConstraintContextStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E780D3C1EBE81D6006AD1D6 /* ConstraintContextStack.swift */; };
 		1E7828D81F0932EA003227FE /* SingleConstraintSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7828D71F0932EA003227FE /* SingleConstraintSpec.swift */; };
 		1E7828D91F0932EA003227FE /* SingleConstraintSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7828D71F0932EA003227FE /* SingleConstraintSpec.swift */; };
+		1E7828DB1F093745003227FE /* InternalUtilSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */; };
+		1E7828DC1F093745003227FE /* LayoutManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */; };
+		1E7828DD1F093745003227FE /* DynamicLayoutManagerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */; };
+		1E7828DE1F093745003227FE /* ConstraintContainerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6F9E1EBFCAD6001EB663 /* ConstraintContainerSpec.swift */; };
+		1E7828DF1F093745003227FE /* LayoutsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6FA01EBFCDAF001EB663 /* LayoutsSpec.swift */; };
+		1E7828E01F093745003227FE /* LayoutOperatorsSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBF6FA21EBFD584001EB663 /* LayoutOperatorsSpec.swift */; };
+		1E7828E11F093745003227FE /* SingleConstraintSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7828D71F0932EA003227FE /* SingleConstraintSpec.swift */; };
 		1E7A7D301DE949A800895227 /* PublicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7D2F1DE949A800895227 /* PublicUtils.swift */; };
 		1E8EE2C71DEB3D1300232CB0 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */; };
 		1E8EE2CB1DEB4AA500232CB0 /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
@@ -242,7 +249,6 @@
 			isa = PBXGroup;
 			children = (
 				1E3F08891EE751540085FE63 /* UIKit */,
-				1EFD87571ECE670A0061390D /* LayoutMarginsSpec.swift */,
 				1EBF6F9C1EBFBE0B001EB663 /* InternalUtilSpec.swift */,
 				1EBF6F981EBF6A99001EB663 /* LayoutManagerSpec.swift */,
 				1EBF6F9A1EBFB528001EB663 /* DynamicLayoutManagerSpec.swift */,
@@ -275,6 +281,7 @@
 		1E3F08891EE751540085FE63 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				1EFD87571ECE670A0061390D /* LayoutMarginsSpec.swift */,
 				1E33EC311EBF5FE600D48139 /* UITraitCollectionExtensionTests.swift */,
 				1E9696EF1ED3CD0700D6FE3D /* DynamicLayoutManagerTraitSpec.swift */,
 			);
@@ -801,7 +808,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E7828E11F093745003227FE /* SingleConstraintSpec.swift in Sources */,
+				1E7828DB1F093745003227FE /* InternalUtilSpec.swift in Sources */,
+				1E7828DC1F093745003227FE /* LayoutManagerSpec.swift in Sources */,
+				1E7828DE1F093745003227FE /* ConstraintContainerSpec.swift in Sources */,
+				1E7828E01F093745003227FE /* LayoutOperatorsSpec.swift in Sources */,
+				1E7828DF1F093745003227FE /* LayoutsSpec.swift in Sources */,
 				1EFD87311ECE2E360061390D /* ViewTestExtensions.swift in Sources */,
+				1E7828DD1F093745003227FE /* DynamicLayoutManagerSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

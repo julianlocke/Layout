@@ -134,7 +134,7 @@ class LayoutOperatorsSpec: QuickSpec {
 
             context("priority") {
                 it("adds an identifier") {
-                    let priority: UILayoutPriority = .defaultLow
+                    let priority: LayoutPriority = .defaultLow
                     let constraints = view.createLayout(Layout.left ~ priority)
                     expect(constraints.count) == 1
                     expect(constraints[0].priority) == priority
