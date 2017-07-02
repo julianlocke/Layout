@@ -145,6 +145,7 @@ public extension Layout {
 
 public extension Layout {
 
+    @available(tvOSApplicationExtension 11.0, *)
     @available(iOSApplicationExtension 11.0, *)
     public static func flush(with insets: NSDirectionalEdgeInsets) -> LayoutDescriptor<XYLayout> {
         return LayoutDescriptor([.leading, .trailing, .top, .bottom], constants: [insets.leading, insets.trailing, insets.top, insets.bottom], reinterpretConstants: true)
@@ -156,6 +157,7 @@ public extension Layout {
         return LayoutDescriptor([.left, .right, .top, .bottom], otherAttributes: [.leftMargin, .rightMargin, .topMargin, .bottomMargin], constants: [insets.left, insets.right, insets.top, insets.bottom], reinterpretConstants: true)
     }
 
+    @available(tvOSApplicationExtension 11.0, *)
     @available(iOSApplicationExtension 11.0, *)
     public static func flushToMargins(with insets: NSDirectionalEdgeInsets) -> LayoutDescriptor<XYLayout> {
         return LayoutDescriptor([.leading, .trailing, .top, .bottom], otherAttributes: [.leadingMargin, .trailingMargin, .topMargin, .bottomMargin], constants: [insets.leading, insets.trailing, insets.top, insets.bottom], reinterpretConstants: true)

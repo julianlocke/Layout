@@ -51,9 +51,11 @@ class SingleConstraintSpec: QuickSpec {
                 expect(view.frame.width) == 100
             }
 
-            it("throws errors when returning multiple constraints") {
-                expect({ _ = (Layout.size(of: view) == 100).constraint() }()).to(throwAssertion())
-            }
+            #if os(iOS)
+                it("throws errors when returning multiple constraints") {
+                    expect({ _ = (Layout.size(of: view) == 100).constraint() }()).to(throwAssertion())
+                }
+            #endif
         }
     }
 }

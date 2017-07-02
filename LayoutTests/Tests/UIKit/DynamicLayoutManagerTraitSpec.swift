@@ -104,11 +104,13 @@ class DynamicLayoutManagerTraitSpec: QuickSpec {
                     expect(blockCalled).to(beFalse())
                 }
 
-                it("throws errors when using applyLayout") {
-                    layoutManager.add(constraintsFor: .horizontally(.regular)) {
-                        expect({ view.applyLayout(Layout.center, Layout.size / 2) }() ).to(throwAssertion())
+                #if os(iOS)
+                    it("throws errors when using applyLayout") {
+                        layoutManager.add(constraintsFor: .horizontally(.regular)) {
+                            expect({ view.applyLayout(Layout.center, Layout.size / 2) }() ).to(throwAssertion())
+                        }
                     }
-                }
+                #endif
             }
         }
     }
