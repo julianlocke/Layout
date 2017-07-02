@@ -134,6 +134,10 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             fatalError("A ConstraintContainer must be specified.")
         }
 
+        if let view = container as? View {
+            view.translatesAutoresizingMaskIntoConstraints = false
+        }
+
         copy.toItem = nil
         let constraints = copy.constraints(for: container)
 

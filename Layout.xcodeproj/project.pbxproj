@@ -48,6 +48,8 @@
 		1E71EFEE1DE726D000A65558 /* LayoutDescriptorOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */; };
 		1E780D3D1EBE81D6006AD1D6 /* ConstraintContextStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E780D3C1EBE81D6006AD1D6 /* ConstraintContextStack.swift */; };
 		1E780D3F1EBE81D6006AD1D6 /* ConstraintContextStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E780D3C1EBE81D6006AD1D6 /* ConstraintContextStack.swift */; };
+		1E7828D81F0932EA003227FE /* SingleConstraintSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7828D71F0932EA003227FE /* SingleConstraintSpec.swift */; };
+		1E7828D91F0932EA003227FE /* SingleConstraintSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7828D71F0932EA003227FE /* SingleConstraintSpec.swift */; };
 		1E7A7D301DE949A800895227 /* PublicUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E7A7D2F1DE949A800895227 /* PublicUtils.swift */; };
 		1E8EE2C71DEB3D1300232CB0 /* LayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */; };
 		1E8EE2CB1DEB4AA500232CB0 /* DynamicLayoutManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */; };
@@ -121,6 +123,7 @@
 		1E71EFEB1DE726A700A65558 /* Layouts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Layouts.swift; sourceTree = "<group>"; };
 		1E71EFED1DE726D000A65558 /* LayoutDescriptorOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutDescriptorOperators.swift; sourceTree = "<group>"; };
 		1E780D3C1EBE81D6006AD1D6 /* ConstraintContextStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintContextStack.swift; sourceTree = "<group>"; };
+		1E7828D71F0932EA003227FE /* SingleConstraintSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleConstraintSpec.swift; sourceTree = "<group>"; };
 		1E7A7D2F1DE949A800895227 /* PublicUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PublicUtils.swift; sourceTree = "<group>"; };
 		1E8EE2C61DEB3D1300232CB0 /* LayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayoutManager.swift; sourceTree = "<group>"; };
 		1E8EE2CA1DEB4AA500232CB0 /* DynamicLayoutManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicLayoutManager.swift; sourceTree = "<group>"; };
@@ -246,6 +249,7 @@
 				1EBF6F9E1EBFCAD6001EB663 /* ConstraintContainerSpec.swift */,
 				1EBF6FA01EBFCDAF001EB663 /* LayoutsSpec.swift */,
 				1EBF6FA21EBFD584001EB663 /* LayoutOperatorsSpec.swift */,
+				1E7828D71F0932EA003227FE /* SingleConstraintSpec.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -710,6 +714,7 @@
 				1E3C295D1F07BA8800887BC2 /* LayoutManagerSpec.swift in Sources */,
 				1E3C29611F07BA8F00887BC2 /* ConstraintContainerSpec.swift in Sources */,
 				1E3C29651F07BA9600887BC2 /* LayoutOperatorsSpec.swift in Sources */,
+				1E7828D81F0932EA003227FE /* SingleConstraintSpec.swift in Sources */,
 				1E3C295F1F07BA8B00887BC2 /* DynamicLayoutManagerSpec.swift in Sources */,
 				1E3C295B1F07BA8300887BC2 /* InternalUtilSpec.swift in Sources */,
 				1E3C29631F07BA9200887BC2 /* LayoutsSpec.swift in Sources */,
@@ -783,6 +788,7 @@
 				1E3C295E1F07BA8900887BC2 /* LayoutManagerSpec.swift in Sources */,
 				1E3C29621F07BA8F00887BC2 /* ConstraintContainerSpec.swift in Sources */,
 				1E3C29661F07BA9600887BC2 /* LayoutOperatorsSpec.swift in Sources */,
+				1E7828D91F0932EA003227FE /* SingleConstraintSpec.swift in Sources */,
 				1E3C29601F07BA8C00887BC2 /* DynamicLayoutManagerSpec.swift in Sources */,
 				1E3C295C1F07BA8400887BC2 /* InternalUtilSpec.swift in Sources */,
 				1E3C29641F07BA9300887BC2 /* LayoutsSpec.swift in Sources */,
