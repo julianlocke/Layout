@@ -23,47 +23,32 @@
  */
 
 @testable import Layout
-import XCTest
-//import Nimble
-//import Quick
+import Nimble
+import Quick
 
 // iOS/tvOS only.
 
-class UITraitCollectionExtensionSpec: XCTestCase {
+class UITraitCollectionExtensionSpec: QuickSpec {
 
-    func testShorthand() {
-        XCTAssertEqual(
-            .horizontally(.regular),
-            UITraitCollection(horizontalSizeClass: .regular)
-        )
+    override func spec() {
+        describe("UITraitCollectionExtensionSpec") {
+            it("creates shorthand collections correctly") {
+                expect(.horizontally(.regular)) == UITraitCollection(horizontalSizeClass: .regular)
+                expect(.vertically(.regular)) == UITraitCollection(verticalSizeClass: .regular)
+                expect(.idiom(.phone)) == UITraitCollection(userInterfaceIdiom: .phone)
+            }
 
-        XCTAssertEqual(
-            .vertically(.regular),
-            UITraitCollection(verticalSizeClass: .regular)
-        )
+            it("can merge multiple collections correctly") {
+                let target = UITraitCollection(
+                    traitsFrom: [
+                        UITraitCollection(userInterfaceIdiom: .phone),
+                        UITraitCollection(horizontalSizeClass: .regular)
+                    ]
+                )
 
-        XCTAssertEqual(
-            .idiom(.phone),
-            UITraitCollection(userInterfaceIdiom: .phone)
-        )
-    }
-
-    func testMerging() {
-        let target = UITraitCollection(
-            traitsFrom: [
-                UITraitCollection(userInterfaceIdiom: .phone),
-                UITraitCollection(horizontalSizeClass: .regular)
-            ]
-        )
-
-        XCTAssertEqual(
-            .idiom(.phone) && .horizontally(.regular),
-            target
-        )
-
-        XCTAssertEqual(
-            [.idiom(.phone), .horizontally(.regular)].merged(),
-            target
-        )
+                expect(.idiom(.phone) && .horizontally(.regular)) == target
+                expect([.idiom(.phone), .horizontally(.regular)].merged()) == target
+            }
+        }
     }
 }

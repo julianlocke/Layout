@@ -23,101 +23,93 @@
  */
 
 @testable import Layout
-import XCTest
+import Nimble
+import Quick
 
 // iOS/tvOS only.
 
-class DynamicLayoutManagerTraitSpec: XCTestCase {
+class DynamicLayoutManagerTraitSpec: QuickSpec {
 
-    private var rootView: TraitOverridingView!
-    private var view: TraitOverridingView!
-    private var layoutManager: DynamicLayoutManager!
+    // swiftlint:disable:next function_body_length
+    override func spec() {
+        describe("DynamicLayoutManagerTraitSpec") {
+            describe("trait tests") {
+                var rootView: TraitOverridingView!
+                var view: TraitOverridingView!
+                var layoutManager: DynamicLayoutManager!
 
-    override func setUp() {
-        super.setUp()
-        rootView = TraitOverridingView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        view = TraitOverridingView()
-        rootView.addSubview(view)
-        layoutManager = DynamicLayoutManager(rootView: rootView)
-    }
+                beforeEach {
+                    rootView = TraitOverridingView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+                    view = TraitOverridingView()
+                    rootView.addSubview(view)
+                    layoutManager = DynamicLayoutManager(rootView: rootView)
+                }
 
-    override func tearDown() {
-        rootView = nil
-        view = nil
-        layoutManager = nil
-        super.tearDown()
-    }
+                afterEach {
+                    rootView = nil
+                    view = nil
+                    layoutManager = nil
+                }
 
-    func testTraitChanges() {
-        layoutManager.add(constraintsFor: .horizontally(.regular)) {
-            view.createLayout(Layout.center, Layout.size / 2)
+                it("responds to trait changes") {
+                    layoutManager.add(constraintsFor: .horizontally(.regular)) {
+                        view.createLayout(Layout.center, Layout.size / 2)
+                    }
+
+                    layoutManager.add(constraintsFor: .horizontally(.compact)) {
+                        view.createLayout(Layout.flush)
+                    }
+
+                    layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.regular))
+                    expect(view.frame) == CGRect(x: 25, y: 25, width: 50, height: 50)
+
+                    layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.compact))
+                    expect(view.frame) == rootView.frame
+                }
+
+                it("handles nested traits") {
+                    rootView.overridenTraitCollection = .idiom(.phone) && .vertically(.regular)
+
+                    layoutManager.add(constraintsFor: .idiom(.phone), {
+                        view.createLayout(Layout.center)
+
+                        layoutManager.add(constraintsFor: .vertically(.regular), {
+                            view.createLayout(Layout.size / 2)
+                        })
+
+                        layoutManager.add(constraintsFor: .vertically(.compact), {
+                            view.createLayout(Layout.size)
+                        })
+                    })
+
+                    layoutManager.updateTraitBasedConstraints()
+                    expect(view.frame) == CGRect(x: 25, y: 25, width: 50, height: 50)
+
+                    rootView.overridenTraitCollection = .idiom(.phone) && .vertically(.compact) && .horizontally(.compact)
+                    layoutManager.updateTraitBasedConstraints()
+
+                    expect(view.frame) == rootView.frame
+                }
+
+                it("does not call blocks for the wrong idiom") {
+                    rootView.overridenTraitCollection = .idiom(.phone)
+
+                    var blockCalled = false
+
+                    layoutManager.add(constraintsFor: .idiom(.pad), {
+                        view.createLayout(Layout.center)
+                        blockCalled = true
+                    })
+
+                    expect(blockCalled).to(beFalse())
+                }
+
+                it("throws errors when using applyLayout") {
+                    layoutManager.add(constraintsFor: .horizontally(.regular)) {
+                        expect({ view.applyLayout(Layout.center, Layout.size / 2) }() ).to(throwAssertion())
+                    }
+                }
+            }
         }
-
-        layoutManager.add(constraintsFor: .horizontally(.compact)) {
-            view.createLayout(Layout.flush)
-        }
-
-        layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.regular))
-        XCTAssertEqual(
-            view.frame,
-            CGRect(x: 25, y: 25, width: 50, height: 50)
-        )
-
-        layoutManager.updateTraitBasedConstraints(withTraits: .horizontally(.compact))
-        XCTAssertEqual(
-            view.frame,
-            rootView.frame
-        )
-    }
-
-    func testNestedTraits() {
-        rootView.overridenTraitCollection = .idiom(.phone) && .vertically(.regular)
-
-        layoutManager.add(constraintsFor: .idiom(.phone), {
-            view.createLayout(Layout.center)
-
-            layoutManager.add(constraintsFor: .vertically(.regular), {
-                view.createLayout(Layout.size / 2)
-            })
-
-            layoutManager.add(constraintsFor: .vertically(.compact), {
-                view.createLayout(Layout.size)
-            })
-        })
-
-        layoutManager.updateTraitBasedConstraints()
-        XCTAssertEqual(
-            view.frame,
-            CGRect(x: 25, y: 25, width: 50, height: 50)
-        )
-
-        rootView.overridenTraitCollection = .idiom(.phone) && .vertically(.compact) && .horizontally(.compact)
-        layoutManager.updateTraitBasedConstraints()
-
-        XCTAssertEqual(
-            view.frame,
-            rootView.frame
-        )
-    }
-
-    func testLazyIdiom() {
-        rootView.overridenTraitCollection = .idiom(.phone)
-
-        var blockCalled = false
-
-        layoutManager.add(constraintsFor: .idiom(.pad), {
-            view.createLayout(Layout.center)
-            blockCalled = true
-        })
-
-        XCTAssertFalse(blockCalled)
-    }
-
-    func testThrowsFatalError() {
-        //    it("throws errors when using applyLayout") {
-        //        layoutManager.add(constraintsFor: .horizontally(.regular)) {
-        //            expect({ view.applyLayout(Layout.center, Layout.size / 2) }() ).to(throwAssertion())
-        //        }
-        //    }
     }
 }
