@@ -28,16 +28,11 @@
     import UIKit
 #endif
 
-public protocol LayoutConstraintGenerator {
-
-    func constraints(for container: ConstraintContainer) -> [NSLayoutConstraint]
-}
-
 public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
 
     public var attributes: [LayoutAttribute]
 
-    public var relatedBy: LayoutRelation
+    public var relation: LayoutRelation
 
     public var toItem: ConstraintContainer?
 
@@ -57,7 +52,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
 
     public init(
         _ attributes: [LayoutAttribute],
-        relatedBy: LayoutRelation = .equal,
+        relatedBy relation: LayoutRelation = .equal,
         toItem: ConstraintContainer? = nil,
         otherAttributes: [LayoutAttribute]? = nil,
         multiplier: CGFloat = 1,
@@ -67,7 +62,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
         reinterpretConstants: Bool = false
         ) {
         self.attributes = attributes
-        self.relatedBy = relatedBy
+        self.relation = relation
         self.toItem = toItem
         self.otherAttributes = otherAttributes
         self.multiplier = multiplier
@@ -110,7 +105,7 @@ public struct LayoutDescriptor<Kind>: LayoutConstraintGenerator {
             let constraint = NSLayoutConstraint(
                 item: container,
                 attribute: attr,
-                relatedBy: relatedBy,
+                relatedBy: relation,
                 toItem: toItem,
                 attribute: otherAttr,
                 multiplier: otherAttr == .notAnAttribute ? 0 : multiplier,

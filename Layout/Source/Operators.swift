@@ -50,6 +50,30 @@ public func ~ <Kind>(lhs: LayoutDescriptor<Kind>, rhs: Float) -> LayoutDescripto
     }
 }
 
+public func ~ <Kind>(lhs: AnchorLayoutDescriptor<Kind>, rhs: LayoutPriority) -> AnchorLayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.priority = rhs
+    }
+}
+
+public func ~ <Kind>(lhs: AnchorLayoutDescriptor<Kind>, rhs: Float) -> AnchorLayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.priority = LayoutPriority(rawValue: Float(rhs))
+    }
+}
+
+public func ~ (lhs: DimensionLayoutDescriptor, rhs: LayoutPriority) -> DimensionLayoutDescriptor {
+    return lhs.modify { result in
+        result.priority = rhs
+    }
+}
+
+public func ~ (lhs: DimensionLayoutDescriptor, rhs: Float) -> DimensionLayoutDescriptor {
+    return lhs.modify { result in
+        result.priority = LayoutPriority(rawValue: Float(rhs))
+    }
+}
+
 // MARK: - Debug identifiers
 
 precedencegroup LayoutIdentifierAssignment {
@@ -65,7 +89,19 @@ public func <- <Kind>(lhs: LayoutDescriptor<Kind>, rhs: String) -> LayoutDescrip
     }
 }
 
-// MARK: -
+public func <- <Kind>(lhs: AnchorLayoutDescriptor<Kind>, rhs: String) -> AnchorLayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.identifier = rhs
+    }
+}
+
+public func <- (lhs: DimensionLayoutDescriptor, rhs: String) -> DimensionLayoutDescriptor {
+    return lhs.modify { result in
+        result.identifier = rhs
+    }
+}
+
+// MARK: - Equality
 
 public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
@@ -74,6 +110,14 @@ public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) 
         result.constant = rhs.constant
         result.multiplier = rhs.multiplier
     }
+}
+
+public func == <Kind>(lhs: NSLayoutAnchor<Kind>, rhs: NSLayoutAnchor<Kind>) -> AnchorLayoutDescriptor<Kind> {
+    return AnchorLayoutDescriptor(firstAnchor: lhs, secondAnchor: rhs, relation: .equal)
+}
+
+public func == (lhs: NSLayoutDimension, rhs: NSLayoutDimension) -> DimensionLayoutDescriptor {
+    return DimensionLayoutDescriptor(firstDimension: lhs, secondDimension: rhs, relation: .equal)
 }
 
 public func == <Kind>(lhs: LayoutDescriptor<Kind>, rhs: ConstraintContainer) -> LayoutDescriptor<Kind> {
@@ -90,20 +134,34 @@ public func == (lhs: LayoutDescriptor<DimensionLayout>, rhs: CGFloat) -> LayoutD
     }
 }
 
+public func == (lhs: NSLayoutDimension, rhs: CGFloat) -> DimensionLayoutDescriptor {
+    return DimensionLayoutDescriptor(firstDimension: lhs, relation: .equal, constant: rhs)
+}
+
+// MARK: - Greater than or equal to
+
 public func >= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
         result.toItem = rhs.toItem
-        result.relatedBy = .greaterThanOrEqual
+        result.relation = .greaterThanOrEqual
         result.otherAttributes = rhs.attributes
         result.constant = rhs.constant
         result.multiplier = rhs.multiplier
     }
 }
 
+public func >= <Kind>(lhs: NSLayoutAnchor<Kind>, rhs: NSLayoutAnchor<Kind>) -> AnchorLayoutDescriptor<Kind> {
+    return AnchorLayoutDescriptor(firstAnchor: lhs, secondAnchor: rhs, relation: .greaterThanOrEqual)
+}
+
+public func >= (lhs: NSLayoutDimension, rhs: NSLayoutDimension) -> DimensionLayoutDescriptor {
+    return DimensionLayoutDescriptor(firstDimension: lhs, secondDimension: rhs, relation: .greaterThanOrEqual)
+}
+
 public func >= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: ConstraintContainer) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
         result.toItem = rhs
-        result.relatedBy = .greaterThanOrEqual
+        result.relation = .greaterThanOrEqual
         result.otherAttributes = lhs.attributes
     }
 }
@@ -112,25 +170,39 @@ public func >= (lhs: LayoutDescriptor<DimensionLayout>, rhs: CGFloat) -> LayoutD
     return lhs.modify { result in
         result.constant = rhs
         result.multiplier = 1
-        result.relatedBy = .greaterThanOrEqual
+        result.relation = .greaterThanOrEqual
         result.otherAttributes = [LayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
     }
 }
 
+public func >= (lhs: NSLayoutDimension, rhs: CGFloat) -> DimensionLayoutDescriptor {
+    return DimensionLayoutDescriptor(firstDimension: lhs, relation: .greaterThanOrEqual, constant: rhs)
+}
+
+// MARK: - Less than or equal to
+
 public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: LayoutDescriptor<Kind>) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
         result.toItem = rhs.toItem
-        result.relatedBy = .lessThanOrEqual
+        result.relation = .lessThanOrEqual
         result.otherAttributes = rhs.attributes
         result.constant = rhs.constant
         result.multiplier = rhs.multiplier
     }
 }
 
+public func <= <Kind>(lhs: NSLayoutAnchor<Kind>, rhs: NSLayoutAnchor<Kind>) -> AnchorLayoutDescriptor<Kind> {
+    return AnchorLayoutDescriptor(firstAnchor: lhs, secondAnchor: rhs, relation: .lessThanOrEqual)
+}
+
+public func <= (lhs: NSLayoutDimension, rhs: NSLayoutDimension) -> DimensionLayoutDescriptor {
+    return DimensionLayoutDescriptor(firstDimension: lhs, secondDimension: rhs, relation: .lessThanOrEqual)
+}
+
 public func <= <Kind>(lhs: LayoutDescriptor<Kind>, rhs: ConstraintContainer) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
         result.toItem = rhs
-        result.relatedBy = .lessThanOrEqual
+        result.relation = .lessThanOrEqual
         result.otherAttributes = lhs.attributes
     }
 }
@@ -139,10 +211,16 @@ public func <= (lhs: LayoutDescriptor<DimensionLayout>, rhs: CGFloat) -> LayoutD
     return lhs.modify { result in
         result.constant = rhs
         result.multiplier = 1
-        result.relatedBy = .lessThanOrEqual
+        result.relation = .lessThanOrEqual
         result.otherAttributes = [LayoutAttribute](repeatElement(.notAnAttribute, count: result.attributes.count))
     }
 }
+
+public func <= (lhs: NSLayoutDimension, rhs: CGFloat) -> DimensionLayoutDescriptor {
+    return DimensionLayoutDescriptor(firstDimension: lhs, relation: .lessThanOrEqual, constant: rhs)
+}
+
+// MARK: - Addition
 
 public func + <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
@@ -156,6 +234,20 @@ public func + <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescrip
     }
 }
 
+public func + <Kind>(lhs: AnchorLayoutDescriptor<Kind>, rhs: CGFloat) -> AnchorLayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.constant = rhs
+    }
+}
+
+public func + (lhs: DimensionLayoutDescriptor, rhs: CGFloat) -> DimensionLayoutDescriptor {
+    return lhs.modify { result in
+        result.constant = rhs
+    }
+}
+
+// MARK: - Subtraction
+
 public func - <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
         if let constant = result.constant {
@@ -168,13 +260,41 @@ public func - <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescrip
     }
 }
 
+public func - <Kind>(lhs: AnchorLayoutDescriptor<Kind>, rhs: CGFloat) -> AnchorLayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.constant = -rhs
+    }
+}
+
+public func - (lhs: DimensionLayoutDescriptor, rhs: CGFloat) -> DimensionLayoutDescriptor {
+    return lhs.modify { result in
+        result.constant = -rhs
+    }
+}
+
+// MARK: - Multiplication
+
 public func * <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
     return lhs.modify { result in
         result.multiplier = rhs
     }
 }
 
+public func * (lhs: DimensionLayoutDescriptor, rhs: CGFloat) -> DimensionLayoutDescriptor {
+    return lhs.modify { result in
+        result.multiplier = rhs
+    }
+}
+
+// MARK: - Division
+
 public func / <Kind>(lhs: LayoutDescriptor<Kind>, rhs: CGFloat) -> LayoutDescriptor<Kind> {
+    return lhs.modify { result in
+        result.multiplier = 1 / rhs
+    }
+}
+
+public func / (lhs: DimensionLayoutDescriptor, rhs: CGFloat) -> DimensionLayoutDescriptor {
     return lhs.modify { result in
         result.multiplier = 1 / rhs
     }
