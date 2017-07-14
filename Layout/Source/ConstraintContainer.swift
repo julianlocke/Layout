@@ -70,7 +70,7 @@ public extension ConstraintContainer {
         #endif
 
         if activate {
-            constraints.activate()
+            NSLayoutConstraint.activate(constraints)
         }
 
         return constraints

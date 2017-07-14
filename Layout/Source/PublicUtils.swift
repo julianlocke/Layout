@@ -32,12 +32,14 @@ public extension Array where Element == NSLayoutConstraint {
 
     /// Activate a sequence of `NSLayoutConstraint`s.
     func activate() {
-        NSLayoutConstraint.activate(self)
+        let toActivate = filter { !$0.isActive }
+        NSLayoutConstraint.activate(toActivate)
     }
 
     /// Deactivate a sequence of `NSLayoutConstraint`s.
     func deactivate() {
-        NSLayoutConstraint.deactivate(self)
+        let toDeactivate = filter { $0.isActive }
+        NSLayoutConstraint.deactivate(toDeactivate)
     }
 }
 
