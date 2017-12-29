@@ -79,25 +79,25 @@ public extension ConstraintGroup {
         ))
     }
 
-    static func align(_ firstAttr: XPosition, _ relation: LayoutRelation = .equal, to secondAttr: XPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintGroup {
+    static func align(_ firstAttr: XPosition, _ relation: LayoutRelation = .equal, to secondAttr: XPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, offsetBy: CGFloat = 0) -> ConstraintGroup {
         return constraint(
             attribute: firstAttr.layoutAttribute,
             relatedBy: relation,
             toItem: item,
             attribute: (secondAttr ?? firstAttr).layoutAttribute,
             multiplier: multiplier,
-            constant: constant
+            constant: offsetBy
         )
     }
 
-    static func align(_ firstAttr: YPosition, _ relation: LayoutRelation = .equal, to secondAttr: YPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintGroup {
+    static func align(_ firstAttr: YPosition, _ relation: LayoutRelation = .equal, to secondAttr: YPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, offsetBy: CGFloat = 0) -> ConstraintGroup {
         return constraint(
             attribute: firstAttr.layoutAttribute,
             relatedBy: relation,
             toItem: item,
             attribute: (secondAttr ?? firstAttr).layoutAttribute,
             multiplier: multiplier,
-            constant: constant
+            constant: offsetBy
         )
     }
 

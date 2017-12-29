@@ -32,10 +32,10 @@ public extension ConstraintGroup {
 
     static func alignToEdges(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintGroup {
         return [
-            .align(.top, of: item, constant: top),
-            .align(.leading, of: item, constant: leading),
-            .align(.bottom, of: item, constant: bottom),
-            .align(.trailing, of: item, constant: trailing)
+            .align(.top, of: item, offsetBy: top),
+            .align(.leading, of: item, offsetBy: leading),
+            .align(.bottom, of: item, offsetBy: bottom),
+            .align(.trailing, of: item, offsetBy: trailing)
         ]
     }
 
@@ -53,6 +53,13 @@ public extension ConstraintGroup {
         ]
     }
 
+    static func setSize(_ size: CGSize) -> ConstraintGroup {
+        return [
+        .setFixed(.width, to: size.width),
+        .setFixed(.height, to: size.height)
+        ]
+    }
+
     #if os(iOS) || os(tvOS)
     static func centerWithinMargins(of item: ConstrainableItem? = nil) -> ConstraintGroup {
         return [
@@ -63,10 +70,10 @@ public extension ConstraintGroup {
 
     static func alignToMargins(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintGroup {
         return [
-            .align(.top, to: .topMargin, of: item, constant: top),
-            .align(.leading, to: .leadingMargin, of: item, constant: leading),
-            .align(.bottom, to: .bottomMargin, of: item, constant: bottom),
-            .align(.trailing, to: .trailingMargin, of: item, constant: trailing)
+            .align(.top, to: .topMargin, of: item, offsetBy: top),
+            .align(.leading, to: .leadingMargin, of: item, offsetBy: leading),
+            .align(.bottom, to: .bottomMargin, of: item, offsetBy: bottom),
+            .align(.trailing, to: .trailingMargin, of: item, offsetBy: trailing)
         ]
     }
     #endif
