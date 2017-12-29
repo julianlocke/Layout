@@ -38,7 +38,7 @@ precedencegroup LayoutPriorityAssignment {
 
 infix operator ~ : LayoutPriorityAssignment
 
-public func ~ (lhs: Layout, rhs: LayoutPriority) -> Layout {
+public func ~ (lhs: ConstraintGroup, rhs: LayoutPriority) -> ConstraintGroup {
     var new = lhs
     new.priority = rhs
     return new
@@ -53,7 +53,7 @@ precedencegroup LayoutIdentifierAssignment {
 
 infix operator <- : LayoutIdentifierAssignment
 
-public func <- (lhs: Layout, rhs: String) -> Layout {
+public func <- (lhs: ConstraintGroup, rhs: String) -> ConstraintGroup {
     var new = lhs
     new.identifier = rhs
     return new

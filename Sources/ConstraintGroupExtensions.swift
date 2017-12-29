@@ -28,9 +28,9 @@
     import UIKit
 #endif
 
-public extension Layout {
+public extension ConstraintGroup {
 
-    static func alignToEdges(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> Layout {
+    static func alignToEdges(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintGroup {
         return [
             .align(.top, of: item, constant: top),
             .align(.leading, of: item, constant: leading),
@@ -39,14 +39,14 @@ public extension Layout {
         ]
     }
 
-    static func center(in item: ConstrainableItem? = nil) -> Layout {
+    static func center(in item: ConstrainableItem? = nil) -> ConstraintGroup {
         return [
             .align(.centerX, of: item),
             .align(.centerY, of: item)
         ]
     }
 
-    static func matchSize(of item: ConstrainableItem? = nil, ratio: CGFloat = 1, constant: CGFloat = 0) -> Layout {
+    static func matchSize(of item: ConstrainableItem? = nil, ratio: CGFloat = 1, constant: CGFloat = 0) -> ConstraintGroup {
         return [
             .setRelative(.width, to: ratio, of: item, constant: constant),
             .setRelative(.height, to: ratio, of: item, constant: constant)
@@ -54,14 +54,14 @@ public extension Layout {
     }
 
     #if os(iOS) || os(tvOS)
-    static func centerWithinMargins(of item: ConstrainableItem? = nil) -> Layout {
+    static func centerWithinMargins(of item: ConstrainableItem? = nil) -> ConstraintGroup {
         return [
             .align(.centerX, to: .centerXWithinMargins, of: item),
             .align(.centerY, to: .centerYWithinMargins, of: item)
         ]
     }
 
-    static func alignToMargins(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> Layout {
+    static func alignToMargins(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintGroup {
         return [
             .align(.top, to: .topMargin, of: item, constant: top),
             .align(.leading, to: .leadingMargin, of: item, constant: leading),

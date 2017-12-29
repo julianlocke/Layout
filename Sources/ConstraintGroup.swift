@@ -28,7 +28,7 @@
     import UIKit
 #endif
 
-public struct Layout: ExpressibleByArrayLiteral {
+public struct ConstraintGroup: ExpressibleByArrayLiteral {
 
     internal var specs: [ConstraintCreating] = []
 
@@ -40,7 +40,7 @@ public struct Layout: ExpressibleByArrayLiteral {
         self.specs = specs
     }
 
-    public init(arrayLiteral elements: Layout...) {
+    public init(arrayLiteral elements: ConstraintGroup...) {
         self.specs = elements.flatMap { $0.specs }
     }
 
@@ -54,12 +54,12 @@ public struct Layout: ExpressibleByArrayLiteral {
     }
 }
 
-public extension Layout {
+public extension ConstraintGroup {
 
     // MARK: - Base
 
-    static func with(_ creator: ConstraintCreating) -> Layout {
-        return Layout(specs: [creator])
+    static func with(_ creator: ConstraintCreating) -> ConstraintGroup {
+        return ConstraintGroup(specs: [creator])
     }
 
     static func constraint(
@@ -68,7 +68,7 @@ public extension Layout {
         toItem item: ConstrainableItem? = nil,
         attribute secondAttr: LayoutAttribute = .notAnAttribute,
         multiplier: CGFloat = 1,
-        constant: CGFloat = 0) -> Layout {
+        constant: CGFloat = 0) -> ConstraintGroup {
         return with(ConstraintSpec(
             attribute: firstAttr,
             relatedBy: relation,
@@ -79,7 +79,7 @@ public extension Layout {
         ))
     }
 
-    static func align(_ firstAttr: XPosition, _ relation: LayoutRelation = .equal, to secondAttr: XPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Layout {
+    static func align(_ firstAttr: XPosition, _ relation: LayoutRelation = .equal, to secondAttr: XPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintGroup {
         return constraint(
             attribute: firstAttr.layoutAttribute,
             relatedBy: relation,
@@ -90,7 +90,7 @@ public extension Layout {
         )
     }
 
-    static func align(_ firstAttr: YPosition, _ relation: LayoutRelation = .equal, to secondAttr: YPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Layout {
+    static func align(_ firstAttr: YPosition, _ relation: LayoutRelation = .equal, to secondAttr: YPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> ConstraintGroup {
         return constraint(
             attribute: firstAttr.layoutAttribute,
             relatedBy: relation,
@@ -101,7 +101,7 @@ public extension Layout {
         )
     }
 
-    static func setFixed(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to constant: CGFloat) -> Layout {
+    static func setFixed(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to constant: CGFloat) -> ConstraintGroup {
         return constraint(
             attribute: firstAttr.layoutAttribute,
             relatedBy: relation,
@@ -112,7 +112,7 @@ public extension Layout {
         )
     }
 
-    static func setRelative(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to multiplier: CGFloat = 1, of item: ConstrainableItem? = nil, attribute secondAttr: Dimension? = nil, constant: CGFloat = 0) -> Layout {
+    static func setRelative(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to multiplier: CGFloat = 1, of item: ConstrainableItem? = nil, attribute secondAttr: Dimension? = nil, constant: CGFloat = 0) -> ConstraintGroup {
         return constraint(
             attribute: firstAttr.layoutAttribute,
             relatedBy: relation,

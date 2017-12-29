@@ -34,7 +34,7 @@ public protocol ConstrainableItem {}
 
 extension ConstrainableItem {
 
-    public func makeConstraints(for specs: [Layout]) -> [NSLayoutConstraint] {
+    public func makeConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
         if let view = self as? View {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -42,17 +42,17 @@ extension ConstrainableItem {
         return specs.flatMap { $0.constraints(withItem: self) }
     }
 
-    public func makeConstraints(_ specs: Layout...) -> [NSLayoutConstraint] {
+    public func makeConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
         return makeConstraints(for: specs)
     }
 
     @discardableResult
-    public func applyConstraints(for specs: [Layout]) -> [NSLayoutConstraint] {
+    public func applyConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
         return makeConstraints(for: specs).activate()
     }
 
     @discardableResult
-    public func applyConstraints(_ specs: Layout...) -> [NSLayoutConstraint] {
+    public func applyConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
         return applyConstraints(for: specs)
     }
 }
