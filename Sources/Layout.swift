@@ -44,7 +44,7 @@ public struct Layout: ExpressibleByArrayLiteral {
         self.specs = elements.flatMap { $0.specs }
     }
 
-    public func constraints(withItem firstItem: ConstraintContainer) -> [NSLayoutConstraint] {
+    public func constraints(withItem firstItem: ConstrainableItem) -> [NSLayoutConstraint] {
         return specs.map {
             let constraint = $0.constraint(withItem: firstItem)
             constraint.priority = priority
@@ -65,7 +65,7 @@ public extension Layout {
     static func constraint(
         attribute firstAttr: LayoutAttribute,
         relatedBy relation: LayoutRelation = .equal,
-        toItem item: ConstraintContainer? = nil,
+        toItem item: ConstrainableItem? = nil,
         attribute secondAttr: LayoutAttribute = .notAnAttribute,
         multiplier: CGFloat = 1,
         constant: CGFloat = 0) -> Layout {
@@ -79,7 +79,7 @@ public extension Layout {
         ))
     }
 
-    static func align(_ firstAttr: XPosition, _ relation: LayoutRelation = .equal, to secondAttr: XPosition? = nil, of item: ConstraintContainer? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Layout {
+    static func align(_ firstAttr: XPosition, _ relation: LayoutRelation = .equal, to secondAttr: XPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Layout {
         return constraint(
             attribute: firstAttr.layoutAttribute,
             relatedBy: relation,
@@ -90,7 +90,7 @@ public extension Layout {
         )
     }
 
-    static func align(_ firstAttr: YPosition, _ relation: LayoutRelation = .equal, to secondAttr: YPosition? = nil, of item: ConstraintContainer? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Layout {
+    static func align(_ firstAttr: YPosition, _ relation: LayoutRelation = .equal, to secondAttr: YPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Layout {
         return constraint(
             attribute: firstAttr.layoutAttribute,
             relatedBy: relation,
@@ -112,11 +112,11 @@ public extension Layout {
         )
     }
 
-    static func setRelative(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to multiplier: CGFloat = 1, of container: ConstraintContainer? = nil, attribute secondAttr: Dimension? = nil, constant: CGFloat = 0) -> Layout {
+    static func setRelative(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to multiplier: CGFloat = 1, of item: ConstrainableItem? = nil, attribute secondAttr: Dimension? = nil, constant: CGFloat = 0) -> Layout {
         return constraint(
             attribute: firstAttr.layoutAttribute,
             relatedBy: relation,
-            toItem: container,
+            toItem: item,
             attribute: (secondAttr ?? firstAttr).layoutAttribute,
             multiplier: multiplier,
             constant: constant

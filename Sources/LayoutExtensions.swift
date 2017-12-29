@@ -30,43 +30,43 @@
 
 public extension Layout {
 
-    static func alignToEdges(of container: ConstraintContainer? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> Layout {
+    static func alignToEdges(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> Layout {
         return [
-            .align(.top, of: container, constant: top),
-            .align(.leading, of: container, constant: leading),
-            .align(.bottom, of: container, constant: bottom),
-            .align(.trailing, of: container, constant: trailing)
+            .align(.top, of: item, constant: top),
+            .align(.leading, of: item, constant: leading),
+            .align(.bottom, of: item, constant: bottom),
+            .align(.trailing, of: item, constant: trailing)
         ]
     }
 
-    static func center(in container: ConstraintContainer? = nil) -> Layout {
+    static func center(in item: ConstrainableItem? = nil) -> Layout {
         return [
-            .align(.centerX, of: container),
-            .align(.centerY, of: container)
+            .align(.centerX, of: item),
+            .align(.centerY, of: item)
         ]
     }
 
-    static func matchSize(of container: ConstraintContainer? = nil, ratio: CGFloat = 1, constant: CGFloat = 0) -> Layout {
+    static func matchSize(of item: ConstrainableItem? = nil, ratio: CGFloat = 1, constant: CGFloat = 0) -> Layout {
         return [
-            .setRelative(.width, to: ratio, of: container, constant: constant),
-            .setRelative(.height, to: ratio, of: container, constant: constant)
+            .setRelative(.width, to: ratio, of: item, constant: constant),
+            .setRelative(.height, to: ratio, of: item, constant: constant)
         ]
     }
 
     #if os(iOS) || os(tvOS)
-    static func centerWithinMargins(of container: ConstraintContainer? = nil) -> Layout {
+    static func centerWithinMargins(of item: ConstrainableItem? = nil) -> Layout {
         return [
-            .align(.centerX, to: .centerXWithinMargins, of: container),
-            .align(.centerY, to: .centerYWithinMargins, of: container)
+            .align(.centerX, to: .centerXWithinMargins, of: item),
+            .align(.centerY, to: .centerYWithinMargins, of: item)
         ]
     }
 
-    static func alignToMargins(of container: ConstraintContainer? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> Layout {
+    static func alignToMargins(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> Layout {
         return [
-            .align(.top, to: .topMargin, of: container, constant: top),
-            .align(.leading, to: .leadingMargin, of: container, constant: leading),
-            .align(.bottom, to: .bottomMargin, of: container, constant: bottom),
-            .align(.trailing, to: .trailingMargin, of: container, constant: trailing)
+            .align(.top, to: .topMargin, of: item, constant: top),
+            .align(.leading, to: .leadingMargin, of: item, constant: leading),
+            .align(.bottom, to: .bottomMargin, of: item, constant: bottom),
+            .align(.trailing, to: .trailingMargin, of: item, constant: trailing)
         ]
     }
     #endif

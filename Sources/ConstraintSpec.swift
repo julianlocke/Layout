@@ -34,7 +34,7 @@ public struct ConstraintSpec: ConstraintCreating {
 
     public var relation: LayoutRelation
 
-    public var secondItem: ConstraintContainer?
+    public var secondItem: ConstrainableItem?
 
     public var secondAttribute: LayoutAttribute
 
@@ -45,7 +45,7 @@ public struct ConstraintSpec: ConstraintCreating {
     public init(
         attribute firstAttr: LayoutAttribute,
         relatedBy relation: LayoutRelation = .equal,
-        toItem item: ConstraintContainer? = nil,
+        toItem item: ConstrainableItem? = nil,
         attribute secondAttr: LayoutAttribute,
         multiplier: CGFloat = 0,
         constant: CGFloat = 0) {
@@ -57,7 +57,7 @@ public struct ConstraintSpec: ConstraintCreating {
         self.constant = constant
     }
 
-    public func constraint(withItem firstItem: ConstraintContainer) -> NSLayoutConstraint {
+    public func constraint(withItem firstItem: ConstrainableItem) -> NSLayoutConstraint {
         let parentView: View
 
         if let view = firstItem as? View {
@@ -73,7 +73,7 @@ public struct ConstraintSpec: ConstraintCreating {
 
             parentView = owningView
         } else {
-            fatalError("\(type(of: firstItem)) is not a valid implementer of 'ConstraintContainer'. Only UIView/NSView or UILayoutGuide/NSLayoutGuide are allowed.")
+            fatalError("\(type(of: firstItem)) is not a valid implementer of 'ConstrainableItem'. Only UIView/NSView or UILayoutGuide/NSLayoutGuide are allowed.")
         }
 
         return NSLayoutConstraint(

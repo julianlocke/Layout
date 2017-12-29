@@ -30,9 +30,9 @@
 
 /// An empty protocol used to improve the type-safety of `item` parameters when defining constraints.
 /// The only valid implementers of this protocol are `UIView` or `NSView` and `UILayoutGuide` or `NSLayoutGuide`.
-public protocol ConstraintContainer {}
+public protocol ConstrainableItem {}
 
-extension ConstraintContainer {
+extension ConstrainableItem {
 
     public func makeConstraints(for specs: [Layout]) -> [NSLayoutConstraint] {
         if let view = self as? View {
@@ -59,6 +59,6 @@ extension ConstraintContainer {
 
 // MARK: -
 
-extension View: ConstraintContainer {}
+extension View: ConstrainableItem {}
 
-extension LayoutGuide: ConstraintContainer {}
+extension LayoutGuide: ConstrainableItem {}

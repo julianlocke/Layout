@@ -30,5 +30,5 @@
 
 public protocol ConstraintCreating {
 
-    func constraint(withItem firstItem: ConstraintContainer) -> NSLayoutConstraint
+    func constraint(withItem firstItem: ConstrainableItem) -> NSLayoutConstraint
 }
