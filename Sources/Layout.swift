@@ -1,0 +1,125 @@
+/*
+ The MIT License (MIT)
+
+ Copyright (c) 2017 Cameron Pulsford
+
+ Permission is hereby granted, free of charge, to any person obtaining a copy
+ of this software and associated documentation files (the "Software"), to deal
+ in the Software without restriction, including without limitation the rights
+ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ copies of the Software, and to permit persons to whom the Software is
+ furnished to do so, subject to the following conditions:
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ SOFTWARE.
+ */
+
+#if os(macOS)
+    import AppKit
+#else
+    import UIKit
+#endif
+
+public struct Layout: ExpressibleByArrayLiteral {
+
+    internal var specs: [ConstraintCreating] = []
+
+    public var priority: LayoutPriority = .required
+
+    public var identifier: String?
+
+    public init(specs: [ConstraintCreating]) {
+        self.specs = specs
+    }
+
+    public init(arrayLiteral elements: Layout...) {
+        self.specs = elements.flatMap { $0.specs }
+    }
+
+    public func constraints(withItem firstItem: ConstraintContainer) -> [NSLayoutConstraint] {
+        return specs.map {
+            let constraint = $0.constraint(withItem: firstItem)
+            constraint.priority = priority
+            constraint.identifier = identifier
+            return constraint
+        }
+    }
+}
+
+public extension Layout {
+
+    // MARK: - Base
+
+    static func with(_ creator: ConstraintCreating) -> Layout {
+        return Layout(specs: [creator])
+    }
+
+    static func constraint(
+        attribute firstAttr: LayoutAttribute,
+        relatedBy relation: LayoutRelation = .equal,
+        toItem item: ConstraintContainer? = nil,
+        attribute secondAttr: LayoutAttribute = .notAnAttribute,
+        multiplier: CGFloat = 1,
+        constant: CGFloat = 0) -> Layout {
+        return with(ConstraintSpec(
+            attribute: firstAttr,
+            relatedBy: relation,
+            toItem: item,
+            attribute: secondAttr,
+            multiplier: multiplier,
+            constant: constant
+        ))
+    }
+
+    static func align(_ firstAttr: XPosition, _ relation: LayoutRelation = .equal, to secondAttr: XPosition? = nil, of item: ConstraintContainer? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Layout {
+        return constraint(
+            attribute: firstAttr.layoutAttribute,
+            relatedBy: relation,
+            toItem: item,
+            attribute: (secondAttr ?? firstAttr).layoutAttribute,
+            multiplier: multiplier,
+            constant: constant
+        )
+    }
+
+    static func align(_ firstAttr: YPosition, _ relation: LayoutRelation = .equal, to secondAttr: YPosition? = nil, of item: ConstraintContainer? = nil, multiplier: CGFloat = 1, constant: CGFloat = 0) -> Layout {
+        return constraint(
+            attribute: firstAttr.layoutAttribute,
+            relatedBy: relation,
+            toItem: item,
+            attribute: (secondAttr ?? firstAttr).layoutAttribute,
+            multiplier: multiplier,
+            constant: constant
+        )
+    }
+
+    static func setFixed(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to constant: CGFloat) -> Layout {
+        return constraint(
+            attribute: firstAttr.layoutAttribute,
+            relatedBy: relation,
+            toItem: nil,
+            attribute: .notAnAttribute,
+            multiplier: 1,
+            constant: constant
+        )
+    }
+
+    static func setRelative(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to multiplier: CGFloat = 1, of container: ConstraintContainer? = nil, attribute secondAttr: Dimension? = nil, constant: CGFloat = 0) -> Layout {
+        return constraint(
+            attribute: firstAttr.layoutAttribute,
+            relatedBy: relation,
+            toItem: container,
+            attribute: (secondAttr ?? firstAttr).layoutAttribute,
+            multiplier: multiplier,
+            constant: constant
+        )
+    }
+}
