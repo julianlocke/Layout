@@ -509,6 +509,21 @@ class LayoutTests: XCTestCase {
         #endif
     }
 
+    #if os(iOS) || os(tvOS)
+    func testTraitCollectionConvenienceProperties() {
+        XCTAssertEqual(UITraitCollection(horizontalSizeClass: .unspecified), .horizontallyUnspecified)
+        XCTAssertEqual(UITraitCollection(verticalSizeClass: .unspecified), .verticallyUnspecified)
+        XCTAssertEqual(UITraitCollection(horizontalSizeClass: .compact), .horizontallyCompact)
+        XCTAssertEqual(UITraitCollection(horizontalSizeClass: .regular), .horizontallyRegular)
+        XCTAssertEqual(UITraitCollection(verticalSizeClass: .compact), .verticallyCompact)
+        XCTAssertEqual(UITraitCollection(verticalSizeClass: .regular), .verticallyRegular)
+        XCTAssertEqual(UITraitCollection(userInterfaceIdiom: .pad), .isPad)
+        XCTAssertEqual(UITraitCollection(userInterfaceIdiom: .phone), .isPhone)
+        XCTAssertEqual(UITraitCollection(userInterfaceIdiom: .tv), .isTv)
+        XCTAssertEqual(UITraitCollection(preferredContentSizeCategory: .large), .preferredContentSizeCategory(of: .large))
+    }
+    #endif
+
     func testApplyConstraints() {
         let constraints = view.applyConstraints(
             .matchSize()
