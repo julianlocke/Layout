@@ -35,65 +35,6 @@ public protocol ConstrainableItem {
     var parentView: View? { get }
 }
 
-private var currentLayout: Layout?
-private var  currentLayoutContext: LayoutContext!
-
-public extension ConstrainableItem {
-
-    @discardableResult
-    func makeConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
-        if let view = self as? View {
-            view.translatesAutoresizingMaskIntoConstraints = false
-        }
-
-        let constraints = specs.flatMap { $0.constraints(withItem: self) }
-
-        if let currentLayout = currentLayout {
-            currentLayout.addConstraints(constraints, context: currentLayoutContext)
-        }
-
-        return constraints
-    }
-
-    @discardableResult
-    func makeConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
-        return makeConstraints(for: specs)
-    }
-
-    @discardableResult
-    func applyConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
-        guard currentLayout == nil else {
-            fatalError("applyConstraints may not be called when making a layout.")
-        }
-
-        return makeConstraints(for: specs).activate()
-    }
-
-    @discardableResult
-    func applyConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
-        return applyConstraints(for: specs)
-    }
-}
-
-public extension Layout {
-
-    static func make(rootView: View, _ closure: (LayoutContext) -> Void) -> Layout {
-        guard currentLayout == nil else {
-            fatalError("Layout.make calls may not be nested")
-        }
-
-        let layout = Layout(rootView: rootView)
-        currentLayout = layout
-        currentLayoutContext = LayoutContext()
-        defer {
-            currentLayout = nil
-            currentLayoutContext = nil
-        }
-        closure(currentLayoutContext)
-        return layout
-    }
-}
-
 // MARK: -
 
 extension View: ConstrainableItem {
