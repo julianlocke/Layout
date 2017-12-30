@@ -35,10 +35,10 @@ public protocol ConstrainableItem {}
 private var currentLayout: Layout?
 private var  currentLayoutContext: LayoutContext!
 
-extension ConstrainableItem {
+public extension ConstrainableItem {
 
     @discardableResult
-    public func makeConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
+    func makeConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
         if let view = self as? View {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -53,12 +53,12 @@ extension ConstrainableItem {
     }
 
     @discardableResult
-    public func makeConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
+    func makeConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
         return makeConstraints(for: specs)
     }
 
     @discardableResult
-    public func applyConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
+    func applyConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
         guard currentLayout == nil else {
             fatalError("applyConstraints may not be called when making a layout.")
         }
@@ -67,7 +67,7 @@ extension ConstrainableItem {
     }
 
     @discardableResult
-    public func applyConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
+    func applyConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
         return applyConstraints(for: specs)
     }
 }
