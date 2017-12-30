@@ -28,13 +28,18 @@
     import UIKit
 #endif
 
-#if os(macOS)
-    public enum XPosition {
-        case leading
-        case trailing
-        case centerX
+public enum XPosition {
+    case leading
+    case trailing
+    case centerX
+    #if os(iOS) || os(tvOS)
+    case leadingMargin
+    case trailingMargin
+    case centerXWithinMargins
+    #endif
 
-        internal var layoutAttribute: LayoutAttribute {
+    internal var layoutAttribute: LayoutAttribute {
+        #if os(iOS) || os(tvOS)
             switch self {
             case .leading:
                 return .leading
@@ -42,91 +47,74 @@
                 return .trailing
             case .centerX:
                 return .centerX
-            }
-        }
-    }
-
-    public enum YPosition {
-        case top
-        case bottom
-        case centerY
-        case firstBaseline
-        case lastBaseline
-
-        internal var layoutAttribute: LayoutAttribute {
-            switch self {
-            case .top:
-                return .top
-            case .bottom:
-                return .bottom
-            case .centerY:
-                return .centerY
-            case .firstBaseline:
-                return .firstBaseline
-            case .lastBaseline:
-                return .lastBaseline
-            }
-        }
-    }
-#else
-    public enum XPosition {
-        case leading
-        case leadingMargin
-        case trailing
-        case trailingMargin
-        case centerX
-        case centerXWithinMargins
-
-        internal var layoutAttribute: LayoutAttribute {
-            switch self {
-            case .leading:
-                return .leading
             case .leadingMargin:
                 return .leadingMargin
-            case .trailing:
-                return .trailing
             case .trailingMargin:
                 return .trailingMargin
-            case .centerX:
-                return .centerX
             case .centerXWithinMargins:
                 return .centerXWithinMargins
             }
-        }
+        #else
+            switch self {
+            case .leading:
+                return .leading
+            case .trailing:
+                return .trailing
+            case .centerX:
+                return .centerX
+            }
+        #endif
     }
+}
 
-    public enum YPosition {
-        case top
-        case topMargin
-        case bottom
-        case bottomMargin
-        case centerY
-        case centerYWithinMargins
-        case firstBaseline
-        case lastBaseline
+public enum YPosition {
+    case top
+    case bottom
+    case centerY
+    case firstBaseline
+    case lastBaseline
+    #if os(iOS) || os(tvOS)
+    case topMargin
+    case bottomMargin
+    case centerYWithinMargins
+    #endif
 
-        internal var layoutAttribute: LayoutAttribute {
+    internal var layoutAttribute: LayoutAttribute {
+        #if os(iOS) || os(tvOS)
             switch self {
             case .top:
                 return .top
-            case .topMargin:
-                return .topMargin
             case .bottom:
                 return .bottom
-            case .bottomMargin:
-                return .bottomMargin
             case .centerY:
                 return .centerY
+            case .firstBaseline:
+                return .firstBaseline
+            case .lastBaseline:
+                return .lastBaseline
+            case .topMargin:
+                return .topMargin
+            case .bottomMargin:
+                return .bottomMargin
             case .centerYWithinMargins:
                 return .centerYWithinMargins
+            }
+        #else
+            switch self {
+            case .top:
+                return .top
+            case .bottom:
+                return .bottom
+            case .centerY:
+                return .centerY
             case .firstBaseline:
                 return .firstBaseline
             case .lastBaseline:
                 return .lastBaseline
             }
-        }
+        #endif
     }
-#endif
+}
 
 public enum Dimension {
     case width
