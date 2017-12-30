@@ -30,7 +30,10 @@
 
 /// An empty protocol used to improve the type-safety of `item` parameters when defining constraints.
 /// The only valid implementers of this protocol are `UIView` or `NSView` and `UILayoutGuide` or `NSLayoutGuide`.
-public protocol ConstrainableItem {}
+public protocol ConstrainableItem {
+
+    var parentView: View? { get }
+}
 
 private var currentLayout: Layout?
 private var  currentLayoutContext: LayoutContext!
@@ -93,6 +96,16 @@ public extension Layout {
 
 // MARK: -
 
-extension View: ConstrainableItem {}
+extension View: ConstrainableItem {
 
-extension LayoutGuide: ConstrainableItem {}
+    public var parentView: View? {
+        return superview
+    }
+}
+
+extension LayoutGuide: ConstrainableItem {
+
+    public var parentView: View? {
+        return owningView
+    }
+}

@@ -58,29 +58,11 @@ public struct ConstraintSpec: ConstraintCreating {
     }
 
     public func constraint(withItem firstItem: ConstrainableItem) -> NSLayoutConstraint {
-        let parentView: View
-
-        if let view = firstItem as? View {
-            guard let superview = view.superview else {
-                fatalError("This view must have a superview before constraints can be created.")
-            }
-
-            parentView = superview
-        } else if let layoutGuide = firstItem as? LayoutGuide {
-            guard let owningView = layoutGuide.owningView else {
-                fatalError("This layout guide must have an owning view before constraints can be created.")
-            }
-
-            parentView = owningView
-        } else {
-            fatalError("\(type(of: firstItem)) is not a valid implementer of 'ConstrainableItem'. Only UIView/NSView or UILayoutGuide/NSLayoutGuide are allowed.")
-        }
-
         return NSLayoutConstraint(
             item: firstItem,
             attribute: firstAttribute,
             relatedBy: relation,
-            toItem: secondAttribute == .notAnAttribute ? nil : (secondItem ?? parentView),
+            toItem: secondAttribute == .notAnAttribute ? nil : (secondItem ?? firstItem.parentView),
             attribute: secondAttribute,
             multiplier: multiplier,
             constant: constant
