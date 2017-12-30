@@ -26,29 +26,47 @@ import PlaygroundSupport
 import Layout
 
 class MyViewController: UIViewController {
+
+    private var mainLayout: Layout?
+
     override func loadView() {
         let view = UIView()
         view.backgroundColor = .white
 
         let label = UILabel()
         label.text = "Hello World!"
-        label.textColor = .black
-        
         view.addSubview(label)
+
+        let green = UIView()
+        green.backgroundColor = .green
+        view.addSubview(green)
+
+        mainLayout = Layout.make(rootView: view) { ctx in
+            ctx.when(.horizontallyCompact) {
+                ctx.when(.verticallyRegular) {
+                    label.makeConstraints(
+                        .center()
+                    )
+                }
+
+                ctx.when(.verticallyCompact) {
+                    label.makeConstraints(
+                        .align(.centerX),
+                        .align(.top, of: view.safeAreaLayoutGuide, offsetBy: 10)
+                    )
+                }
+
+                green.makeConstraints(
+                    .align(.centerX),
+                    .align(.top, to: .bottom, of: label, offsetBy: 10),
+                    .setSize(CGSize(width: 200, height: 200))
+                )
+            }
+        }
+
+        mainLayout?.setIsActive(true, traits: .horizontallyCompact, .verticallyRegular)
+
         self.view = view
-
-        label.applyConstraints(
-            .center()
-        )
-
-        let x = UIView()
-        x.backgroundColor = .green
-        view.addSubview(x)
-        x.applyConstraints(
-            .setSize(CGSize(width: 200, height: 200)),
-            .align(.top, to: .bottom, of: label, offsetBy: 10),
-            .align(.centerX)
-        )
     }
 }
 

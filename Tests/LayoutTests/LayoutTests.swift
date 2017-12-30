@@ -84,7 +84,7 @@ class LayoutTests: XCTestCase {
         ]
 
         let constraints1 = view.makeConstraints(
-            .align(.leading, .equal, to: .leading, of: containerView, multiplier: 1, constant: 0)
+            .align(.leading, .equal, to: .leading, of: containerView, multiplier: 1, offsetBy: 0)
         )
 
         XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
@@ -134,7 +134,7 @@ class LayoutTests: XCTestCase {
         ]
 
         let constraints1 = view.makeConstraints(
-            .align(.top, .equal, to: .top, of: containerView, multiplier: 1, constant: 0)
+            .align(.top, .equal, to: .top, of: containerView, multiplier: 1, offsetBy: 0)
         )
 
         XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))

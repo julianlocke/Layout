@@ -48,3 +48,46 @@ public extension Array where Element == NSLayoutConstraint {
         }
     }
 }
+
+public extension UITraitCollection {
+
+    static var horizontallyUnspecified: UITraitCollection {
+        return UITraitCollection(horizontalSizeClass: .unspecified)
+    }
+
+    static var verticallyUnspecified: UITraitCollection {
+        return UITraitCollection(verticalSizeClass: .unspecified)
+    }
+
+    static var horizontallyCompact: UITraitCollection {
+        return UITraitCollection(horizontalSizeClass: .compact)
+    }
+
+    static var horizontallyRegular: UITraitCollection {
+        return UITraitCollection(horizontalSizeClass: .regular)
+    }
+
+    static var verticallyCompact: UITraitCollection {
+        return UITraitCollection(verticalSizeClass: .compact)
+    }
+
+    static var verticallyRegular: UITraitCollection {
+        return UITraitCollection(verticalSizeClass: .regular)
+    }
+
+    static var isPad: UITraitCollection {
+        return UITraitCollection(userInterfaceIdiom: .pad)
+    }
+
+    static var isPhone: UITraitCollection {
+        return UITraitCollection(userInterfaceIdiom: .phone)
+    }
+
+    static var isTv: UITraitCollection {
+        return UITraitCollection(userInterfaceIdiom: .tv)
+    }
+
+    static func preferredContentSizeCategory(of contentSizeCategory: UIContentSizeCategory) -> UITraitCollection {
+        return UITraitCollection(preferredContentSizeCategory: contentSizeCategory)
+    }
+}

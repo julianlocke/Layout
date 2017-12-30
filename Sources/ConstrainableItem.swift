@@ -32,28 +32,62 @@
 /// The only valid implementers of this protocol are `UIView` or `NSView` and `UILayoutGuide` or `NSLayoutGuide`.
 public protocol ConstrainableItem {}
 
+private var currentLayout: Layout?
+private var  currentLayoutContext: LayoutContext!
+
 extension ConstrainableItem {
 
+    @discardableResult
     public func makeConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
         if let view = self as? View {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
 
-        return specs.flatMap { $0.constraints(withItem: self) }
+        let constraints = specs.flatMap { $0.constraints(withItem: self) }
+
+        if let currentLayout = currentLayout {
+            currentLayout.addConstraints(constraints, context: currentLayoutContext)
+        }
+
+        return constraints
     }
 
+    @discardableResult
     public func makeConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
         return makeConstraints(for: specs)
     }
 
     @discardableResult
     public func applyConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
+        guard currentLayout == nil else {
+            fatalError("applyConstraints may not be called when making a layout.")
+        }
+
         return makeConstraints(for: specs).activate()
     }
 
     @discardableResult
     public func applyConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
         return applyConstraints(for: specs)
+    }
+}
+
+public extension Layout {
+
+    static func make(rootView: View, _ closure: (LayoutContext) -> Void) -> Layout {
+        guard currentLayout == nil else {
+            fatalError("Layout.make calls may not be nested")
+        }
+
+        let layout = Layout(rootView: rootView)
+        currentLayout = layout
+        currentLayoutContext = LayoutContext()
+        defer {
+            currentLayout = nil
+            currentLayoutContext = nil
+        }
+        closure(currentLayoutContext)
+        return layout
     }
 }
 
