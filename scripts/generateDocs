@@ -1,0 +1,6 @@
+#!/bin/sh
+
+command -v jazzy >/dev/null 2>&1 || { echo >&2 "\"jazzy\" must be installed to run this script.\nTry:\ngem install jazzy"; exit 1; }
+rm -rf docs
+jazzy --theme apple --min-acl public -m Layout -x -project,Layout.xcodeproj,-scheme,Layout-iOS
+open docs/index.html
