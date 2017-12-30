@@ -30,13 +30,13 @@
 
 public struct ConstraintGroup: ExpressibleByArrayLiteral {
 
-    internal var specs: [ConstraintCreating] = []
+    internal var specs: [ConstraintSpec] = []
 
     public var priority: LayoutPriority = .required
 
     public var identifier: String?
 
-    public init(specs: [ConstraintCreating]) {
+    public init(specs: [ConstraintSpec]) {
         self.specs = specs
     }
 
@@ -58,7 +58,7 @@ public extension ConstraintGroup {
 
     // MARK: - Base
 
-    static func with(_ creator: ConstraintCreating) -> ConstraintGroup {
+    static func with(_ creator: ConstraintSpec) -> ConstraintGroup {
         return ConstraintGroup(specs: [creator])
     }
 
@@ -69,7 +69,7 @@ public extension ConstraintGroup {
         attribute secondAttr: LayoutAttribute = .notAnAttribute,
         multiplier: CGFloat = 1,
         constant: CGFloat = 0) -> ConstraintGroup {
-        return with(ConstraintSpec(
+        return with(ItemConstraintSpec(
             attribute: firstAttr,
             relatedBy: relation,
             toItem: item,
