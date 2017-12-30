@@ -69,3 +69,10 @@ public struct ConstraintSpec: ConstraintCreating {
         )
     }
 }
+
+private extension ConstrainableItem {
+
+    var parentView: View? {
+        return (self as? View).flatMap { $0.superview } ?? (self as? LayoutGuide).flatMap { $0.owningView }
+    }
+}

@@ -29,24 +29,9 @@
 #endif
 
 /// An empty protocol used to improve the type-safety of `item` parameters when defining constraints.
-/// The only valid implementers of this protocol are `UIView` or `NSView` and `UILayoutGuide` or `NSLayoutGuide`.
-public protocol ConstrainableItem {
+/// The only valid implementers of this protocol are views and layout guides.
+public protocol ConstrainableItem {}
 
-    var parentView: View? { get }
-}
+extension View: ConstrainableItem {}
 
-// MARK: -
-
-extension View: ConstrainableItem {
-
-    public var parentView: View? {
-        return superview
-    }
-}
-
-extension LayoutGuide: ConstrainableItem {
-
-    public var parentView: View? {
-        return owningView
-    }
-}
+extension LayoutGuide: ConstrainableItem {}
