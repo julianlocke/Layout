@@ -41,6 +41,7 @@
 		1ED302F01FF6F84200D0D4A3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED302EF1FF6F84200D0D4A3 /* Layout.swift */; };
 		1ED302F11FF6F84200D0D4A3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED302EF1FF6F84200D0D4A3 /* Layout.swift */; };
 		1ED302F21FF6F84200D0D4A3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED302EF1FF6F84200D0D4A3 /* Layout.swift */; };
+		1EE62D4E1FF83904002373F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA4B6DE1FF421A4008F3E7B /* Extensions.swift */; };
 		52D6D9871BEFF229002C0205 /* Layout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* Layout.framework */; };
 		8933C7851EB5B820000D00A4 /* ConstrainableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ConstrainableItem.swift */; };
 		8933C78E1EB5B82C000D00A4 /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* LayoutTests.swift */; };
@@ -540,6 +541,7 @@
 				1E4846D31FF5E13B00C92E13 /* LayoutAttribute.swift in Sources */,
 				1ED302F11FF6F84200D0D4A3 /* Layout.swift in Sources */,
 				1E4846D61FF5E13B00C92E13 /* ConstraintGroupExtensions.swift in Sources */,
+				1EE62D4E1FF83904002373F4 /* Extensions.swift in Sources */,
 				1E4846D21FF5E13B00C92E13 /* ItemConstraintSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

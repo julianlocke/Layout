@@ -49,6 +49,7 @@ public extension Array where Element == NSLayoutConstraint {
     }
 }
 
+#if os(iOS) || os(tvOS)
 public extension UITraitCollection {
 
     static var horizontallyUnspecified: UITraitCollection {
@@ -91,3 +92,4 @@ public extension UITraitCollection {
         return UITraitCollection(preferredContentSizeCategory: contentSizeCategory)
     }
 }
+#endif
