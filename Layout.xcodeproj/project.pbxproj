@@ -79,7 +79,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1E3D56911FF6F29E00E5824D /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1E4846C71FF57D8500C92E13 /* LayoutAttribute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutAttribute.swift; sourceTree = "<group>"; };
 		1E4846C91FF59FF100C92E13 /* ConstraintGroupOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintGroupOperators.swift; sourceTree = "<group>"; };
 		1E4846CB1FF5BD0C00C92E13 /* ConstraintSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintSpec.swift; sourceTree = "<group>"; };
@@ -156,7 +155,6 @@
 		52D6D9721BEFF229002C0205 = {
 			isa = PBXGroup;
 			children = (
-				1E3D56911FF6F29E00E5824D /* MyPlayground.playground */,
 				8933C7811EB5B7E0000D00A4 /* Sources */,
 				8933C7831EB5B7EB000D00A4 /* Tests */,
 				52D6D99C1BEFF38C002C0205 /* Configs */,
