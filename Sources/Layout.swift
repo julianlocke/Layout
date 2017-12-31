@@ -49,20 +49,7 @@ final public class Layout {
 
     public let rootView: View
 
-    #if os(iOS) || os(tvOS)
-    public private(set) var isActive: Bool = false
-    #else
-    public var isActive: Bool = false {
-        didSet {
-            guard isActive != oldValue else { return }
-            if isActive {
-                constraints.activate()
-            } else {
-                constraints.deactivate()
-            }
-        }
-    }
-    #endif
+    private var isActive: Bool = false
 
     private var constraints: [NSLayoutConstraint] = []
 
@@ -70,7 +57,7 @@ final public class Layout {
     private var traitsToConstraints: [UITraitCollection: [NSLayoutConstraint]] = [:]
     #endif
 
-    public init(rootView: View) {
+    internal init(rootView: View) {
         self.rootView = rootView
     }
 
@@ -106,6 +93,16 @@ final public class Layout {
             }
         }
     }
+    #else
+    public func setIsActive(_ isActive: Bool) {
+        guard isActive != self.isActive else { return }
+        self.isActive = isActive
+        if isActive {
+            constraints.activate()
+        } else {
+            constraints.deactivate()
+        }
+    }
     #endif
 
     internal func addConstraints(_ newConstraints: [NSLayoutConstraint], context: LayoutContext) {
@@ -129,5 +126,15 @@ final public class Layout {
             newConstraints.activate()
         }
         #endif
+    }
+
+    internal var __activeConstraints__for_testing_only: [NSLayoutConstraint] {
+        let allConstraints: [NSLayoutConstraint]
+        #if os(iOS) || os(tvOS)
+            allConstraints = constraints + traitsToConstraints.values.flatMap({ $0 })
+        #else
+            allConstraints = constraints
+        #endif
+        return allConstraints.filter { $0.isActive }
     }
 }

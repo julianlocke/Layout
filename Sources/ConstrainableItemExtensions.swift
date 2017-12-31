@@ -70,19 +70,18 @@ public extension ConstrainableItem {
 
 public extension Layout {
 
-    static func make(rootView: View, _ closure: (LayoutContext) -> Void) -> Layout {
+    convenience init(rootView: View, _ closure: (LayoutContext) -> Void) {
         guard currentLayout == nil else {
             fatalError("Layout.make calls may not be nested")
         }
 
-        let layout = Layout(rootView: rootView)
-        currentLayout = layout
+        self.init(rootView: rootView)
+        currentLayout = self
         currentLayoutContext = LayoutContext()
         defer {
             currentLayout = nil
             currentLayoutContext = nil
         }
         closure(currentLayoutContext)
-        return layout
     }
 }
