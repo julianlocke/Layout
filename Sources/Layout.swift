@@ -103,13 +103,17 @@ final public class Layout {
         guard isActive else { return }
         let constraintsToCheck = givenTraits.isEmpty ? rootView.traitCollection : UITraitCollection(traitsFrom: givenTraits)
 
+        var constraintsToActivate: [NSLayoutConstraint] = []
+
         for (traits, constraints) in traitsToConstraints {
             if constraintsToCheck.containsTraits(in: traits) {
-                constraints.activate()
+                constraintsToActivate.append(contentsOf: constraints)
             } else {
                 constraints.deactivate()
             }
         }
+
+        constraintsToActivate.activate()
     }
     #else
     public func setIsActive(_ isActive: Bool) {
