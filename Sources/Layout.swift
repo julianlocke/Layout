@@ -78,10 +78,6 @@ final public class Layout {
     }
 
     #if os(iOS) || os(tvOS)
-    public func setIsActive(_ isActive: Bool, traits givenTraits: [UITraitCollection]) {
-        setIsActive(isActive, traits: UITraitCollection(traitsFrom: givenTraits))
-    }
-
     public func setIsActive(_ isActive: Bool, traits givenTraits: UITraitCollection? = nil) {
         guard isActive != self.isActive else { return }
         self.isActive = isActive
@@ -100,10 +96,6 @@ final public class Layout {
                 constraints.deactivate()
             }
         }
-    }
-
-    public func updateActiveConstraints(with givenTraits: [UITraitCollection]) {
-        updateActiveConstraints(with: UITraitCollection(traitsFrom: givenTraits))
     }
 
     public func updateActiveConstraints(with givenTraits: UITraitCollection) {

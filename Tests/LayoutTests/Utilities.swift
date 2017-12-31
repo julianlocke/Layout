@@ -44,6 +44,17 @@ private extension NSLayoutConstraint {
     }
 }
 
+extension Layout {
+
+    func setIsActive(_ isActive: Bool, traits givenTraits: [UITraitCollection]) {
+        setIsActive(isActive, traits: UITraitCollection(traitsFrom: givenTraits))
+    }
+
+    func updateActiveConstraints(with givenTraits: [UITraitCollection]) {
+        updateActiveConstraints(with: UITraitCollection(traitsFrom: givenTraits))
+    }
+}
+
 /// This is borrowed from [here](https://marcosantadev.com/test-swift-fatalerror/#replace_default_fatalError).
 extension XCTestCase {
 
