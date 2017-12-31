@@ -92,6 +92,8 @@ class LayoutTests: XCTestCase {
         XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints + horizontallyRegularConstraints)))
         layout.setIsActive(false)
         XCTAssertTrue(layout.__activeConstraints__for_testing_only.isEmpty)
+        layout.updateActiveConstraints(with: .verticallyRegular, .horizontallyCompact)
+        XCTAssertTrue(layout.__activeConstraints__for_testing_only.isEmpty)
     }
     #endif
 }

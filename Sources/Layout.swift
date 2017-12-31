@@ -30,6 +30,12 @@
 
 final public class LayoutContext {
 
+    private unowned var layout: Layout
+
+    init(layout: Layout) {
+        self.layout = layout
+    }
+
     #if os(iOS) || os(tvOS)
     private var traitHierarchy: [UITraitCollection] = []
 
@@ -43,6 +49,18 @@ final public class LayoutContext {
         closure()
     }
     #endif
+
+    internal func addConstraints(_ newConstraints: [NSLayoutConstraint]) {
+        #if os(iOS) || os(tvOS)
+            if let traits = traits {
+                layout.traitsToConstraints[traits, default: []].append(contentsOf: newConstraints)
+            } else {
+                layout.constraints += newConstraints
+            }
+        #else
+            layout.constraints += newConstraints
+        #endif
+    }
 }
 
 final public class Layout {
@@ -51,10 +69,10 @@ final public class Layout {
 
     private var isActive: Bool = false
 
-    private var constraints: [NSLayoutConstraint] = []
+    fileprivate var constraints: [NSLayoutConstraint] = []
 
     #if os(iOS) || os(tvOS)
-    private var traitsToConstraints: [UITraitCollection: [NSLayoutConstraint]] = [:]
+    fileprivate var traitsToConstraints: [UITraitCollection: [NSLayoutConstraint]] = [:]
     #endif
 
     internal init(rootView: View) {
@@ -104,29 +122,6 @@ final public class Layout {
         }
     }
     #endif
-
-    internal func addConstraints(_ newConstraints: [NSLayoutConstraint], context: LayoutContext) {
-        #if os(iOS) || os(tvOS)
-        if let traits = context.traits {
-            traitsToConstraints[traits, default: []].append(contentsOf: newConstraints)
-            if rootView.traitCollection.containsTraits(in: context.traits) {
-                if isActive {
-                    newConstraints.activate()
-                }
-            }
-        } else {
-            constraints += newConstraints
-            if isActive {
-                newConstraints.activate()
-            }
-        }
-        #else
-        constraints += newConstraints
-        if isActive {
-            newConstraints.activate()
-        }
-        #endif
-    }
 
     internal var __activeConstraints__for_testing_only: [NSLayoutConstraint] {
         let allConstraints: [NSLayoutConstraint]

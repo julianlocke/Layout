@@ -28,8 +28,7 @@
     import UIKit
 #endif
 
-private var currentLayout: Layout?
-private var  currentLayoutContext: LayoutContext!
+private var  currentLayoutContext: LayoutContext?
 
 public extension ConstrainableItem {
 
@@ -41,8 +40,8 @@ public extension ConstrainableItem {
 
         let constraints = specs.flatMap { $0.constraints(withItem: self) }
 
-        if let currentLayout = currentLayout {
-            currentLayout.addConstraints(constraints, context: currentLayoutContext)
+        if let currentLayoutContext = currentLayoutContext {
+            currentLayoutContext.addConstraints(constraints)
         }
 
         return constraints
@@ -55,7 +54,7 @@ public extension ConstrainableItem {
 
     @discardableResult
     func applyConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
-        guard currentLayout == nil else {
+        guard currentLayoutContext == nil else {
             fatalError("applyConstraints may not be called when making a layout.")
         }
 
@@ -70,18 +69,21 @@ public extension ConstrainableItem {
 
 public extension Layout {
 
+    private static var currentLayout: Layout?
+
     convenience init(rootView: View, _ closure: (LayoutContext) -> Void) {
-        guard currentLayout == nil else {
+        guard type(of: self).currentLayout == nil else {
             fatalError("Layout.make calls may not be nested")
         }
 
         self.init(rootView: rootView)
-        currentLayout = self
-        currentLayoutContext = LayoutContext()
+        type(of: self).currentLayout = self
+        let ctx = LayoutContext(layout: self)
+        currentLayoutContext = ctx
         defer {
-            currentLayout = nil
+            type(of: self).currentLayout = nil
             currentLayoutContext = nil
         }
-        closure(currentLayoutContext)
+        closure(ctx)
     }
 }
