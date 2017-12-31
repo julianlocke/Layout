@@ -246,6 +246,35 @@ class ConstraintTests: XCTestCase {
         XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints6))
     }
 
+    func testSetSize() {
+        let desiredConstraints = [
+            NSLayoutConstraint(
+                item: view,
+                attribute: .width,
+                relatedBy: .equal,
+                toItem: nil,
+                attribute: .notAnAttribute,
+                multiplier: 1,
+                constant: 100
+            ),
+            NSLayoutConstraint(
+                item: view,
+                attribute: .height,
+                relatedBy: .equal,
+                toItem: nil,
+                attribute: .notAnAttribute,
+                multiplier: 1,
+                constant: 100
+            )
+        ]
+
+        let constraints = view.makeConstraints(
+            .setSize(CGSize(width: 100, height: 100))
+        )
+
+        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints))
+    }
+
     func testPriorityAssignmentOperator() {
         let desiredConstraints = [
             NSLayoutConstraint(
