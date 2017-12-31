@@ -63,4 +63,35 @@ class LayoutTests: XCTestCase {
         layout.setIsActive(false)
         XCTAssertTrue(layout.__activeConstraints__for_testing_only.isEmpty)
     }
+
+    #if os(iOS) || os(tvOS)
+    func testTraitCollectionUpdates() {
+        let globalConstraints: [ConstraintGroup] = [.setSize(CGSize(width: 100, height: 100))]
+        let horizontallyCompactConstraints: [ConstraintGroup] = [.center()]
+        let horizontallyRegularConstraints: [ConstraintGroup] = [.align(.leadingMargin), .align(.topMargin)]
+
+        let layout = Layout(rootView: containerView) { ctx in
+            view.makeConstraints(for: globalConstraints)
+
+            ctx.when(.verticallyRegular) {
+                ctx.when(.horizontallyCompact) {
+                    view.makeConstraints(for: horizontallyCompactConstraints)
+                }
+
+                ctx.when(.horizontallyRegular) {
+                    view.makeConstraints(for: horizontallyRegularConstraints)
+                }
+            }
+        }
+
+        layout.setIsActive(true)
+        XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints)))
+        layout.updateActiveConstraints(with: .verticallyRegular, .horizontallyCompact)
+        XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints + horizontallyCompactConstraints)))
+        layout.updateActiveConstraints(with: .verticallyRegular, .horizontallyRegular)
+        XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints + horizontallyRegularConstraints)))
+        layout.setIsActive(false)
+        XCTAssertTrue(layout.__activeConstraints__for_testing_only.isEmpty)
+    }
+    #endif
 }
