@@ -73,7 +73,8 @@ public extension Layout {
 
     convenience init(_ closure: (LayoutContext) -> Void) {
         guard type(of: self).currentLayout == nil else {
-            fatalError("Layout() calls may not be nested")
+            type(of: self).currentLayout = nil // `nil` this out for unit test purposes.
+            fatalError("Layout() calls may not be nested.")
         }
 
         self.init()

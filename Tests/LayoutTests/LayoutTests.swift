@@ -62,6 +62,8 @@ class LayoutTests: XCTestCase {
         XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(.center())))
         layout.setIsActive(false)
         XCTAssertTrue(layout.__activeConstraints__for_testing_only.isEmpty)
+        layout.setIsActive(false)
+        XCTAssertTrue(layout.__activeConstraints__for_testing_only.isEmpty)
     }
 
     #if os(iOS) || os(tvOS)

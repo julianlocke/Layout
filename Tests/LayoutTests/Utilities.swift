@@ -12,6 +12,9 @@
     import UIKit
 #endif
 
+import XCTest
+@testable import Layout
+
 func constraintsAreEqual(_ cs1: [NSLayoutConstraint], _ cs2: [NSLayoutConstraint]) -> Bool {
     guard cs1.count == cs2.count else { return false }
     var cs2 = cs2
@@ -38,5 +41,33 @@ private extension NSLayoutConstraint {
         self.constant == constraint.constant &&
         self.priority == constraint.priority &&
         self.identifier == constraint.identifier
+    }
+}
+
+/// This is borrowed from [here](https://marcosantadev.com/test-swift-fatalerror/#replace_default_fatalError).
+extension XCTestCase {
+
+    func expectFatalError(expectedMessage: String, testcase: @escaping () -> Void) {
+        let expectation = self.expectation(description: "expectingFatalError")
+        var assertionMessage: String? = nil
+
+        FatalErrorUtil.replaceFatalError { message, _, _ in
+            assertionMessage = message
+            expectation.fulfill()
+            self.unreachable()
+        }
+
+        DispatchQueue.global(qos: .userInitiated).async(execute: testcase)
+
+        waitForExpectations(timeout: 2) { _ in
+            XCTAssertEqual(assertionMessage, expectedMessage)
+            FatalErrorUtil.restoreFatalError()
+        }
+    }
+
+    private func unreachable() -> Never {
+        repeat {
+            RunLoop.current.run()
+        } while (true)
     }
 }

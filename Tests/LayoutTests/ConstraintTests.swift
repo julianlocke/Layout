@@ -675,4 +675,22 @@ class ConstraintTests: XCTestCase {
         XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
     }
     #endif
+
+    func testThatLayoutsMayNotBeNested() {
+        expectFatalError(expectedMessage: "Layout() calls may not be nested.") {
+            _ = Layout { _ in
+                _ = Layout { _ in
+
+                }
+            }
+        }
+    }
+
+    func testThatApplyConstraintsMayNotBeCalledWithinALayout() {
+        expectFatalError(expectedMessage: "applyConstraints may not be called when making a layout.") {
+            _ = Layout { _ in
+                self.view.applyConstraints(.center())
+            }
+        }
+    }
 }
