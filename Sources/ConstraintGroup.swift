@@ -56,10 +56,8 @@ public struct ConstraintGroup: ExpressibleByArrayLiteral {
 
 public extension ConstraintGroup {
 
-    // MARK: - Base
-
-    static func with(_ creator: ConstraintSpec) -> ConstraintGroup {
-        return ConstraintGroup(specs: [creator])
+    static func with(_ specs: ConstraintSpec...) -> ConstraintGroup {
+        return ConstraintGroup(specs: specs)
     }
 
     static func constraint(
