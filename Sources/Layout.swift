@@ -43,8 +43,8 @@ final public class LayoutContext {
         return traitHierarchy.isEmpty ? nil : UITraitCollection(traitsFrom: traitHierarchy)
     }
 
-    public func when(_ traits: UITraitCollection..., closure: () -> Void) {
-        traitHierarchy.append(UITraitCollection(traitsFrom: traits))
+    public func when(_ trait: UITraitCollection, _ traits: UITraitCollection..., closure: () -> Void) {
+        traitHierarchy.append(UITraitCollection(traitsFrom: [trait] + traits))
         defer { traitHierarchy.removeLast() }
         closure()
     }
