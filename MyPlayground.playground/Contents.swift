@@ -41,7 +41,7 @@ class MyViewController: UIViewController {
         green.backgroundColor = .green
         view.addSubview(green)
 
-        mainLayout = Layout.make(rootView: view) { ctx in
+        mainLayout = Layout(rootView: view) { ctx in
             ctx.when(.horizontallyCompact) {
                 ctx.when(.verticallyRegular) {
                     label.makeConstraints(
