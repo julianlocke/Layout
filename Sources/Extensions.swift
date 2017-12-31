@@ -30,18 +30,27 @@
 
 public extension Array where Element == NSLayoutConstraint {
 
+    /// Activates an `Array` of `NSLayoutConstraint`s and returns them.
+    ///
+    /// - Returns: An activated `Array` of `NSLayoutConstraint`s.
     @discardableResult
     func activate() -> [NSLayoutConstraint] {
         NSLayoutConstraint.activate(self)
         return self
     }
 
+    /// Deactivates an `Array` of `NSLayoutConstraint`s and returns them.
+    ///
+    /// - Returns: A deactivated `Array` of `NSLayoutConstraint`s.
     @discardableResult
     func deactivate() -> [NSLayoutConstraint] {
         NSLayoutConstraint.deactivate(self)
         return self
     }
 
+    /// Set the `constant` property of all the `NSLayoutConstraint`s in the receving `Array`.
+    ///
+    /// - Parameter constant: The constant.
     func setConstant(_ constant: CGFloat) {
         for constraint in self {
             constraint.constant = constant
@@ -52,42 +61,55 @@ public extension Array where Element == NSLayoutConstraint {
 #if os(iOS) || os(tvOS)
 public extension UITraitCollection {
 
+    /// Returns a new trait collection representing an unspecified horizontal size class.
     static var horizontallyUnspecified: UITraitCollection {
         return UITraitCollection(horizontalSizeClass: .unspecified)
     }
 
-    static var verticallyUnspecified: UITraitCollection {
-        return UITraitCollection(verticalSizeClass: .unspecified)
-    }
-
+    /// Returns a new trait collection representing a compact horizontal size class.
     static var horizontallyCompact: UITraitCollection {
         return UITraitCollection(horizontalSizeClass: .compact)
     }
 
+    /// Returns a new trait collection representing a regular horizontal size class.
     static var horizontallyRegular: UITraitCollection {
         return UITraitCollection(horizontalSizeClass: .regular)
     }
 
+    /// Returns a new trait collection representing an unspecified vertical size class.
+    static var verticallyUnspecified: UITraitCollection {
+        return UITraitCollection(verticalSizeClass: .unspecified)
+    }
+
+    /// Returns a new trait collection representing a compact vertical size class.
     static var verticallyCompact: UITraitCollection {
         return UITraitCollection(verticalSizeClass: .compact)
     }
 
+    /// Returns a new trait collection representing a regular vertical size class.
     static var verticallyRegular: UITraitCollection {
         return UITraitCollection(verticalSizeClass: .regular)
     }
 
+    /// Returns a new trait collection representing an iPad user interface idiom.
     static var isPad: UITraitCollection {
         return UITraitCollection(userInterfaceIdiom: .pad)
     }
 
+    /// Returns a new trait collection representing an iPhone user interface idiom.
     static var isPhone: UITraitCollection {
         return UITraitCollection(userInterfaceIdiom: .phone)
     }
 
+    /// Returns a new trait collection representing a tv user interface idiom.
     static var isTv: UITraitCollection {
         return UITraitCollection(userInterfaceIdiom: .tv)
     }
 
+    /// Returns a new trait collection representing a specific content size category.
+    ///
+    /// - Parameter contentSizeCategory: The content size category.
+    /// - Returns: A new trait collection representing a specific content size category.
     static func preferredContentSizeCategory(of contentSizeCategory: UIContentSizeCategory) -> UITraitCollection {
         return UITraitCollection(preferredContentSizeCategory: contentSizeCategory)
     }
