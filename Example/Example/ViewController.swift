@@ -46,7 +46,7 @@ class ViewController: UIViewController {
         view.addSubview(label)
         view.addSubview(green)
 
-        layout = Layout(rootView: view) { ctx in
+        layout = Layout { ctx in
             green.makeConstraints(
                 .center()
             )
@@ -71,13 +71,13 @@ class ViewController: UIViewController {
             }
         }
 
-        layout?.setIsActive(true)
+        layout?.setIsActive(true, traits: view.traitCollection)
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         coordinator.animate(alongsideTransition: { _ in
-            self.layout?.updateActiveConstraints()
+            self.layout?.updateActiveConstraints(with: self.traitCollection)
             self.view.layoutIfNeeded()
         }, completion: nil)
     }

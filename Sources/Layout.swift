@@ -65,8 +65,6 @@ final public class LayoutContext {
 
 final public class Layout {
 
-    public let rootView: View
-
     private var isActive: Bool = false
 
     fileprivate var constraints: [NSLayoutConstraint] = []
@@ -75,20 +73,25 @@ final public class Layout {
     fileprivate var traitsToConstraints: [UITraitCollection: [NSLayoutConstraint]] = [:]
     #endif
 
-    internal init(rootView: View) {
-        self.rootView = rootView
+    internal init() {
+
     }
 
     #if os(iOS) || os(tvOS)
-    public func setIsActive(_ isActive: Bool, traits givenTraits: UITraitCollection...) {
+    public func setIsActive(_ isActive: Bool, traits givenTraits: [UITraitCollection]) {
+        setIsActive(isActive, traits: UITraitCollection(traitsFrom: givenTraits))
+    }
+
+    public func setIsActive(_ isActive: Bool, traits givenTraits: UITraitCollection? = nil) {
         guard isActive != self.isActive else { return }
         self.isActive = isActive
         if isActive {
             constraints.activate()
 
-            let constraintsToCheck = givenTraits.isEmpty ? rootView.traitCollection : UITraitCollection(traitsFrom: givenTraits)
-            for (traits, constraints) in traitsToConstraints where constraintsToCheck.containsTraits(in: traits) {
-                constraints.activate()
+            if let givenTraits = givenTraits {
+                for (traits, constraints) in traitsToConstraints where givenTraits.containsTraits(in: traits) {
+                    constraints.activate()
+                }
             }
         } else {
             constraints.deactivate()
@@ -99,14 +102,17 @@ final public class Layout {
         }
     }
 
-    public func updateActiveConstraints(with givenTraits: UITraitCollection...) {
+    public func updateActiveConstraints(with givenTraits: [UITraitCollection]) {
+        updateActiveConstraints(with: UITraitCollection(traitsFrom: givenTraits))
+    }
+
+    public func updateActiveConstraints(with givenTraits: UITraitCollection) {
         guard isActive else { return }
-        let constraintsToCheck = givenTraits.isEmpty ? rootView.traitCollection : UITraitCollection(traitsFrom: givenTraits)
 
         var constraintsToActivate: [NSLayoutConstraint] = []
 
         for (traits, constraints) in traitsToConstraints {
-            if constraintsToCheck.containsTraits(in: traits) {
+            if givenTraits.containsTraits(in: traits) {
                 constraintsToActivate.append(contentsOf: constraints)
             } else {
                 constraints.deactivate()

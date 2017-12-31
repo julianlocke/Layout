@@ -71,12 +71,12 @@ public extension Layout {
 
     private static var currentLayout: Layout?
 
-    convenience init(rootView: View, _ closure: (LayoutContext) -> Void) {
+    convenience init(_ closure: (LayoutContext) -> Void) {
         guard type(of: self).currentLayout == nil else {
             fatalError("Layout() calls may not be nested")
         }
 
-        self.init(rootView: rootView)
+        self.init()
         type(of: self).currentLayout = self
         let ctx = LayoutContext(layout: self)
         currentLayoutContext = ctx
