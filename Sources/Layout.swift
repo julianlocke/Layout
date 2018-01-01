@@ -28,49 +28,14 @@
     import UIKit
 #endif
 
-final public class LayoutContext {
-
-    private unowned var layout: Layout
-
-    init(layout: Layout) {
-        self.layout = layout
-    }
-
-    #if os(iOS) || os(tvOS)
-    private var traitHierarchy: [UITraitCollection] = []
-
-    fileprivate var traits: UITraitCollection? {
-        return traitHierarchy.isEmpty ? nil : UITraitCollection(traitsFrom: traitHierarchy)
-    }
-
-    public func when(_ trait: UITraitCollection, _ traits: UITraitCollection..., closure: () -> Void) {
-        traitHierarchy.append(UITraitCollection(traitsFrom: [trait] + traits))
-        defer { traitHierarchy.removeLast() }
-        closure()
-    }
-    #endif
-
-    internal func addConstraints(_ newConstraints: [NSLayoutConstraint]) {
-        #if os(iOS) || os(tvOS)
-            if let traits = traits {
-                layout.traitsToConstraints[traits, default: []].append(contentsOf: newConstraints)
-            } else {
-                layout.constraints += newConstraints
-            }
-        #else
-            layout.constraints += newConstraints
-        #endif
-    }
-}
-
 final public class Layout {
 
     private var isActive: Bool = false
 
-    fileprivate var constraints: [NSLayoutConstraint] = []
+    internal var constraints: [NSLayoutConstraint] = []
 
     #if os(iOS) || os(tvOS)
-    fileprivate var traitsToConstraints: [UITraitCollection: [NSLayoutConstraint]] = [:]
+    internal var traitsToConstraints: [UITraitCollection: [NSLayoutConstraint]] = [:]
     #endif
 
     internal init() {

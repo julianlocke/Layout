@@ -45,6 +45,9 @@
 		1ED302F11FF6F84200D0D4A3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED302EF1FF6F84200D0D4A3 /* Layout.swift */; };
 		1ED302F21FF6F84200D0D4A3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED302EF1FF6F84200D0D4A3 /* Layout.swift */; };
 		1EE62D4E1FF83904002373F4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA4B6DE1FF421A4008F3E7B /* Extensions.swift */; };
+		1EE62D501FFA9977002373F4 /* LayoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE62D4F1FFA9977002373F4 /* LayoutContext.swift */; };
+		1EE62D511FFA9977002373F4 /* LayoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE62D4F1FFA9977002373F4 /* LayoutContext.swift */; };
+		1EE62D521FFA9977002373F4 /* LayoutContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE62D4F1FFA9977002373F4 /* LayoutContext.swift */; };
 		52D6D9871BEFF229002C0205 /* Layout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D6D97C1BEFF229002C0205 /* Layout.framework */; };
 		8933C7851EB5B820000D00A4 /* ConstrainableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7841EB5B820000D00A4 /* ConstrainableItem.swift */; };
 		8933C78E1EB5B82C000D00A4 /* ConstraintTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8933C7891EB5B82A000D00A4 /* ConstraintTests.swift */; };
@@ -91,6 +94,7 @@
 		1EA4B6DE1FF421A4008F3E7B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1EBB5ADC1FF92E9E00D58F5B /* LayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutTests.swift; sourceTree = "<group>"; };
 		1ED302EF1FF6F84200D0D4A3 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
+		1EE62D4F1FFA9977002373F4 /* LayoutContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutContext.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9861BEFF229002C0205 /* Layout-iOS Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Layout-iOS Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		52D6D9F01BEFFFBE002C0205 /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,6 +201,7 @@
 				1E4846CD1FF5D3D000C92E13 /* ConstraintGroupExtensions.swift */,
 				1E4846C91FF59FF100C92E13 /* ConstraintGroupOperators.swift */,
 				1ED302EF1FF6F84200D0D4A3 /* Layout.swift */,
+				1EE62D4F1FFA9977002373F4 /* LayoutContext.swift */,
 				1EA4B6DE1FF421A4008F3E7B /* Extensions.swift */,
 			);
 			path = Sources;
@@ -491,6 +496,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E4846E11FF5E19100C92E13 /* Platform.swift in Sources */,
+				1EE62D501FFA9977002373F4 /* LayoutContext.swift in Sources */,
 				1E4846C81FF57D8500C92E13 /* LayoutAttribute.swift in Sources */,
 				1E6E8DC81FF82B240008DFAA /* ConstrainableItemExtensions.swift in Sources */,
 				1E4846CC1FF5BD0C00C92E13 /* ConstraintSpec.swift in Sources */,
@@ -519,6 +525,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E4846E71FF5E37B00C92E13 /* LayoutAttribute.swift in Sources */,
+				1EE62D521FFA9977002373F4 /* LayoutContext.swift in Sources */,
 				1E4846EB1FF5E37B00C92E13 /* Extensions.swift in Sources */,
 				1E6E8DCA1FF82B240008DFAA /* ConstrainableItemExtensions.swift in Sources */,
 				1E4846E51FF5E37B00C92E13 /* ConstraintSpec.swift in Sources */,
@@ -537,6 +544,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E4846E21FF5E19100C92E13 /* Platform.swift in Sources */,
+				1EE62D511FFA9977002373F4 /* LayoutContext.swift in Sources */,
 				1E4846D01FF5E13B00C92E13 /* ConstrainableItem.swift in Sources */,
 				1E6E8DC91FF82B240008DFAA /* ConstrainableItemExtensions.swift in Sources */,
 				1E4846D11FF5E13B00C92E13 /* ConstraintSpec.swift in Sources */,
