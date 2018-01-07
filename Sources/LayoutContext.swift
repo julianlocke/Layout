@@ -50,12 +50,12 @@ final public class LayoutContext {
     }
     #endif
 
-    internal func addConstraints(_ newConstraints: [NSLayoutConstraint]) {
+    internal func addConstraints(_ constraints: [NSLayoutConstraint]) {
         #if os(iOS) || os(tvOS)
             if let traits = traits {
-                layout.traitsToConstraints[traits, default: []].append(contentsOf: newConstraints)
+                layout.traitsToConstraints[traits, default: []].append(contentsOf: constraints)
             } else {
-                layout.constraints += newConstraints
+                layout.constraints += constraints
             }
         #else
             layout.constraints += newConstraints
