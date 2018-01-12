@@ -30,74 +30,52 @@
 
 final public class Layout<T> where T: Hashable {
 
-    private var isActive: Bool = false
-
     internal var fixedConstraints: [NSLayoutConstraint] = []
 
     internal var groupsToConstraints: [T: [NSLayoutConstraint]] = [:]
-
-    #if os(iOS) || os(tvOS)
-    internal var traitsToConstraints: [UITraitCollection: [NSLayoutConstraint]] = [:]
-    #endif
 
     internal init() {
 
     }
 
+    public func updateGroupedConstraints(activate: [T] = [], deactivate: [T] = []) {
+        deactivate.forEach {
+            groupsToConstraints[$0]?.deactivate()
+        }
+
+        activate.forEach {
+            groupsToConstraints[$0]?.activate()
+        }
+    }
+
+    public func deactivateAllGroupedConstraints() {
+        groupsToConstraints.values.forEach { $0.deactivate }
+    }
+
     #if os(iOS) || os(tvOS)
-    public func setIsActive(_ isActive: Bool, traits givenTraits: UITraitCollection? = nil) {
-        guard isActive != self.isActive else { return }
-        self.isActive = isActive
-        if isActive {
-            fixedConstraints.activate()
+    private var currentTraits = UITraitCollection()
 
-            if let givenTraits = givenTraits {
-                for (traits, constraints) in traitsToConstraints where givenTraits.containsTraits(in: traits) {
-                    constraints.activate()
-                }
-            }
-        } else {
-            fixedConstraints.deactivate()
+    private var activeTraitConstraints: [NSLayoutConstraint] = []
 
-            for constraints in traitsToConstraints.values {
-                constraints.deactivate()
-            }
-        }
-    }
+    internal var traitsToConstraints: [UITraitCollection: [NSLayoutConstraint]] = [:]
 
-    public func updateActiveConstraints(with givenTraits: UITraitCollection) {
-        guard isActive else { return }
+    public func updateTraits(_ givenTraits: UITraitCollection) {
+        guard currentTraits != givenTraits else { return }
+        currentTraits = givenTraits
 
-        var constraintsToActivate: [NSLayoutConstraint] = []
-
-        for (traits, constraints) in traitsToConstraints {
-            if givenTraits.containsTraits(in: traits) {
-                constraintsToActivate.append(contentsOf: constraints)
-            } else {
-                constraints.deactivate()
-            }
-        }
-
-        constraintsToActivate.activate()
-    }
-    #else
-    public func setIsActive(_ isActive: Bool) {
-        guard isActive != self.isActive else { return }
-        self.isActive = isActive
-        if isActive {
-            fixedConstraints.activate()
-        } else {
-            fixedConstraints.deactivate()
-        }
+        activeTraitConstraints.deactivate()
+        activeTraitConstraints = traitsToConstraints
+            .filter { givenTraits.containsTraits(in: $0.key) }
+            .map { $0.value }
+            .flatMap { $0 }
+            .activate()
     }
     #endif
 
     internal var __activeConstraints__for_testing_only: [NSLayoutConstraint] {
-        let allConstraints: [NSLayoutConstraint]
+        var allConstraints = fixedConstraints + groupsToConstraints.values.flatMap { $0 }
         #if os(iOS) || os(tvOS)
-            allConstraints = fixedConstraints + traitsToConstraints.values.flatMap({ $0 })
-        #else
-            allConstraints = fixedConstraints
+            allConstraints += traitsToConstraints.values.flatMap({ $0 })
         #endif
         return allConstraints.filter { $0.isActive }
     }
