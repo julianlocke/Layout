@@ -45,7 +45,7 @@ class LayoutTests: XCTestCase {
     }
 
     func testThatNothingIsActiveInitially() {
-        let layout = Layout { _ in
+        let layout = Layout<String> { _ in
             view.makeConstraints(.center())
         }
 
@@ -53,7 +53,7 @@ class LayoutTests: XCTestCase {
     }
 
     func testBasicActivationAndDeactivation() {
-        let layout = Layout { _ in
+        let layout = Layout<String> { _ in
             view.makeConstraints(.center())
         }
 
@@ -72,7 +72,7 @@ class LayoutTests: XCTestCase {
         let horizontallyCompactConstraints: [ConstraintGroup] = [.center()]
         let horizontallyRegularConstraints: [ConstraintGroup] = [.align(.leadingMargin), .align(.topMargin)]
 
-        let layout = Layout { ctx in
+        let layout = Layout<String> { ctx in
             view.makeConstraints(for: globalConstraints)
 
             ctx.when(.verticallyRegular) {
@@ -102,8 +102,8 @@ class LayoutTests: XCTestCase {
 
     func testThatLayoutsMayNotBeNested() {
         expectFatalError(expectedMessage: "Layout() calls may not be nested.") {
-            _ = Layout { _ in
-                _ = Layout { _ in
+            _ = Layout<String> { _ in
+                _ = Layout<String> { _ in
 
                 }
             }

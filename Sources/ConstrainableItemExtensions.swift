@@ -28,8 +28,8 @@
     import UIKit
 #endif
 
-private var currentLayout: Layout?
-private var  currentLayoutContext: LayoutContext?
+private var currentLayout: Any?
+private var  currentLayoutContext: ConstraintContainer?
 
 public extension ConstrainableItem {
 
@@ -68,7 +68,7 @@ public extension ConstrainableItem {
 
 public extension Layout {
 
-    convenience init(_ closure: (LayoutContext) -> Void) {
+    convenience init(_ closure: (LayoutContext<T>) -> Void) {
         guard currentLayout == nil else {
             currentLayout = nil // `nil` this out for unit test purposes 😬.
             fatalError("Layout() calls may not be nested.")

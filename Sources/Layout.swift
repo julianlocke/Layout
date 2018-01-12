@@ -28,11 +28,13 @@
     import UIKit
 #endif
 
-final public class Layout {
+final public class Layout<T> where T: Hashable {
 
     private var isActive: Bool = false
 
     internal var constraints: [NSLayoutConstraint] = []
+
+    internal var groupsToConstraints: [T: [NSLayoutConstraint]] = [:]
 
     #if os(iOS) || os(tvOS)
     internal var traitsToConstraints: [UITraitCollection: [NSLayoutConstraint]] = [:]

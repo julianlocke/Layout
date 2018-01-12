@@ -28,12 +28,39 @@
     import UIKit
 #endif
 
-final public class LayoutContext {
+internal protocol ConstraintContainer: class {
 
-    private unowned var layout: Layout
+    func addConstraints(_ constraints: [NSLayoutConstraint])
+}
 
-    init(layout: Layout) {
+final public class LayoutContext<T>: ConstraintContainer where T: Hashable {
+
+    private unowned var layout: Layout<T>
+
+    private var currentGroup: T?
+
+    init(layout: Layout<T>) {
         self.layout = layout
+    }
+
+    public func always(_ closure: () -> Void) {
+        closure()
+    }
+
+    public func group(_ group: T, closure: () -> Void) {
+        #if os(iOS) || os(tvOS)
+        guard traits == nil else {
+            fatalError("grouped constraints may not be nested within trait-based constraints.")
+        }
+        #endif
+
+        guard currentGroup == nil else {
+            fatalError("\(#function) calls may not be nested.")
+        }
+
+        currentGroup = group
+        defer { currentGroup = nil }
+        closure()
     }
 
     #if os(iOS) || os(tvOS)
@@ -44,6 +71,9 @@ final public class LayoutContext {
     }
 
     public func when(_ trait: UITraitCollection, _ traits: UITraitCollection..., closure: () -> Void) {
+        guard currentGroup == nil else {
+            fatalError("Trait-based constraints may not be nested within grouped constraints.")
+        }
         traitHierarchy.append(UITraitCollection(traitsFrom: [trait] + traits))
         defer { traitHierarchy.removeLast() }
         closure()
@@ -52,13 +82,19 @@ final public class LayoutContext {
 
     internal func addConstraints(_ constraints: [NSLayoutConstraint]) {
         #if os(iOS) || os(tvOS)
-            if let traits = traits {
+            if let group = currentGroup {
+                layout.groupsToConstraints[group, default: []].append(contentsOf: constraints)
+            } else if let traits = traits {
                 layout.traitsToConstraints[traits, default: []].append(contentsOf: constraints)
             } else {
                 layout.constraints += constraints
             }
         #else
-            layout.constraints += newConstraints
+            if let group = currentGroup {
+                layout.groupsToConstraints[group, default: []].append(contentsOf: constraints)
+            } else {
+                layout.constraints += constraints
+            }
         #endif
     }
 }
