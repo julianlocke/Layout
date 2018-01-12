@@ -51,11 +51,13 @@ public extension ConstrainableItem {
 
     @discardableResult
     func applyConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
-        guard currentLayoutContext == nil else {
-            fatalError("applyConstraints may not be called when making a layout.")
+        let constraints = makeConstraints(for: specs)
+
+        if currentLayoutContext == nil {
+            constraints.activate()
         }
 
-        return makeConstraints(for: specs).activate()
+        return constraints
     }
 
     @discardableResult
