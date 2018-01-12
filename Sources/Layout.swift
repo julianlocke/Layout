@@ -32,7 +32,7 @@ final public class Layout<T> where T: Hashable {
 
     private var isActive: Bool = false
 
-    internal var constraints: [NSLayoutConstraint] = []
+    internal var fixedConstraints: [NSLayoutConstraint] = []
 
     internal var groupsToConstraints: [T: [NSLayoutConstraint]] = [:]
 
@@ -49,7 +49,7 @@ final public class Layout<T> where T: Hashable {
         guard isActive != self.isActive else { return }
         self.isActive = isActive
         if isActive {
-            constraints.activate()
+            fixedConstraints.activate()
 
             if let givenTraits = givenTraits {
                 for (traits, constraints) in traitsToConstraints where givenTraits.containsTraits(in: traits) {
@@ -57,7 +57,7 @@ final public class Layout<T> where T: Hashable {
                 }
             }
         } else {
-            constraints.deactivate()
+            fixedConstraints.deactivate()
 
             for constraints in traitsToConstraints.values {
                 constraints.deactivate()
@@ -85,9 +85,9 @@ final public class Layout<T> where T: Hashable {
         guard isActive != self.isActive else { return }
         self.isActive = isActive
         if isActive {
-            constraints.activate()
+            fixedConstraints.activate()
         } else {
-            constraints.deactivate()
+            fixedConstraints.deactivate()
         }
     }
     #endif
@@ -95,9 +95,9 @@ final public class Layout<T> where T: Hashable {
     internal var __activeConstraints__for_testing_only: [NSLayoutConstraint] {
         let allConstraints: [NSLayoutConstraint]
         #if os(iOS) || os(tvOS)
-            allConstraints = constraints + traitsToConstraints.values.flatMap({ $0 })
+            allConstraints = fixedConstraints + traitsToConstraints.values.flatMap({ $0 })
         #else
-            allConstraints = constraints
+            allConstraints = fixedConstraints
         #endif
         return allConstraints.filter { $0.isActive }
     }

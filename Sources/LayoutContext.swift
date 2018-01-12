@@ -43,10 +43,6 @@ final public class LayoutContext<T>: ConstraintContainer where T: Hashable {
         self.layout = layout
     }
 
-    public func always(_ closure: () -> Void) {
-        closure()
-    }
-
     public func group(_ group: T, closure: () -> Void) {
         #if os(iOS) || os(tvOS)
         guard traits == nil else {
@@ -87,13 +83,13 @@ final public class LayoutContext<T>: ConstraintContainer where T: Hashable {
             } else if let traits = traits {
                 layout.traitsToConstraints[traits, default: []].append(contentsOf: constraints)
             } else {
-                layout.constraints += constraints
+                layout.fixedConstraints += constraints
             }
         #else
             if let group = currentGroup {
                 layout.groupsToConstraints[group, default: []].append(contentsOf: constraints)
             } else {
-                layout.constraints += constraints
+                layout.fixedConstraints += constraints
             }
         #endif
     }

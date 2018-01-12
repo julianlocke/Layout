@@ -83,5 +83,8 @@ public extension Layout {
             currentLayoutContext = nil
         }
         closure(ctx)
+
+        // Activate the "always" constraints.
+        fixedConstraints.activate()
     }
 }
