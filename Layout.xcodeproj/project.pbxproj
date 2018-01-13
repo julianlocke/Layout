@@ -41,6 +41,9 @@
 		1EBB5ADD1FF92E9E00D58F5B /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBB5ADC1FF92E9E00D58F5B /* LayoutTests.swift */; };
 		1EBB5ADE1FF92E9E00D58F5B /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBB5ADC1FF92E9E00D58F5B /* LayoutTests.swift */; };
 		1EBB5ADF1FF92E9E00D58F5B /* LayoutTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EBB5ADC1FF92E9E00D58F5B /* LayoutTests.swift */; };
+		1ECEC57C200A97BD007E6169 /* FatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECEC57B200A97BD007E6169 /* FatalError.swift */; };
+		1ECEC57D200A97BD007E6169 /* FatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECEC57B200A97BD007E6169 /* FatalError.swift */; };
+		1ECEC57E200A97BD007E6169 /* FatalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECEC57B200A97BD007E6169 /* FatalError.swift */; };
 		1ED302F01FF6F84200D0D4A3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED302EF1FF6F84200D0D4A3 /* Layout.swift */; };
 		1ED302F11FF6F84200D0D4A3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED302EF1FF6F84200D0D4A3 /* Layout.swift */; };
 		1ED302F21FF6F84200D0D4A3 /* Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ED302EF1FF6F84200D0D4A3 /* Layout.swift */; };
@@ -93,6 +96,7 @@
 		1EA4B6DC1FF4215D008F3E7B /* ItemConstraintSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemConstraintSpec.swift; sourceTree = "<group>"; };
 		1EA4B6DE1FF421A4008F3E7B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1EBB5ADC1FF92E9E00D58F5B /* LayoutTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutTests.swift; sourceTree = "<group>"; };
+		1ECEC57B200A97BD007E6169 /* FatalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FatalError.swift; sourceTree = "<group>"; };
 		1ED302EF1FF6F84200D0D4A3 /* Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Layout.swift; sourceTree = "<group>"; };
 		1EE62D4F1FFA9977002373F4 /* LayoutContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutContext.swift; sourceTree = "<group>"; };
 		52D6D97C1BEFF229002C0205 /* Layout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Layout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -192,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				1E4846E01FF5E19100C92E13 /* Platform.swift */,
+				1ECEC57B200A97BD007E6169 /* FatalError.swift */,
 				8933C7841EB5B820000D00A4 /* ConstrainableItem.swift */,
 				1E6E8DC71FF82B240008DFAA /* ConstrainableItemExtensions.swift */,
 				1E4846CB1FF5BD0C00C92E13 /* ConstraintSpec.swift */,
@@ -501,6 +506,7 @@
 				1E6E8DC81FF82B240008DFAA /* ConstrainableItemExtensions.swift in Sources */,
 				1E4846CC1FF5BD0C00C92E13 /* ConstraintSpec.swift in Sources */,
 				8933C7851EB5B820000D00A4 /* ConstrainableItem.swift in Sources */,
+				1ECEC57C200A97BD007E6169 /* FatalError.swift in Sources */,
 				1EA4B6DB1FF42146008F3E7B /* ConstraintGroup.swift in Sources */,
 				1E4846CA1FF59FF100C92E13 /* ConstraintGroupOperators.swift in Sources */,
 				1EA4B6DD1FF4215D008F3E7B /* ItemConstraintSpec.swift in Sources */,
@@ -530,6 +536,7 @@
 				1E6E8DCA1FF82B240008DFAA /* ConstrainableItemExtensions.swift in Sources */,
 				1E4846E51FF5E37B00C92E13 /* ConstraintSpec.swift in Sources */,
 				1E4846E91FF5E37B00C92E13 /* ConstraintGroupOperators.swift in Sources */,
+				1ECEC57E200A97BD007E6169 /* FatalError.swift in Sources */,
 				1E4846E41FF5E37B00C92E13 /* ConstrainableItem.swift in Sources */,
 				1E4846E31FF5E37B00C92E13 /* Platform.swift in Sources */,
 				1E4846E61FF5E37B00C92E13 /* ItemConstraintSpec.swift in Sources */,
@@ -549,6 +556,7 @@
 				1E6E8DC91FF82B240008DFAA /* ConstrainableItemExtensions.swift in Sources */,
 				1E4846D11FF5E13B00C92E13 /* ConstraintSpec.swift in Sources */,
 				1E4846D41FF5E13B00C92E13 /* ConstraintGroup.swift in Sources */,
+				1ECEC57D200A97BD007E6169 /* FatalError.swift in Sources */,
 				1E4846D51FF5E13B00C92E13 /* ConstraintGroupOperators.swift in Sources */,
 				1E4846D31FF5E13B00C92E13 /* LayoutAttribute.swift in Sources */,
 				1ED302F11FF6F84200D0D4A3 /* Layout.swift in Sources */,

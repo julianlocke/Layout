@@ -22,20 +22,25 @@
  SOFTWARE.
  */
 
-#if os(macOS)
-    import AppKit
+import Foundation
 
-    public typealias View = NSView
-    public typealias LayoutGuide = NSLayoutGuide
-    public typealias LayoutPriority = NSLayoutConstraint.Priority
-    public typealias LayoutAttribute = NSLayoutConstraint.Attribute
-    public typealias LayoutRelation = NSLayoutConstraint.Relation
-#else
-    import UIKit
+/// This is borrowed from [here](https://marcosantadev.com/test-swift-fatalerror/#replace_default_fatalError).
+struct FatalErrorUtil {
 
-    public typealias View = UIView
-    public typealias LayoutGuide = UILayoutGuide
-    public typealias LayoutPriority = UILayoutPriority
-    public typealias LayoutAttribute = NSLayoutAttribute
-    public typealias LayoutRelation = NSLayoutRelation
-#endif
+    static var fatalErrorClosure: (String, StaticString, UInt) -> Never = defaultFatalErrorClosure
+
+    private static let defaultFatalErrorClosure = { Swift.fatalError($0, file: $1, line: $2) }
+
+    static func replaceFatalError(closure: @escaping (String, StaticString, UInt) -> Never) {
+        fatalErrorClosure = closure
+    }
+
+    static func restoreFatalError() {
+        fatalErrorClosure = defaultFatalErrorClosure
+    }
+}
+
+/// This is borrowed from [here](https://marcosantadev.com/test-swift-fatalerror/#replace_default_fatalError).
+func fatalError(_ message: @autoclosure () -> String = "", file: StaticString = #file, line: UInt = #line) -> Never {
+    FatalErrorUtil.fatalErrorClosure(message(), file, line)
+}
