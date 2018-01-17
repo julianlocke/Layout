@@ -62,12 +62,8 @@ private extension NSLayoutConstraint {
 
 extension Layout {
 
-    func setIsActive(_ isActive: Bool, traits givenTraits: [UITraitCollection]) {
-        setIsActive(isActive, traits: UITraitCollection(traitsFrom: givenTraits))
-    }
-
-    func updateActiveConstraints(with givenTraits: [UITraitCollection]) {
-        updateActiveConstraints(with: UITraitCollection(traitsFrom: givenTraits))
+    func updateTraits(_ givenTraits: [UITraitCollection]) {
+        updateTraits(UITraitCollection(traitsFrom: givenTraits))
     }
 }
 
