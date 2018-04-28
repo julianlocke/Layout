@@ -29,7 +29,7 @@
 #endif
 
 private var currentLayout: Any?
-private var  currentLayoutContext: ConstraintContainer?
+private var currentLayoutContext: ConstraintContainer?
 
 public extension ConstrainableItem {
 

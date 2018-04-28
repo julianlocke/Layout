@@ -24,7 +24,10 @@
 
 import Foundation
 import XCTest
+
 @testable import Layout
+
+// swiftlint:disable implicitly_unwrapped_optional
 
 class LayoutTests: XCTestCase {
 
@@ -42,6 +45,7 @@ class LayoutTests: XCTestCase {
         view.removeFromSuperview()
         containerView = nil
         view = nil
+        super.tearDown()
     }
 
     func testBasicAlwaysActiveConstraints() {

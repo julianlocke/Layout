@@ -24,11 +24,10 @@
 
 import Foundation
 import XCTest
+
 @testable import Layout
 
-// swiftlint:disable function_body_length
-// swiftlint:disable file_length
-// swiftlint:disable type_body_length
+// swiftlint:disable function_body_length file_length type_body_length implicitly_unwrapped_optional
 
 class ConstraintTests: XCTestCase {
 
@@ -46,6 +45,7 @@ class ConstraintTests: XCTestCase {
         view.removeFromSuperview()
         containerView = nil
         view = nil
+        super.tearDown()
     }
 
     func testBasicLayoutGuide() {

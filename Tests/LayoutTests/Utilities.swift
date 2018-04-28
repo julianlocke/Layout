@@ -28,8 +28,8 @@
     import UIKit
 #endif
 
+import Layout
 import XCTest
-@testable import Layout
 
 func constraintsAreEqual(_ cs1: [NSLayoutConstraint], _ cs2: [NSLayoutConstraint]) -> Bool {
     guard cs1.count == cs2.count else { return false }
