@@ -53,7 +53,8 @@ precedencegroup LayoutIdentifierAssignment {
 
 infix operator <- : LayoutIdentifierAssignment
 
-public func <- (lhs: ConstraintGroup, rhs: String) -> ConstraintGroup {
+public func <- (lhs: ConstraintGroup, rhs: String?) -> ConstraintGroup {
+    guard let rhs = rhs else { return lhs }
     var new = lhs
     new.identifier = rhs
     return new

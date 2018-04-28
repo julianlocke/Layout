@@ -23,10 +23,12 @@
  */
 
 #if os(macOS)
-    import AppKit
+import AppKit
 #else
-    import UIKit
+import UIKit
 #endif
+
+public var addDebugConstraintGroupIdentifiers = false
 
 public struct ConstraintGroup: ExpressibleByArrayLiteral {
 
@@ -36,7 +38,7 @@ public struct ConstraintGroup: ExpressibleByArrayLiteral {
 
     public var identifier: String?
 
-    public init(specs: [ConstraintSpec]) {
+    public init(_ specs: [ConstraintSpec]) {
         self.specs = specs
     }
 
@@ -56,68 +58,131 @@ public struct ConstraintGroup: ExpressibleByArrayLiteral {
 
 public extension ConstraintGroup {
 
-    static func with(_ specs: ConstraintSpec...) -> ConstraintGroup {
-        return ConstraintGroup(specs: specs)
-    }
-
-    static func constraint(
+    private static func constraint
+        (
         attribute firstAttr: LayoutAttribute,
         relatedBy relation: LayoutRelation = .equal,
         toItem item: ConstrainableItem? = nil,
         attribute secondAttr: LayoutAttribute = .notAnAttribute,
         multiplier: CGFloat = 1,
-        constant: CGFloat = 0) -> ConstraintGroup {
-        return with(ItemConstraintSpec(
-            attribute: firstAttr,
-            relatedBy: relation,
-            toItem: item,
-            attribute: secondAttr,
-            multiplier: multiplier,
-            constant: constant
-        ))
+        constant: CGFloat = 0,
+        file: StaticString,
+        function: StaticString,
+        line: Int
+        )
+        -> ConstraintGroup {
+            return .init(
+                [
+                    ItemConstraintSpec(
+                        attribute: firstAttr,
+                        relatedBy: relation,
+                        toItem: item,
+                        attribute: secondAttr,
+                        multiplier: multiplier,
+                        constant: constant
+                    )
+                ]
+                ) <- (addDebugConstraintGroupIdentifiers ? "\(file)::\(function)::\(line)" : nil)
     }
 
-    static func align(_ firstAttr: XPosition, _ relation: LayoutRelation = .equal, to secondAttr: XPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, offsetBy: CGFloat = 0) -> ConstraintGroup {
-        return constraint(
-            attribute: firstAttr.layoutAttribute,
-            relatedBy: relation,
-            toItem: item,
-            attribute: (secondAttr ?? firstAttr).layoutAttribute,
-            multiplier: multiplier,
-            constant: offsetBy
+    static func align
+        (
+        _ firstAttr: XPosition,
+        _ relation: LayoutRelation = .equal,
+        to secondAttr: XPosition? = nil,
+        of item: ConstrainableItem? = nil,
+        multiplier: CGFloat = 1,
+        offsetBy: CGFloat = 0,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
         )
+        -> ConstraintGroup {
+            return constraint(
+                attribute: firstAttr.layoutAttribute,
+                relatedBy: relation,
+                toItem: item,
+                attribute: (secondAttr ?? firstAttr).layoutAttribute,
+                multiplier: multiplier,
+                constant: offsetBy,
+                file: file,
+                function: function,
+                line: line
+            )
     }
 
-    static func align(_ firstAttr: YPosition, _ relation: LayoutRelation = .equal, to secondAttr: YPosition? = nil, of item: ConstrainableItem? = nil, multiplier: CGFloat = 1, offsetBy: CGFloat = 0) -> ConstraintGroup {
-        return constraint(
-            attribute: firstAttr.layoutAttribute,
-            relatedBy: relation,
-            toItem: item,
-            attribute: (secondAttr ?? firstAttr).layoutAttribute,
-            multiplier: multiplier,
-            constant: offsetBy
+    static func align
+        (
+        _ firstAttr: YPosition,
+        _ relation: LayoutRelation = .equal,
+        to secondAttr: YPosition? = nil,
+        of item: ConstrainableItem? = nil,
+        multiplier: CGFloat = 1,
+        offsetBy: CGFloat = 0,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
         )
+        -> ConstraintGroup {
+            return constraint(
+                attribute: firstAttr.layoutAttribute,
+                relatedBy: relation,
+                toItem: item,
+                attribute: (secondAttr ?? firstAttr).layoutAttribute,
+                multiplier: multiplier,
+                constant: offsetBy,
+                file: file,
+                function: function,
+                line: line
+            )
     }
 
-    static func setFixed(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to constant: CGFloat) -> ConstraintGroup {
-        return constraint(
-            attribute: firstAttr.layoutAttribute,
-            relatedBy: relation,
-            toItem: nil,
-            attribute: .notAnAttribute,
-            multiplier: 1,
-            constant: constant
+    static func setFixed
+        (
+        _ firstAttr: Dimension,
+        _ relation: LayoutRelation = .equal,
+        to constant: CGFloat,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
         )
+        -> ConstraintGroup {
+            return constraint(
+                attribute: firstAttr.layoutAttribute,
+                relatedBy: relation,
+                toItem: nil,
+                attribute: .notAnAttribute,
+                multiplier: 1,
+                constant: constant,
+                file: file,
+                function: function,
+                line: line
+            )
     }
 
-    static func setRelative(_ firstAttr: Dimension, _ relation: LayoutRelation = .equal, to multiplier: CGFloat = 1, of item: ConstrainableItem? = nil, attribute secondAttr: Dimension? = nil, constant: CGFloat = 0) -> ConstraintGroup {
-        return constraint(
-            attribute: firstAttr.layoutAttribute,
-            relatedBy: relation,
-            toItem: item,
-            attribute: (secondAttr ?? firstAttr).layoutAttribute,
-            multiplier: multiplier,
-            constant: constant
+    static func setRelative
+        (
+        _ firstAttr: Dimension,
+        _ relation: LayoutRelation = .equal,
+        to multiplier: CGFloat = 1,
+        of item: ConstrainableItem? = nil,
+        attribute secondAttr: Dimension? = nil,
+        constant: CGFloat = 0,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
         )
+        -> ConstraintGroup {
+            return constraint(
+                attribute: firstAttr.layoutAttribute,
+                relatedBy: relation,
+                toItem: item,
+                attribute: (secondAttr ?? firstAttr).layoutAttribute,
+                multiplier: multiplier,
+                constant: constant,
+                file: file,
+                function: function,
+                line: line
+            )
     }
 }
