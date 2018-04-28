@@ -59,9 +59,9 @@ class LayoutTests: XCTestCase {
 
     #if os(iOS) || os(tvOS)
     func testTraitCollectionUpdates() {
-        let globalConstraints: [ConstraintGroup] = [.setSize(CGSize(width: 100, height: 100))]
-        let horizontallyCompactConstraints: [ConstraintGroup] = [.center()]
-        let horizontallyRegularConstraints: [ConstraintGroup] = [.align(.leadingMargin), .align(.topMargin)]
+        let globalConstraints: [ConstraintSpecGroup] = [.setSize(CGSize(width: 100, height: 100))]
+        let horizontallyCompactConstraints: [ConstraintSpecGroup] = [.center()]
+        let horizontallyRegularConstraints: [ConstraintSpecGroup] = [.align(.leadingMargin), .align(.topMargin)]
 
         let layout = Layout<String> { ctx in
             view.applyConstraints(for: globalConstraints)

@@ -28,9 +28,9 @@ import AppKit
 import UIKit
 #endif
 
-public var addDebugConstraintGroupIdentifiers = false
+public struct ConstraintSpecGroup: ExpressibleByArrayLiteral {
 
-public struct ConstraintGroup: ExpressibleByArrayLiteral {
+    public static var addDebugIdentifiers = false
 
     internal var specs: [ConstraintSpec] = []
 
@@ -42,7 +42,7 @@ public struct ConstraintGroup: ExpressibleByArrayLiteral {
         self.specs = specs
     }
 
-    public init(arrayLiteral elements: ConstraintGroup...) {
+    public init(arrayLiteral elements: ConstraintSpecGroup...) {
         self.specs = elements.flatMap { $0.specs }
     }
 
@@ -56,7 +56,7 @@ public struct ConstraintGroup: ExpressibleByArrayLiteral {
     }
 }
 
-public extension ConstraintGroup {
+public extension ConstraintSpecGroup {
 
     private static func constraint
         (
@@ -70,10 +70,10 @@ public extension ConstraintGroup {
         function: StaticString,
         line: Int
         )
-        -> ConstraintGroup {
+        -> ConstraintSpecGroup {
             return .init(
                 [
-                    ItemConstraintSpec(
+                    ConstraintSpec(
                         attribute: firstAttr,
                         relatedBy: relation,
                         toItem: item,
@@ -82,7 +82,7 @@ public extension ConstraintGroup {
                         constant: constant
                     )
                 ]
-                ) <- (addDebugConstraintGroupIdentifiers ? "\(file)::\(function)::\(line)" : nil)
+                ) <- (addDebugIdentifiers ? "\(file)::\(function)::\(line)" : nil)
     }
 
     static func align
@@ -97,7 +97,7 @@ public extension ConstraintGroup {
         function: StaticString = #function,
         line: Int = #line
         )
-        -> ConstraintGroup {
+        -> ConstraintSpecGroup {
             return constraint(
                 attribute: firstAttr.layoutAttribute,
                 relatedBy: relation,
@@ -123,7 +123,7 @@ public extension ConstraintGroup {
         function: StaticString = #function,
         line: Int = #line
         )
-        -> ConstraintGroup {
+        -> ConstraintSpecGroup {
             return constraint(
                 attribute: firstAttr.layoutAttribute,
                 relatedBy: relation,
@@ -146,7 +146,7 @@ public extension ConstraintGroup {
         function: StaticString = #function,
         line: Int = #line
         )
-        -> ConstraintGroup {
+        -> ConstraintSpecGroup {
             return constraint(
                 attribute: firstAttr.layoutAttribute,
                 relatedBy: relation,
@@ -172,7 +172,7 @@ public extension ConstraintGroup {
         function: StaticString = #function,
         line: Int = #line
         )
-        -> ConstraintGroup {
+        -> ConstraintSpecGroup {
             return constraint(
                 attribute: firstAttr.layoutAttribute,
                 relatedBy: relation,

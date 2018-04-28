@@ -23,9 +23,9 @@
  */
 
 #if os(macOS)
-    import AppKit
+import AppKit
 #else
-    import UIKit
+import UIKit
 #endif
 
 private var currentLayout: Any?
@@ -34,7 +34,7 @@ private var currentLayoutContext: ConstraintContainer?
 public extension ConstrainableItem {
 
     @discardableResult
-    func makeConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
+    func makeConstraints(for specs: [ConstraintSpecGroup]) -> [NSLayoutConstraint] {
         if let view = self as? View {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
@@ -45,12 +45,12 @@ public extension ConstrainableItem {
     }
 
     @discardableResult
-    func makeConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
+    func makeConstraints(_ specs: ConstraintSpecGroup...) -> [NSLayoutConstraint] {
         return makeConstraints(for: specs)
     }
 
     @discardableResult
-    func applyConstraints(for specs: [ConstraintGroup]) -> [NSLayoutConstraint] {
+    func applyConstraints(for specs: [ConstraintSpecGroup]) -> [NSLayoutConstraint] {
         let constraints = makeConstraints(for: specs)
 
         if currentLayoutContext == nil {
@@ -61,7 +61,7 @@ public extension ConstrainableItem {
     }
 
     @discardableResult
-    func applyConstraints(_ specs: ConstraintGroup...) -> [NSLayoutConstraint] {
+    func applyConstraints(_ specs: ConstraintSpecGroup...) -> [NSLayoutConstraint] {
         return applyConstraints(for: specs)
     }
 }

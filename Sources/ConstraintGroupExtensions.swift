@@ -28,9 +28,9 @@
     import UIKit
 #endif
 
-public extension ConstraintGroup {
+public extension ConstraintSpecGroup {
 
-    static func alignToEdges(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintGroup {
+    static func alignToEdges(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintSpecGroup {
         return [
             .align(.top, of: item, offsetBy: top),
             .align(.leading, of: item, offsetBy: leading),
@@ -39,21 +39,21 @@ public extension ConstraintGroup {
         ]
     }
 
-    static func center(in item: ConstrainableItem? = nil) -> ConstraintGroup {
+    static func center(in item: ConstrainableItem? = nil) -> ConstraintSpecGroup {
         return [
             .align(.centerX, of: item),
             .align(.centerY, of: item)
         ]
     }
 
-    static func matchSize(of item: ConstrainableItem? = nil, ratio: CGFloat = 1, constant: CGFloat = 0) -> ConstraintGroup {
+    static func matchSize(of item: ConstrainableItem? = nil, ratio: CGFloat = 1, constant: CGFloat = 0) -> ConstraintSpecGroup {
         return [
             .setRelative(.width, to: ratio, of: item, constant: constant),
             .setRelative(.height, to: ratio, of: item, constant: constant)
         ]
     }
 
-    static func setSize(_ size: CGSize) -> ConstraintGroup {
+    static func setSize(_ size: CGSize) -> ConstraintSpecGroup {
         return [
         .setFixed(.width, to: size.width),
         .setFixed(.height, to: size.height)
@@ -61,14 +61,14 @@ public extension ConstraintGroup {
     }
 
     #if os(iOS) || os(tvOS)
-    static func centerWithinMargins(of item: ConstrainableItem? = nil) -> ConstraintGroup {
+    static func centerWithinMargins(of item: ConstrainableItem? = nil) -> ConstraintSpecGroup {
         return [
             .align(.centerX, to: .centerXWithinMargins, of: item),
             .align(.centerY, to: .centerYWithinMargins, of: item)
         ]
     }
 
-    static func alignToMargins(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintGroup {
+    static func alignToMargins(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintSpecGroup {
         return [
             .align(.top, to: .topMargin, of: item, offsetBy: top),
             .align(.leading, to: .leadingMargin, of: item, offsetBy: leading),
