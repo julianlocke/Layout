@@ -54,7 +54,7 @@ class LayoutTests: XCTestCase {
         }
 
         XCTAssertTrue(!layout.__activeConstraints__for_testing_only.isEmpty)
-        XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(.center())))
+        XCTAssertEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(.center()))
     }
 
     #if os(iOS) || os(tvOS)
@@ -77,13 +77,13 @@ class LayoutTests: XCTestCase {
             }
         }
 
-        XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints)))
+        XCTAssertEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints))
         layout.updateTraits([.verticallyRegular, .horizontallyCompact])
-        XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints + horizontallyCompactConstraints)))
+        XCTAssertEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints + horizontallyCompactConstraints))
         layout.updateTraits([.verticallyRegular, .horizontallyRegular])
-        XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints + horizontallyRegularConstraints)))
+        XCTAssertEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints + horizontallyRegularConstraints))
         layout.updateTraits([.verticallyCompact, .horizontallyCompact])
-        XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints)))
+        XCTAssertEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints))
     }
     #endif
 }

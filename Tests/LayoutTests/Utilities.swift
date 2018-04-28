@@ -29,34 +29,33 @@ import UIKit
 #endif
 
 import Layout
-import XCTest
 
-func constraintsAreEqual(_ cs1: [NSLayoutConstraint], _ cs2: [NSLayoutConstraint]) -> Bool {
-    guard cs1.count == cs2.count else { return false }
-    var cs2 = cs2
-
-    outerLoop: for c1 in cs1 {
-        for (idx, c2) in cs2.enumerated() where c1.isEqualTo(c2) {
-            cs2.remove(at: idx)
-            continue outerLoop
-        }
-    }
-
-    return cs2.isEmpty
+func == (lhs: NSLayoutConstraint, rhs: NSLayoutConstraint) -> Bool {
+    return lhs.firstItem === rhs.firstItem &&
+        lhs.firstAttribute == rhs.firstAttribute &&
+        lhs.secondItem === rhs.secondItem &&
+        lhs.secondAttribute == rhs.secondAttribute &&
+        lhs.relation == rhs.relation &&
+        lhs.multiplier == rhs.multiplier &&
+        lhs.constant == rhs.constant &&
+        lhs.priority == rhs.priority &&
+        lhs.identifier == rhs.identifier
 }
 
-private extension NSLayoutConstraint {
+extension NSLayoutConstraint {
 
-    func isEqualTo(_ constraint: NSLayoutConstraint) -> Bool {
-        return self.firstItem === constraint.firstItem &&
-        self.firstAttribute == constraint.firstAttribute &&
-        self.secondItem === constraint.secondItem &&
-        self.secondAttribute == constraint.secondAttribute &&
-        self.relation == constraint.relation &&
-        self.multiplier == constraint.multiplier &&
-        self.constant == constraint.constant &&
-        self.priority == constraint.priority &&
-        self.identifier == constraint.identifier
+    // swiftlint:disable:next override_in_extension
+    open override func isEqual(_ object: Any?) -> Bool {
+        guard let otherConstraint = object as? NSLayoutConstraint else { return false }
+        return self.firstItem === otherConstraint.firstItem &&
+            self.firstAttribute == otherConstraint.firstAttribute &&
+            self.secondItem === otherConstraint.secondItem &&
+            self.secondAttribute == otherConstraint.secondAttribute &&
+            self.relation == otherConstraint.relation &&
+            self.multiplier == otherConstraint.multiplier &&
+            self.constant == otherConstraint.constant &&
+            self.priority == otherConstraint.priority &&
+            self.identifier == otherConstraint.identifier
     }
 }
 

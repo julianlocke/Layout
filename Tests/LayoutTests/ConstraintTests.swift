@@ -27,7 +27,7 @@ import XCTest
 
 @testable import Layout
 
-// swiftlint:disable function_body_length file_length type_body_length implicitly_unwrapped_optional
+// swiftlint:disable file_length type_body_length implicitly_unwrapped_optional
 
 class ConstraintTests: XCTestCase {
 
@@ -63,11 +63,7 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints1 = layoutGuide.makeConstraints(
-            .align(.leading)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
+        XCTAssertEqual(desiredConstraints, layoutGuide.makeConstraints(.align(.leading)))
     }
 
     func testAlignX() {
@@ -83,41 +79,12 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints1 = view.makeConstraints(
-            .align(.leading, .equal, to: .leading, of: containerView, multiplier: 1, offsetBy: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
-
-        let constraints2 = view.makeConstraints(
-            .align(.leading, .equal, to: .leading, of: containerView, multiplier: 1)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
-
-        let constraints3 = view.makeConstraints(
-            .align(.leading, .equal, to: .leading, of: containerView)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints3))
-
-        let constraints4 = view.makeConstraints(
-            .align(.leading, .equal, to: .leading)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints4))
-
-        let constraints5 = view.makeConstraints(
-            .align(.leading, .equal)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints5))
-
-        let constraints6 = view.makeConstraints(
-            .align(.leading)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints6))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.leading, .equal, to: .leading, of: containerView, multiplier: 1, offsetBy: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.leading, .equal, to: .leading, of: containerView, multiplier: 1)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.leading, .equal, to: .leading, of: containerView)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.leading, .equal, to: .leading)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.leading, .equal)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.leading)))
     }
 
     func testAlignY() {
@@ -133,41 +100,12 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints1 = view.makeConstraints(
-            .align(.top, .equal, to: .top, of: containerView, multiplier: 1, offsetBy: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
-
-        let constraints2 = view.makeConstraints(
-            .align(.top, .equal, to: .top, of: containerView, multiplier: 1)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
-
-        let constraints3 = view.makeConstraints(
-            .align(.top, .equal, to: .top, of: containerView)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints3))
-
-        let constraints4 = view.makeConstraints(
-            .align(.top, .equal, to: .top)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints4))
-
-        let constraints5 = view.makeConstraints(
-            .align(.top, .equal)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints5))
-
-        let constraints6 = view.makeConstraints(
-            .align(.top)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints6))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.top, .equal, to: .top, of: containerView, multiplier: 1, offsetBy: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.top, .equal, to: .top, of: containerView, multiplier: 1)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.top, .equal, to: .top, of: containerView)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.top, .equal, to: .top)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.top, .equal)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.align(.top)))
     }
 
     func testSetFixed() {
@@ -183,17 +121,8 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints1 = view.makeConstraints(
-            .setFixed(.width, .equal, to: 100)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
-
-        let constraints2 = view.makeConstraints(
-            .setFixed(.width, to: 100)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setFixed(.width, .equal, to: 100)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setFixed(.width, to: 100)))
     }
 
     func testSetRelative() {
@@ -209,41 +138,12 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints1 = view.makeConstraints(
-            .setRelative(.width, .equal, to: 1, of: containerView, attribute: .width, constant: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
-
-        let constraints2 = view.makeConstraints(
-            .setRelative(.width, .equal, to: 1, of: containerView, attribute: .width)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
-
-        let constraints3 = view.makeConstraints(
-            .setRelative(.width, .equal, to: 1, of: containerView)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints3))
-
-        let constraints4 = view.makeConstraints(
-            .setRelative(.width, .equal, to: 1)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints4))
-
-        let constraints5 = view.makeConstraints(
-            .setRelative(.width, .equal)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints5))
-
-        let constraints6 = view.makeConstraints(
-            .setRelative(.width)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints6))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setRelative(.width, .equal, to: 1, of: containerView, attribute: .width, constant: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setRelative(.width, .equal, to: 1, of: containerView, attribute: .width)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setRelative(.width, .equal, to: 1, of: containerView)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setRelative(.width, .equal, to: 1)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setRelative(.width, .equal)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setRelative(.width)))
     }
 
     func testSetSize() {
@@ -268,11 +168,7 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints = view.makeConstraints(
-            .setSize(CGSize(width: 100, height: 100))
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setSize(CGSize(width: 100, height: 100))))
     }
 
     func testPriorityAssignmentOperator() {
@@ -294,11 +190,7 @@ class ConstraintTests: XCTestCase {
             constraint.priority = priority
         }
 
-        let constraints1 = view.makeConstraints(
-            .setRelative(.width) ~ priority
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setRelative(.width) ~ priority))
     }
 
     func testIdentifierOperator() {
@@ -320,11 +212,7 @@ class ConstraintTests: XCTestCase {
             constraint.identifier = identifier
         }
 
-        let constraints1 = view.makeConstraints(
-            .setRelative(.width) <- identifier
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.setRelative(.width) <- identifier))
     }
 
     func testAlignToEdges() {
@@ -367,41 +255,12 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints1 = view.makeConstraints(
-            .alignToEdges(of: containerView, top: 0, leading: 0, bottom: 0, trailing: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
-
-        let constraints2 = view.makeConstraints(
-            .alignToEdges(of: containerView, top: 0, leading: 0, bottom: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
-
-        let constraints3 = view.makeConstraints(
-            .alignToEdges(of: containerView, top: 0, leading: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints3))
-
-        let constraints4 = view.makeConstraints(
-            .alignToEdges(of: containerView, top: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints4))
-
-        let constraints5 = view.makeConstraints(
-            .alignToEdges(of: containerView)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints5))
-
-        let constraints6 = view.makeConstraints(
-            .alignToEdges()
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints6))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToEdges(of: containerView, top: 0, leading: 0, bottom: 0, trailing: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToEdges(of: containerView, top: 0, leading: 0, bottom: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToEdges(of: containerView, top: 0, leading: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToEdges(of: containerView, top: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToEdges(of: containerView)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToEdges()))
     }
 
     func testCenter() {
@@ -426,64 +285,36 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints1 = view.makeConstraints(
-            .center(in: containerView)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
-
-        let constraints2 = view.makeConstraints(
-            .center()
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.center(in: containerView)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.center()))
     }
 
     func testMatchSize() {
         let desiredConstraints = [
             NSLayoutConstraint(
                 item: view,
-                attribute: .height,
+                attribute: .width,
                 relatedBy: .equal,
                 toItem: containerView,
-                attribute: .height,
+                attribute: .width,
                 multiplier: 1,
                 constant: 0
             ),
             NSLayoutConstraint(
                 item: view,
-                attribute: .width,
+                attribute: .height,
                 relatedBy: .equal,
                 toItem: containerView,
-                attribute: .width,
+                attribute: .height,
                 multiplier: 1,
                 constant: 0
             )
         ]
 
-        let constraints1 = view.makeConstraints(
-            .matchSize(of: containerView, ratio: 1, constant: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
-
-        let constraints2 = view.makeConstraints(
-            .matchSize(of: containerView, ratio: 1)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
-
-        let constraints3 = view.makeConstraints(
-            .matchSize(of: containerView)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints3))
-
-        let constraints4 = view.makeConstraints(
-            .matchSize()
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints4))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.matchSize(of: containerView, ratio: 1, constant: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.matchSize(of: containerView, ratio: 1)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.matchSize(of: containerView)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.matchSize()))
     }
 
     func testActivate() {
@@ -603,41 +434,12 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints1 = view.makeConstraints(
-            .alignToMargins(of: containerView, top: 0, leading: 0, bottom: 0, trailing: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
-
-        let constraints2 = view.makeConstraints(
-            .alignToMargins(of: containerView, top: 0, leading: 0, bottom: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
-
-        let constraints3 = view.makeConstraints(
-            .alignToMargins(of: containerView, top: 0, leading: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints3))
-
-        let constraints4 = view.makeConstraints(
-            .alignToMargins(of: containerView, top: 0)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints4))
-
-        let constraints5 = view.makeConstraints(
-            .alignToMargins(of: containerView)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints5))
-
-        let constraints6 = view.makeConstraints(
-            .alignToMargins()
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints6))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToMargins(of: containerView, top: 0, leading: 0, bottom: 0, trailing: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToMargins(of: containerView, top: 0, leading: 0, bottom: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToMargins(of: containerView, top: 0, leading: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToMargins(of: containerView, top: 0)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToMargins(of: containerView)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.alignToMargins()))
     }
 
     func testCenterWithinMargins() {
@@ -662,17 +464,8 @@ class ConstraintTests: XCTestCase {
             )
         ]
 
-        let constraints1 = view.makeConstraints(
-            .centerWithinMargins(of: containerView)
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints1))
-
-        let constraints2 = view.makeConstraints(
-            .centerWithinMargins()
-        )
-
-        XCTAssertTrue(constraintsAreEqual(desiredConstraints, constraints2))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.centerWithinMargins(of: containerView)))
+        XCTAssertEqual(desiredConstraints, view.makeConstraints(.centerWithinMargins()))
     }
     #endif
 }
