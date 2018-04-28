@@ -23,58 +23,110 @@
  */
 
 #if os(macOS)
-    import AppKit
+import AppKit
 #else
-    import UIKit
+import UIKit
 #endif
 
 public extension ConstraintSpecGroup {
 
-    static func alignToEdges(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintSpecGroup {
-        return [
-            .align(.top, of: item, offsetBy: top),
-            .align(.leading, of: item, offsetBy: leading),
-            .align(.bottom, of: item, offsetBy: bottom),
-            .align(.trailing, of: item, offsetBy: trailing)
-        ]
+    static func alignToEdges
+        (
+        of item: ConstrainableItem? = nil,
+        top: CGFloat = 0,
+        leading: CGFloat = 0,
+        bottom: CGFloat = 0,
+        trailing: CGFloat = 0,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
+        )
+        -> ConstraintSpecGroup {
+            return [
+                .align(.top, of: item, offsetBy: top, file: file, function: function, line: line),
+                .align(.leading, of: item, offsetBy: leading, file: file, function: function, line: line),
+                .align(.bottom, of: item, offsetBy: bottom, file: file, function: function, line: line),
+                .align(.trailing, of: item, offsetBy: trailing, file: file, function: function, line: line)
+            ]
     }
 
-    static func center(in item: ConstrainableItem? = nil) -> ConstraintSpecGroup {
-        return [
-            .align(.centerX, of: item),
-            .align(.centerY, of: item)
-        ]
+    static func center
+        (
+        in item: ConstrainableItem? = nil,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
+        )
+        -> ConstraintSpecGroup {
+            return [
+                .align(.centerX, of: item, file: file, function: function, line: line),
+                .align(.centerY, of: item, file: file, function: function, line: line)
+            ]
     }
 
-    static func matchSize(of item: ConstrainableItem? = nil, ratio: CGFloat = 1, constant: CGFloat = 0) -> ConstraintSpecGroup {
-        return [
-            .setRelative(.width, to: ratio, of: item, constant: constant),
-            .setRelative(.height, to: ratio, of: item, constant: constant)
-        ]
+    static func matchSize
+        (
+        of item: ConstrainableItem? = nil,
+        ratio: CGFloat = 1,
+        constant: CGFloat = 0,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
+        )
+        -> ConstraintSpecGroup {
+            return [
+                .setRelative(.width, to: ratio, of: item, constant: constant, file: file, function: function, line: line),
+                .setRelative(.height, to: ratio, of: item, constant: constant, file: file, function: function, line: line)
+            ]
     }
 
-    static func setSize(_ size: CGSize) -> ConstraintSpecGroup {
-        return [
-        .setFixed(.width, to: size.width),
-        .setFixed(.height, to: size.height)
-        ]
+    static func setSize
+        (
+        _ size: CGSize,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
+        )
+        -> ConstraintSpecGroup {
+            return [
+                .setFixed(.width, to: size.width, file: file, function: function, line: line),
+                .setFixed(.height, to: size.height, file: file, function: function, line: line)
+            ]
     }
 
     #if os(iOS) || os(tvOS)
-    static func centerWithinMargins(of item: ConstrainableItem? = nil) -> ConstraintSpecGroup {
-        return [
-            .align(.centerX, to: .centerXWithinMargins, of: item),
-            .align(.centerY, to: .centerYWithinMargins, of: item)
-        ]
+    static func centerWithinMargins
+        (
+        of item: ConstrainableItem? = nil,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
+        )
+        -> ConstraintSpecGroup {
+            return [
+                .align(.centerX, to: .centerXWithinMargins, of: item, file: file, function: function, line: line),
+                .align(.centerY, to: .centerYWithinMargins, of: item, file: file, function: function, line: line)
+            ]
     }
 
-    static func alignToMargins(of item: ConstrainableItem? = nil, top: CGFloat = 0, leading: CGFloat = 0, bottom: CGFloat = 0, trailing: CGFloat = 0) -> ConstraintSpecGroup {
-        return [
-            .align(.top, to: .topMargin, of: item, offsetBy: top),
-            .align(.leading, to: .leadingMargin, of: item, offsetBy: leading),
-            .align(.bottom, to: .bottomMargin, of: item, offsetBy: bottom),
-            .align(.trailing, to: .trailingMargin, of: item, offsetBy: trailing)
-        ]
+    static func alignToMargins
+        (
+        of item: ConstrainableItem? = nil,
+        top: CGFloat = 0,
+        leading: CGFloat = 0,
+        bottom: CGFloat = 0,
+        trailing: CGFloat = 0,
+        file: StaticString = #file,
+        function: StaticString = #function,
+        line: Int = #line
+        )
+        -> ConstraintSpecGroup {
+            return [
+                .align(.top, to: .topMargin, of: item, offsetBy: top, file: file, function: function, line: line),
+                .align(.leading, to: .leadingMargin, of: item, offsetBy: leading, file: file, function: function, line: line),
+                .align(.bottom, to: .bottomMargin, of: item, offsetBy: bottom, file: file, function: function, line: line),
+                .align(.trailing, to: .trailingMargin, of: item, offsetBy: trailing, file: file, function: function, line: line)
+            ]
     }
     #endif
 }

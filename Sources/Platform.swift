@@ -24,7 +24,6 @@
 
 #if os(macOS)
 import AppKit
-
 public typealias View = NSView
 public typealias LayoutGuide = NSLayoutGuide
 public typealias LayoutPriority = NSLayoutConstraint.Priority
@@ -32,7 +31,6 @@ public typealias LayoutAttribute = NSLayoutConstraint.Attribute
 public typealias LayoutRelation = NSLayoutConstraint.Relation
 #else
 import UIKit
-
 public typealias View = UIView
 public typealias LayoutGuide = UILayoutGuide
 public typealias LayoutPriority = UILayoutPriority

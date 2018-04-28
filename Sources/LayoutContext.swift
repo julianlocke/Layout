@@ -23,9 +23,9 @@
  */
 
 #if os(macOS)
-    import AppKit
+import AppKit
 #else
-    import UIKit
+import UIKit
 #endif
 
 internal protocol ConstraintContainer: class {

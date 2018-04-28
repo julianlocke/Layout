@@ -23,9 +23,9 @@
  */
 
 #if os(macOS)
-    import AppKit
+import AppKit
 #else
-    import UIKit
+import UIKit
 #endif
 
 /// An empty protocol used to improve the type-safety of `item` parameters when defining constraints.

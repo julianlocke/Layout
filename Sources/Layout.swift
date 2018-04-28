@@ -23,9 +23,9 @@
  */
 
 #if os(macOS)
-    import AppKit
+import AppKit
 #else
-    import UIKit
+import UIKit
 #endif
 
 final public class Layout<T> where T: Hashable {

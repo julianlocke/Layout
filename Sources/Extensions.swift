@@ -23,9 +23,9 @@
  */
 
 #if os(macOS)
-    import AppKit
+import AppKit
 #else
-    import UIKit
+import UIKit
 #endif
 
 public extension Array where Element == NSLayoutConstraint {
@@ -59,59 +59,59 @@ public extension Array where Element == NSLayoutConstraint {
 }
 
 #if os(iOS) || os(tvOS)
-    public extension UITraitCollection {
+public extension UITraitCollection {
 
-        /// Returns a new trait collection representing an unspecified horizontal size class.
-        static var horizontallyUnspecified: UITraitCollection {
-            return UITraitCollection(horizontalSizeClass: .unspecified)
-        }
-
-        /// Returns a new trait collection representing a compact horizontal size class.
-        static var horizontallyCompact: UITraitCollection {
-            return UITraitCollection(horizontalSizeClass: .compact)
-        }
-
-        /// Returns a new trait collection representing a regular horizontal size class.
-        static var horizontallyRegular: UITraitCollection {
-            return UITraitCollection(horizontalSizeClass: .regular)
-        }
-
-        /// Returns a new trait collection representing an unspecified vertical size class.
-        static var verticallyUnspecified: UITraitCollection {
-            return UITraitCollection(verticalSizeClass: .unspecified)
-        }
-
-        /// Returns a new trait collection representing a compact vertical size class.
-        static var verticallyCompact: UITraitCollection {
-            return UITraitCollection(verticalSizeClass: .compact)
-        }
-
-        /// Returns a new trait collection representing a regular vertical size class.
-        static var verticallyRegular: UITraitCollection {
-            return UITraitCollection(verticalSizeClass: .regular)
-        }
-
-        /// Returns a new trait collection representing an iPad user interface idiom.
-        static var isPad: UITraitCollection {
-            return UITraitCollection(userInterfaceIdiom: .pad)
-        }
-
-        /// Returns a new trait collection representing an iPhone user interface idiom.
-        static var isPhone: UITraitCollection {
-            return UITraitCollection(userInterfaceIdiom: .phone)
-        }
-
-        /// Returns a new trait collection representing a tv user interface idiom.
-        static var isTv: UITraitCollection {
-            return UITraitCollection(userInterfaceIdiom: .tv)
-        }
-
-        /// Returns a new trait collection representing a specific content size category.
-        ///
-        /// - Parameter contentSizeCategory: The content size category.
-        /// - Returns: A new trait collection representing a specific content size category.
-        static func preferredContentSizeCategory(of contentSizeCategory: UIContentSizeCategory) -> UITraitCollection {
-            return UITraitCollection(preferredContentSizeCategory: contentSizeCategory)
-        }
+    /// Returns a new trait collection representing an unspecified horizontal size class.
+    static var horizontallyUnspecified: UITraitCollection {
+        return UITraitCollection(horizontalSizeClass: .unspecified)
     }
+
+    /// Returns a new trait collection representing a compact horizontal size class.
+    static var horizontallyCompact: UITraitCollection {
+        return UITraitCollection(horizontalSizeClass: .compact)
+    }
+
+    /// Returns a new trait collection representing a regular horizontal size class.
+    static var horizontallyRegular: UITraitCollection {
+        return UITraitCollection(horizontalSizeClass: .regular)
+    }
+
+    /// Returns a new trait collection representing an unspecified vertical size class.
+    static var verticallyUnspecified: UITraitCollection {
+        return UITraitCollection(verticalSizeClass: .unspecified)
+    }
+
+    /// Returns a new trait collection representing a compact vertical size class.
+    static var verticallyCompact: UITraitCollection {
+        return UITraitCollection(verticalSizeClass: .compact)
+    }
+
+    /// Returns a new trait collection representing a regular vertical size class.
+    static var verticallyRegular: UITraitCollection {
+        return UITraitCollection(verticalSizeClass: .regular)
+    }
+
+    /// Returns a new trait collection representing an iPad user interface idiom.
+    static var isPad: UITraitCollection {
+        return UITraitCollection(userInterfaceIdiom: .pad)
+    }
+
+    /// Returns a new trait collection representing an iPhone user interface idiom.
+    static var isPhone: UITraitCollection {
+        return UITraitCollection(userInterfaceIdiom: .phone)
+    }
+
+    /// Returns a new trait collection representing a tv user interface idiom.
+    static var isTv: UITraitCollection {
+        return UITraitCollection(userInterfaceIdiom: .tv)
+    }
+
+    /// Returns a new trait collection representing a specific content size category.
+    ///
+    /// - Parameter contentSizeCategory: The content size category.
+    /// - Returns: A new trait collection representing a specific content size category.
+    static func preferredContentSizeCategory(of contentSizeCategory: UIContentSizeCategory) -> UITraitCollection {
+        return UITraitCollection(preferredContentSizeCategory: contentSizeCategory)
+    }
+}
 #endif
