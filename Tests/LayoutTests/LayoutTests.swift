@@ -86,14 +86,4 @@ class LayoutTests: XCTestCase {
         XCTAssertTrue(constraintsAreEqual(layout.__activeConstraints__for_testing_only, view.makeConstraints(for: globalConstraints)))
     }
     #endif
-
-    func testThatLayoutsMayNotBeNested() {
-        expectFatalError(expectedMessage: "Layout() calls may not be nested.") {
-            _ = Layout<String> { _ in
-                _ = Layout<String> { _ in
-
-                }
-            }
-        }
-    }
 }
